@@ -1,0 +1,21 @@
+[Spanish]
+
+Este proyecto tiene como objetivo unir la bioinformática con los animales. 
+
+En primera instancia, nuestra intención es mantener las calles limpias de excrementos de los perros que tenemos como mascotas en nuestros hogares. Para ello, pretendemos identificar a cada perro infractor a partir del ADN de una muestra de sus excrementos. Dicha muestra, será recogida por un agente cívico mediante un kit previamente preparado para esta labor. Y sí, pretendemos trabajar conjuntamente con los ayuntamientos para hacer posible la emisión de una multa oficial hacia el dueño de la mascota. 
+
+Además, al recopilar el ADN de nuestras mascotas, podremos ofrecer otros servicios para los ciudadanos, como por ejemplo: determinar el pedigrí, calcular las probabilidades de futuras enfermedades
+
+Por último, y no menos importante, la puerta de entrada a nuestros servicios será una aplicación con funcionalidades como encontrar pareja a nuestra mascota (parecido a la app Tinder) o descubrir compañeros con los que hacer quedadas para salir a pasear con nuestros perros (parecido a la app Meetup). En definitiva, una red social para mascotas.
+
+
+[English]
+
+This project aims to link bioinformatics with animals.
+
+In the first instance, our intention is to keep the streets clean of dog droppings. To accomplish this, we will identify each dog based on the DNA present in their droppings. That excrement sample will be collected by a civic agent through a kit previously prepared for this task. And yes: we intend to work together with the municipalities in order to, on one hand, emit an official fine to the pet owner (payment for the infraction), and in the other hand, register as many pets as we can, to create a database of animals in our towns and cities.
+
+In addition, by collecting the DNA of our pets, we can offer other services for citizens, such as: determining the pedigree or calculating the likelihood of future diseases.
+
+Last, but not least, the entrance door to our services will be an application with features such as finding a partner to our pet (similar to the actual Tinder app) or discovering other pet owners in order to meet for a walk with the dogs (similar to the actual Meetup app). In short, we want to create a social network by and for pets.
+
