@@ -7,5 +7,14 @@ As the Product Owner, I want to define the basic user roles for the application,
 - Public Worker (PW), who is able to load data into the app through the backend.
 - Pet User (PU), who is able to log in the app "from the pet perspective"; it will be the final user of the app, as a citizen.
 
-## US02. Login
+## US02. Add user
+
+
+## US03. Delete user
+
+
+## US04. Modify user
+
+
+## US05. Login
 As a user, I want to log in the app, so I can use its functionalities, depending on my role.
