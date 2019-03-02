@@ -2,7 +2,7 @@
 This document has the purpose of defining the mockups, which illustrates a first "look-and-feel" approximation for the app view. The following "M###" nomenclature stands for "Mockup number #".
 
 ## M000 Summary Web
-[Summary Web](/jpg/scanned/m000-summary-web.jpg)
+[Summary Web](/project-proposal/mockups/jpg/scanned/m000-summary-web.jpg)
 ...
 
 ## M001 Main Web
