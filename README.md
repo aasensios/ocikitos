@@ -1,8 +1,7 @@
 # cuatropatas
 DAWBIO M12 Project (TFG)
 
-Alejandro Asensios
-Oscar Burgos
+Alejandro Asensios - Oscar Burgos
 
 ## Project Proposal
 [Speech multilanguage](/project-proposal/speech-multilanguage.txt)
