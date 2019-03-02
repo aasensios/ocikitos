@@ -13,4 +13,4 @@ Oscar Burgos
 
 # Mockups
 [Description Mockups](/project-proposal/mockups/description.md)
-[File mockups.pdf](/project-proposal/mockups/mockups.pdf)
+■ [File mockups.pdf](/project-proposal/mockups/mockups.pdf)
