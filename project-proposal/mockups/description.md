@@ -4,45 +4,28 @@
 This document has the purpose of defining the mockups, which illustrates a first "look-and-feel" approximation for the app view. The following "M###" nomenclature stands for "Mockup number #".
 
 ## M000 Summary Web
-[Summary Web](/project-proposal/mockups/jpg/scanned/m000-summary-web.jpg)
-...
+[Summary Web >](/project-proposal/mockups/jpg/scanned/m000-summary-web.jpg)
 
 ## M001 Main Web
-[Main Web](/project-proposal/mockups/jpg/scanned/m001-main-web.jpg)
-
-...
+[Main Web >](/project-proposal/mockups/jpg/scanned/m001-main-web.jpg)
 
 ## M011 Tinder Pet
-[Tinder Pet](/project-proposal/mockups/jpg/scanned/m011-tinder-pet.jpg)
-
-...
+[Tinder Pet >](/project-proposal/mockups/jpg/scanned/m011-tinder-pet.jpg)
 
 ## M012 MyDoctor DNA
-[MyDoctor DNA](/project-proposal/mockups/jpg/scanned/m012-mydoctor-dna.jpg)
-
-...
+[MyDoctor DNA >](/project-proposal/mockups/jpg/scanned/m012-mydoctor-dna.jpg)
 
 ## M014 PetAdvisor
-[Pet Advisor](/project-proposal/mockups/jpg/scanned/m014-pet-advisor.jpg)
-
-...
+[Pet Advisor >](/project-proposal/mockups/jpg/scanned/m014-pet-advisor.jpg)
 
 ## M021 Role Pet Owner
-[Role Pet Owner](/project-proposal/mockups/jpg/scanned/m021-role-pet-owner.jpg)
-
-...
+[Role Pet Owner >](/project-proposal/mockups/jpg/scanned/m021-role-pet-owner.jpg)
 
 ## M022 Role Public Worker (or Public Administration)
-[Role Public Worker](/project-proposal/mockups/jpg/scanned/m022-role-public-worker.jpg)
-
-...
+[Role Public Worker >](/project-proposal/mockups/jpg/scanned/m022-role-public-worker.jpg)
 
 ## M023 Role App Admin
-[Role App Admin](/project-proposal/mockups/jpg/scanned/m023-role-app-admin.jpg)
-
-...
+[Role App Admin >](/project-proposal/mockups/jpg/scanned/m023-role-app-admin.jpg)
 
 ## M031 Mobile-first Forms
-[Mobile First Forms](/project-proposal/mockups/jpg/scanned/m031-mobile-first-forms.jpg)
-
-...
+[Mobile First Forms >](/project-proposal/mockups/jpg/scanned/m031-mobile-first-forms.jpg)

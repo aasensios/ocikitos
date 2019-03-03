@@ -1,5 +1,5 @@
 # Functional Requirements
-[< Back File README](/README.md)
+[< Back to README](/README.md)
 
 This document has the purpose of defining the Functional Requirements (FR) of the project. In order to accomplish that, we are going to describe them as User Stories (US), which will be implemented afterwards.
 
