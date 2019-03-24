@@ -3,16 +3,6 @@
 
 This document has the purpose of defining the Functional Requirements (FR) of the project. In order to accomplish that, we are going to break them into User Stories (US), which will be implemented afterwards, in the code developing stage.
 
-This would be an example of a whole workflow:
-
-1. Veterinarian registers a new Dog with chip number, owner's DNI and saliva sample into a Kit.
-2. Bioinformatics Technician sequences the DNA from the saliva sample, getting the fasta file and the STR's pattern.
-3. Street Agent takes a sample of a dog's droppings found in street, introduces the sample into the Kit, and registers the Incident into the app, storing the location, a photo as evidence and the Kit's barcode number.
-4. Bioinformatics Technician sequences the DNA from the droppings sample, getting the fasta file and the STR's pattern, which will reveal if it matches with some existing saliva sample. This method allows us to uniquely identify a certain dog.
-5. A Police Officer validates the evidences: photo + location + STR's matching patterns. If everything is considered as correct, a new InfractionProposal is generated, which will follow the workflow stablished by Town Administration until the corresponding monetary fine will be emitted to the dog's owner. 
-
-> [See workflow diagram >](/requirements/workflow.pdf)
-
 # FR00. Define user roles
 As the Product Owner, I want to define the basic user roles for the application, so that I can decide which tasks are performed by which role(s). The roles are:
 - Application Administrator, **admin**, who has permission to manage the users, as well as all the actions inside the application; for instance, the massive load of Kits for samples (barcode as id).
