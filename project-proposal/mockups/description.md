@@ -13,7 +13,7 @@ This document has the purpose of defining the mockups, which illustrates a first
 [ID Dog Dna Service >](/project-proposal/mockups/jpg/revised/23_slider_idDogDna.jpg)
 
 ## M030 Menu role Admin management
-[Management Citizens >](/project-proposal/mockups/jpg/revised/31_menu_roleAdmin.jpg)
+[Management Citizens -](/project-proposal/mockups/jpg/revised/31_menu_roleAdmin.jpg)
 [Management Pets >](/project-proposal/mockups/jpg/revised/32_menu_roleAdmin.jpg)
 
 ## M041 Menu role Owner pet
