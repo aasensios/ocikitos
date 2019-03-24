@@ -14,7 +14,7 @@ This document has the purpose of defining the mockups, which illustrates a first
 
 ## M030 Menu role Admin management
 [Management Citizens -](/project-proposal/mockups/jpg/revised/31_menu_roleAdmin.jpg)
-[Management Pets >](/project-proposal/mockups/jpg/revised/32_menu_roleAdmin.jpg)
+[Management Pets >](/project-proposal/mockups/jpg/revised/32_menu_roleAdmin_2.jpg)
 
 ## M041 Menu role Owner pet
 [Menu Owner Pet >](/project-proposal/mockups/jpg/revised/41_menu_roleOwner.jpg)
