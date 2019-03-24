@@ -3,8 +3,8 @@
 
 This document has the purpose of defining the mockups, which illustrates a first "look-and-feel" approximation for the app view. The following "M###" nomenclature stands for "Mockup number #".
 
-## M000 Summary Web
-[Summary Web >](/project-proposal/mockups/jpg/scanned/m000-summary-web.jpg)
+## M001 Pop dna service
+[Summary Web >](/project-proposal/mockups/jpg/revised/21_slider_poopDna.jpg)
 
 ## M001 Main Web
 [Main Web >](/project-proposal/mockups/jpg/scanned/m001-main-web.jpg)
