@@ -13,4 +13,4 @@ We need a Linux-based operating system, such as Ubuntu, with a set of software t
 We need a Linux-based server, such as Ubuntu Server, with a set of software tools to deploy the application and perform tests in a real environment.
 
 ## NFR04. Software
-We need some applications/packeges to write and test code, such as programming language compilers/interpreters, IDE's, web browsers and version control system, both local and remote.
+We need certain packages to write and test our code, such as programming language compilers and/or interpreters, frameworks, IDE, web browsers and version control system, both local and remote.
