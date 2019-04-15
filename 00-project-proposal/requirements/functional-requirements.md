@@ -95,7 +95,7 @@ As an **officer**, I want to modify an infraction proposal entry manually. so th
 As an **officer**, I want to delete a wrong infraction entry, so that I can maintain clean the infractions table in database.
 ### US056. Validate Infraction
 As an **officer**, I want to validate an Infraction proposal. In one hand, I may want to __approve__ an existing infraction proposal entry, so that I can confirm the evidences; in this case, the infraction status changes to "approved". In the other hand, I may want to __reject__ an existing infraction proposal entry, so that I can refuse the evidences as non-conclusive (maybe due to a non-accurate droppings photo or an inconsistency between owner address and Incident address); in this case, the infraction status changes to "rejected".
-### US057. Generate Offcial Document
+### US057. Generate Official Document
 As an **officer**, I want to emit an automated generation of an offical document, so I can proof my approval or rejection of an Infraction proposal. That document will be sent to the corresponding Town Administration. At this point, our workflow reaches its END.
 
 # FR06. Notification Management
