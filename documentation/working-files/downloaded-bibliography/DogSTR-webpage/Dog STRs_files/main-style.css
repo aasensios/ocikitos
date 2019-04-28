@@ -1,0 +1,157 @@
+.container main {
+  background-image: url("../_img/nist-bck.gif");
+  background-color: #fff;
+  background-origin: content-box;
+  background-repeat: repeat-x repeat-y;
+  background-location: top left;
+  background-attachment: fixed;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 10px;
+}
+
+p.reference {
+  font-family: "Times New Roman", Times, serif;
+  font-size: small;
+}
+
+#titlewrap .dl, #titlewrap .dr{
+  padding-top: 10px;
+  display:inline;  
+  /*vertical-align:middle;*/
+
+}
+
+#titlewrap .dr {
+  float:right;
+}
+
+#titlewrap .dl {
+  float:left;
+}
+
+#titlewrap h1 {
+  text-align: center;
+  /*padding-top: 20px;*/
+}
+
+#titlewrap h1 p {
+  display:inline-block;
+  *display:inline;
+  vertical-align: middle;
+
+}
+
+#titlewrap h1 strong {
+	color: lightgray;
+	/*text-decoration: underline;
+	text-decoration-color: white;
+	text-decoration-skip: true;
+	text-decoration-style: dotted;*/
+	font-size:1.15em;
+	font-weight: normal;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 0 0 15px whitesmoke;	
+}
+
+.container p {
+  padding-top: 5px;
+  padding-bottom: 2px;
+}
+
+/*.container > .titlewrap .dl {
+  float:left;
+}
+
+.container > .titlewrap .dr {
+  float:right;
+}*/
+
+table {
+  background-color: white;
+  border=1px solid #000;
+  width=100%;
+  mso-cellspacing=1.5pt;
+}
+
+
+tr:nth-child(even){
+  background: #FFF;
+}
+
+tr:nth-child(odd){
+  background: #EEE;
+}
+
+tr:hover {
+  background: #AAB;
+  transition: background .3s ease;
+}
+
+tr:first-child {
+  background: #CCC;
+}
+
+td {
+  vertical-align: top;
+  padding: 0.3em;
+}
+
+
+a[name]not([href]){
+  padding-top: 109px;
+  margin-top: -109px;
+  display: block;
+}
+
+.updated {
+  display: block;
+  text-align: right;
+}
+
+.banner {
+  width: 90%;
+  height: auto;
+  margin: 7px auto;
+  background: #555 url("../_img/circuitry.png") no-repeat center left;
+  background-origin: padding-box;
+  -webkit-background-size: 3.5%;
+  -moz-background-size: 3.5%;
+  -o-background-size: 3.5%;
+  background-size: 3.5%;
+  -moz-box-shadow: 0 1px 3px blue, 0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 3px blue, 0 1px 3px rgba(0,0,0,0.5);
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;  
+  border: 2px solid yellow;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 6em;
+  display: none; 
+  /* display: table; */
+  color: white;
+  font-weight: bold;
+  font-size:12px;
+}
+
+.poabanner {
+  text-align: center;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  vertical-align: middle;
+  /* display: table-cell; */
+  display: none; 
+}
+
+.poabanner:before {
+  content: "";
+}
+
+.poabanner:after {
+  content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at viverra nisi. Mauris finibus odio vel eros volutpat placerat. Aliquam facilisis quam et est tincidunt, sed interdum felis tempor. Sed a accumsan mauris. Proin pellentesque finibus justo, rhoncus tempus risus. Ut eu neque turpis. Duis sit amet massa in nisl molestie gravida eu vitae ex. Praesent luctus, elit non sollicitudin malesuada, lacus urna facilisis leo, vitae eleifend ex tellus eu justo. Sed augue libero, fringilla auctor turpis in, luctus finibus est. Suspendisse lobortis purus lorem, vel malesuada est malesuada vitae. Quisque vestibulum tincidunt volutpat. Quisque vestibulum congue ullamcorper. Pellentesque quis suscipit felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in sollicitudin quam.";
+}
+
+.udate {
+  font-weight: bold;
+  color: maroon;
+}

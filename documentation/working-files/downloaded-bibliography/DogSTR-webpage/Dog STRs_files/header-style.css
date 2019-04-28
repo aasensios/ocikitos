@@ -1,0 +1,441 @@
+header {
+  box-sizing: border-box;
+  background: #000;
+  color: #fff;
+  padding: 5px 5px 5px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: fixed;
+  width: 100%;
+  margin-bottom: 0px;
+  border-bottom: solid 1px #ccc;
+}
+header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+header a, header a:link, header a:visited {
+  color: #333;
+  text-decoration: none;
+}
+header .logo {
+  position: relative;
+  z-index: 123;
+  padding: 5px;
+  font: 0px verdana;
+  color: #6DDB07;
+  float: left;
+  width: 280px;
+  margin: 0 0 0 0;
+}
+header .logo a {
+  font-weight: normal;
+  font-size: 20px;
+  height: 40px;
+  width: 280px;
+  background: url("../_img/nist_logo.png") no-repeat;
+  background-size: 280px auto;
+  text-indent: -9999px;
+  overflow: hidden;
+  display: inline-block;
+}
+header #topnav {
+  position: relative;
+  /* width: 980px;*/
+  /* margin: 0 auto;*/
+  padding-left: 0px;
+  font-family: sans-serif;
+  background: #000;
+}
+
+header h1#top_title {
+  font-size: 2.78em;
+  font-weight: normal;
+  padding: 5px 0px;
+  display: inline-block;  
+  margin-left: 10%;
+  margin-right: auto;
+}
+
+header h1#top_title::after {
+  content: " (SRD-130)";
+}
+
+
+header #topnav, header #topnav ul li, header #topnav ul li a, header #topnav #head-mobile {
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  /*-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;  no longer needed */
+  box-sizing: border-box;
+}
+
+header #topnav ul {
+  display: inline-block;
+}
+
+header #topnav:after, header #topnav > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+header #topnav #head-mobile {
+  display: none;
+}
+
+header #topnav > ul > li {
+  z-index:100;
+  float: left;
+}
+header #topnav > ul > li > a {
+  /*padding: 17px; using narrower top and bottom padding  -> 12*/
+  padding: 12px 17px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #ddd;
+  font-weight: 700;
+}
+header #topnav > ul > li:hover > a, header #topnav ul li.active a {
+  color: #fff;
+}
+header #topnav > ul > li:hover, header #topnav ul li.active:hover, header #topnav ul li.active, header #topnav ul 
+li.has-sub.active:hover {
+  background: #4444DD !important;
+  -webkit-transition: background .3s ease;
+  -ms-transition: background .3s ease;
+  transition: background .3s ease;
+}
+header #topnav > ul > li.has-sub > a {
+  padding-right: 35px;
+}
+header #topnav > ul > li.has-sub > a:after {
+  position: absolute;
+  top: 16px;
+  right: 11px;
+  width: 8px;
+  height: 2px;
+  display: block;
+  background: #ddd;
+  content: '';
+}
+header #topnav > ul > li.has-sub > a:before {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  display: block;
+  width: 2px;
+  height: 8px;
+  background: #ddd;
+  content: '';
+  -webkit-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  transition: all .25s ease;
+}
+header #topnav > ul > li.has-sub:hover > a:before {
+  top: 23px;
+  height: 0;
+}
+header #topnav ul ul {
+  position: absolute;
+  left: -9999px;
+}
+header #topnav ul ul li {
+  height: 0;
+  -webkit-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  background: #333;
+  transition: all .25s ease;
+}
+header #topnav li:hover > ul {
+  left: auto;
+}
+header #topnav li:hover > ul > li {
+  height: 35px;
+}
+header #topnav ul ul ul {
+  margin-left: 100%;
+  top: 0;
+}
+header #topnav ul ul li a {
+  
+  border-bottom: 1px solid rgba(150, 150, 150, 0.15);
+  vertical-align: middle;
+  padding: 11px 15px;
+  width: 190px;
+  font-size: 10px;
+  text-decoration: none;
+  color: #ccc;
+  font-weight: 400;
+  z-index: 100;
+}
+header #topnav ul ul li:last-child > a, header #topnav ul ul li.last-item > a {
+  border-bottom: 0;
+}
+header #topnav ul ul li:hover > a, header #topnav ul ul li a:hover {
+  color: #444;
+  background: #ccc !important;  
+}
+header #topnav ul ul li.has-sub > a:after {
+  position: absolute;
+  top: 16px;
+  right: 11px;
+  width: 8px;
+  height: 2px;
+  display: block;
+  background: #999;
+  content: '';
+}
+header #topnav ul ul li.has-sub > a:before {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  display: block;
+  width: 2px;
+  height: 8px;
+  background: #999;
+  content: '';
+  -webkit-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  transition: all .25s ease;
+}
+header #topnav ul ul > li.has-sub:hover > a:before {
+  top: 17px;
+  height: 0;
+}
+header #topnav ul ul li.has-sub:hover, header #topnav ul li.has-sub ul li.has-sub ul li:hover {
+  background: #999; /*363636*/
+}
+header #topnav ul ul ul li.active a {
+  border-left: 1px solid #333;
+}
+header #topnav > ul > li.has-sub > ul > li.active > a, header #topnav > ul ul > li.has-sub > ul > li.active > a {
+  border-top: 1px solid #333;
+}
+
+@media screen and (max-width: 816px) and (min-width: 718px) {
+  header h1#top_title::after {
+	content: "";    
+  }
+}
+
+@media screen and (max-width: 717px)  {
+  header .logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 40px;
+    text-align: center;
+    padding: 5px 0 0 0;
+    float: left;
+  }
+  header .logo2 {
+    display: none;
+  }
+  header nav #topnav {
+    width: 100%;
+  }
+  header #topnav {
+    width: 100%;
+  }
+  header #topnav ul {
+    width: 100%;
+    display: none;
+  }
+  header #topnav ul li {
+    width: 100%;
+    border-top: 1px solid #444;
+  }
+  header #topnav ul li:last-child {
+    border-bottom: 1px solid #444;
+  }
+  header #topnav ul li:hover {
+    background: #363636;
+  }
+  header #topnav ul ul li,
+  header #topnav li:hover > ul > li {
+    height: auto;
+  }
+  header #topnav ul li a,
+  header #topnav ul ul li a {
+    width: 100%;
+    border-bottom: 0;
+  }
+  header #topnav > ul > li {
+    float: none;
+  }
+  header #topnav ul ul li a {
+    padding-left: 25px;
+  }
+  header #topnav ul ul li {
+    background: #333 !important;
+  }
+  header #topnav ul ul li:hover {
+    background: #999 !important;
+  }
+  header #topnav ul ul ul li a {
+    padding-left: 35px;
+  }
+  header #topnav ul ul li a {
+    color: #ccc;
+    background: none;
+  }
+  header #topnav ul ul li:hover > a,
+  header #topnav ul ul li.active > a {
+    color: #444;
+  }
+  header #topnav ul ul,
+  header #topnav ul ul ul {
+    position: relative;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+  header #topnav > ul > li.has-sub > a:after,
+  header #topnav > ul > li.has-sub > a:before,
+  header #topnav ul ul > li.has-sub > a:after,
+  header #topnav ul ul > li.has-sub > a:before {
+    display: none;
+  }
+  header #topnav #head-mobile {
+    display: block;
+    padding: 23px;
+    color: #ccc;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  header .button {
+    width: 55px;
+    height: 46px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    z-index: 12399994;
+  }
+  header .button:after {
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    display: block;
+    height: 4px;
+    width: 20px;
+    border-top: 2px solid #444444;
+    border-bottom: 2px solid #444444;
+    content: '';
+  }
+  header .button:before {
+    -webkit-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    display: block;
+    height: 2px;
+    width: 20px;
+    background: #444;
+    content: '';
+  }
+  header .button.menu-opened:after {
+    -webkit-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
+    top: 23px;
+    border: 0;
+    height: 2px;
+    width: 19px;
+    background: #444;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  header .button.menu-opened:before {
+    top: 23px;
+    background: #444;
+    width: 19px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  header #topnav .submenu-button {
+    position: absolute;
+    z-index: 99;
+    right: 0;
+    top: 0;
+    display: block;
+    border-left: 1px solid #ddd;
+    height: 36px;
+    width: 46px;
+    cursor: pointer;
+  }
+  header #topnav .submenu-button.submenu-opened {
+    background: #B5B5B5;
+  }
+  header #topnav ul ul .submenu-button {
+    height: 34px;
+    width: 34px;
+  }
+  header #topnav .submenu-button:after {
+    position: absolute;
+    top: 22px;
+    right: 19px;
+    width: 8px;
+    height: 2px;
+    display: block;
+    background: #444;
+    content: '';
+  }
+
+  header h1#top_title {
+    height: 0px;
+    width: 0px;
+    text-indent:100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  header #topnav ul ul .submenu-button:after {
+    top: 15px;
+    right: 13px;
+  }
+  header #topnav .submenu-button.submenu-opened:after {
+    background: #000;
+  }
+  header #topnav .submenu-button:before {
+    position: absolute;
+    top: 19px;
+    right: 22px;
+    display: block;
+    width: 2px;
+    height: 8px;
+    background: #444;
+    content: '';
+  }
+  header #topnav ul ul .submenu-button:before {
+    top: 12px;
+    right: 16px;
+  }
+  header #topnav .submenu-button.submenu-opened:before {
+    display: none;
+  }
+  header #topnav ul ul ul li.active a {
+    border-left: none;
+  }
+  header #topnav > ul > li.has-sub > ul > li.active > a,
+  header #topnav > ul ul > li.has-sub > ul > li.active > a {
+    border-top: none;
+  }
+}

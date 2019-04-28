@@ -1,0 +1,60 @@
+footer {
+  margin-top: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-top: #999 1px solid;
+}
+
+footer .contact {
+  margin-bottom: 0;
+}
+
+footer p {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+footer .small {
+  font-size: 13px;
+  padding-bottom: .5em;
+  /* font-size: 2? */
+}
+
+footer .disclaimer {
+  color: #F00;
+}
+
+footer #NIST-footer{
+	margin: 2em 0em 4em 0em;
+	font-size:0.7em;
+	text-align: center;
+}
+
+footer #NIST-footer ul {
+	margin: 0px 0px;
+	padding; 0;
+}
+
+footer #NIST-footer ul li {
+	list-style-type: none;
+	display: inline;
+}
+
+footer #NIST-footer li:not(:first-child):before {
+	content: " | ";
+}
+
+footer #NIST-footer hr {
+	display: block;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	/*border-style: inset;
+	border-width: 1px;*/
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+
+}
+

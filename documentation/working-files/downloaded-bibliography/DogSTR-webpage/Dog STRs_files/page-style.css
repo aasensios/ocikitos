@@ -1,0 +1,50 @@
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize  
+@import url(//db.onlinewebfonts.com/c/5aa575998d2edb91ad909a31abc9a4a3?family=CaslonOpnface+BT); 
+@import url(//db.onlinewebfonts.com/c/e991cc888d4fb544fe0a88d065ab6efc?family=Wingdings);*/
+
+html {
+        font-family: sans-serif;
+        -ms-text-size-adjust:100%;
+        -webkit-text-size-adjust:100%
+}
+
+body {
+	margin:0;
+	min-width:320px;
+	_width: expression( document.body.clientWidth > 320? "320px" : "auto" ); /* sets max-width for IE */
+}
+
+* {
+  	margin-top: 0;
+	margin-bottom: 0;
+  	padding-top: 0;
+	padding-bottom: 0;
+  	text-decoration: none
+}
+
+.container{
+	padding-top: 12px;
+	padding-bottom: 12px;
+        margin-right:auto;
+        margin-left:auto;
+        /*padding-left:15px;
+        padding-right:15px;
+	position:absolute;
+	overflow-y:scroll;*/
+}
+
+/*.container main {
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom: 15px;
+}  Moved to main_style.css*/
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    /*-webkit-margin-before: 1em;*/
+    /*-webkit-margin-after: 1em;*/
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
