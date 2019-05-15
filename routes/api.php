@@ -16,3 +16,18 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// List dogs
+Route::get('dogs', 'DogController@index');
+
+// Show single dog
+Route::get('dog/{id}', 'DogController@show');
+
+// Add new dog
+Route::post('dog', 'DogController@store');
+
+// Modify an existing dog
+Route::put('dog', 'DogController@store');
+
+// Delete dog
+Route::delete('dog/{id}', 'DogController@destroy');
