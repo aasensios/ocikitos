@@ -1,0 +1,1 @@
+Oscar, este es el directorio del frontend (Angular).
