@@ -1,0 +1,123 @@
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label>Chip*</label>
+            <input type="text" formControlName="chip" class="form-control" [(ngModel)]="dog.chip"
+              [ngClass]="{ 'is-invalid': submitted && f.chip.errors }" placeholder="Enter chip number" />
+            <div *ngIf="submitted && !!f.chip.errors" class="invalid-feedback">
+              <div *ngIf="!!f.chip.errors.required">Chip is required</div>
+              <div *ngIf="!!f.chip.errors.maxlength">enter 15 carateres max.</div>
+              <div *ngIf="!!f.chip.errors.minlength">enter 15 carateres min.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Name dog*</label>
+            <input type="text" formControlName="name" class="form-control" [(ngModel)]="dog.name"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Enter name dog" />
+            <div *ngIf="submitted && !!f.name.errors" class="invalid-feedback">
+              <div *ngIf="!!f.name.errors.required">Name dog is required</div>
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <label>Gender</label>
+            <input type="text" formControlName="gender" class="form-control" [(ngModel)]="dog.gender"
+              [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" />
+          </div>
+
+          <div class="form-group">
+            <label>Breed</label>
+            <input type="text" formControlName="breed" class="form-control" [(ngModel)]="dog.breed_id"
+              [ngClass]="{ 'is-invalid': submitted && f.breed.errors }" />
+          </div>
+
+          <div class="form-group">
+            <label>color</label>
+            <input type="text" formControlName="color" class="form-control" [(ngModel)]="dog.color_id"
+              [ngClass]="{ 'is-invalid': submitted && f.color.errors }" />
+          </div>
+
+
+          <div class="form-group">
+            <label>Birthdate dog</label>
+            <input type="date" formControlName="birthdate" class="form-control" [(ngModel)]="dog.birthDate"
+              [ngClass]="{ 'is-invalid': submitted && f.birthdate.errors }" />
+          </div>
+
+          <div class="form-group">
+            <label>Deathdate dog</label>
+            <input type="date" formControlName="deathdate" class="form-control" [(ngModel)]="dog.deathDate"
+              [ngClass]="{ 'is-invalid': submitted && f.deathdate.errors }" />
+          </div>
+
+          <div class="form-group">
+            <label>Owner DNI*</label>
+            <input type="text" formControlName="owner_dni" class="form-control" [(ngModel)]="dog.owner_dni"
+              [ngClass]="{ 'is-invalid': submitted && f.owner_dni.errors }" placeholder="Enter owner id" />
+            <div *ngIf="submitted && !!f.owner_dni.errors" class="invalid-feedback">
+              <div *ngIf="!!f.owner_dni.errors.required">Owner DNI is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Owner fullname*</label>
+            <input type="text" formControlName="owner_fullname" class="form-control" [(ngModel)]="dog.owner_fullname"
+              [ngClass]="{ 'is-invalid': submitted && f.owner_fullname.errors }" placeholder="Enter owner name" />
+            <div *ngIf="submitted && !!f.owner_fullname.errors" class="invalid-feedback">
+              <div *ngIf="!!f.owner_fullname.errors.required">Owner fullname is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email*</label>
+            <input type="text" formControlName="owner_email" class="form-control" [(ngModel)]="dog.owner_email"
+              [ngClass]="{ 'is-invalid': submitted && f.owner_email.errors }" />
+            <div *ngIf="submitted && !!f.owner_email.errors" class="invalid-feedback">
+              <div *ngIf="!!f.owner_email.errors.required">Owner email is required</div>
+              <div *ngIf="!!f.owner_email.errors.email">Owner email must be a valid email address</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Residence</label>
+            <input type="text" formControlName="residence" class="form-control" [(ngModel)]="dog.residence"
+              [ngClass]="{ 'is-invalid': submitted && f.residence.errors }" />
+          </div>
+
+          <!--  <div class="form-group">
+            <label>Password</label>
+            <input type="password" formControlName="password" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" formControlName="confirmPassword" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+              <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+              <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+            </div>
+          </div> -->
+          <div class="form-group">
+            <button class="btn btn-sm btn-primary">Register</button>
+            <button class="btn btn-sm btn-primary" (click)="save()">Save</button>
+            <button class="btn btn-sm btn-primary" (click)="delete()">Delete</button>
+            <button class="btn btn-sm btn-primary" (click)="goBack()">Back</button> 
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
