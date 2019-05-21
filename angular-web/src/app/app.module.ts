@@ -2,6 +2,9 @@ import {FormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +28,7 @@ import { DogManagementComponent } from './dog-management/dog-management.componen
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     NgxPaginationModule,
     AppRoutingModule,
     ReactiveFormsModule
