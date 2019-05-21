@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         // Tables that do have an associated model.
         $this->call(DogsTableSeeder::class);
-        // $this->call(SamplesTableSeeder::class);
+        $this->call(SamplesTableSeeder::class);
         // $this->call(IncidentsTableSeeder::class);
         // $this->call(InfractionsTableSeeder::class);
     }

@@ -1,9 +1,9 @@
 <?php
 
-use App\Dog;
+use App\Sample;
 use Illuminate\Database\Seeder;
 
-class DogsTableSeeder extends Seeder
+class SamplesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class DogsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Dog::class, 50)->create();
+        factory(Sample::class, 50)->create();
     }
 }

@@ -18,8 +18,8 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResources([
         'users' => 'API\UserController',
         'dogs' => 'API\DogController',
-        // 'samples' => 'API\SampleController',
-        // 'incidents' => 'API\IncidentController',
-        // 'infractions' => 'API\InfractionsController',
+        'samples' => 'API\SampleController',
+        'incidents' => 'API\IncidentController',
+        'infractions' => 'API\InfractionsController',
     ]);
 });

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Dog;
+use App\Sample;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 
-class DogController extends Controller
+class SampleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,13 @@ class DogController extends Controller
      */
     public function index()
     {
-        $dogs = Dog::all();
-        $data = $dogs->toArray();
+        $Samples = Sample::all();
+        $data = $Samples->toArray();
 
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'Dogs retrieved successfully.',
+            'message' => 'Samples retrieved successfully.',
         ];
 
         return response()->json($response, 200);
@@ -39,16 +39,11 @@ class DogController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'chip' => 'numeric',
-            'name' => 'required',
-            'gender' => 'required',
-            'breed_id',
-            'color_id',
-            'birthdate' => 'nullable|date|before_or_equal:today',
-            'deathdate' => 'nullable|date|before_or_equal:today',
-            'owner_dni' => 'regex:/^([a-zA-Z0-9])[0-9]{7}([a-zA-Z0-9])$/i',
-            'owner_fullname' => 'required',
-            'residence',
+            'barcode' => 'required',
+            'origin',
+            'sequence' => 'required',
+            'pattern',
+            'dog_id' => 'nullable|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -60,13 +55,13 @@ class DogController extends Controller
             return response()->json($response, 404);
         }
 
-        $dog = Dog::create($input);
-        $data = $dog->toArray();
+        $Sample = Sample::create($input);
+        $data = $Sample->toArray();
 
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'Dog stored successfully.',
+            'message' => 'Sample stored successfully.',
         ];
 
         return response()->json($response, 200);
@@ -80,23 +75,23 @@ class DogController extends Controller
      */
     public function show(int $id)
     {
-        $dog = Dog::find($id);
+        $Sample = Sample::find($id);
 
-        if (is_null($dog)) {
+        if (is_null($Sample)) {
             $response = [
                 'success' => false,
                 'data' => 'Empty',
-                'message' => 'Dog not found.',
+                'message' => 'Sample not found.',
             ];
             return response()->json($response, 404);
         }
 
-        $data = $dog->toArray();
+        $data = $Sample->toArray();
 
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'Dog retrieved successfully.',
+            'message' => 'Sample retrieved successfully.',
         ];
 
         return response()->json($response, 200);
@@ -106,24 +101,19 @@ class DogController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Dog  $dog
+     * @param  \App\Sample  $Sample
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dog $dog)
+    public function update(Request $request, Sample $Sample)
     {
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'chip' => 'numeric',
-            'name' => 'required',
-            'gender' => 'required',
-            'breed_id',
-            'color_id',
-            'birthdate' => 'nullable|date|before_or_equal:today',
-            'deathdate' => 'nullable|date|before_or_equal:today',
-            'owner_dni' => 'regex:/^([a-zA-Z0-9])[0-9]{7}([a-zA-Z0-9])$/i',
-            'owner_fullname' => 'required',
-            'residence',
+            'barcode' => 'required',
+            'origin',
+            'sequence' => 'required',
+            'pattern',
+            'dog_id' => 'nullable|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -135,24 +125,24 @@ class DogController extends Controller
             return response()->json($response, 404);
         }
 
-        $dog->chip = $input['chip'];
-        $dog->name = $input['name'];
-        $dog->gender = $input['gender'];
-        $dog->breed_id = $input['breed_id'];
-        $dog->color_id = $input['color_id'];
-        $dog->birthdate = $input['birthdate'];
-        $dog->deathdate = $input['deathdate'];
-        $dog->owner_dni = $input['owner_dni'];
-        $dog->owner_fullname = $input['owner_fullname'];
-        $dog->residence = $input['residence'];
-        $dog->save();
+        $Sample->chip = $input['chip'];
+        $Sample->name = $input['name'];
+        $Sample->gender = $input['gender'];
+        $Sample->breed_id = $input['breed_id'];
+        $Sample->color_id = $input['color_id'];
+        $Sample->birthdate = $input['birthdate'];
+        $Sample->deathdate = $input['deathdate'];
+        $Sample->owner_dni = $input['owner_dni'];
+        $Sample->owner_fullname = $input['owner_fullname'];
+        $Sample->residence = $input['residence'];
+        $Sample->save();
 
-        $data = $dog->toArray();
+        $data = $Sample->toArray();
 
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'Dog updated successfully.',
+            'message' => 'Sample updated successfully.',
         ];
 
         return response()->json($response, 200);
@@ -161,18 +151,18 @@ class DogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Dog  $dog
+     * @param  \App\Sample  $Sample
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dog $dog)
+    public function destroy(Sample $Sample)
     {
-        $dog->delete();
-        $data = $dog->toArray();
+        $Sample->delete();
+        $data = $Sample->toArray();
 
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'Dog deleted successfully.',
+            'message' => 'Sample deleted successfully.',
         ];
 
         return response()->json($response, 200);
