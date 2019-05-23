@@ -14,6 +14,8 @@ import { ErrorComponent } from './error/error.component';
 import { DogDirective } from './directives/dog.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DogManagementComponent } from './dog-management/dog-management.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { DogManagementComponent } from './dog-management/dog-management.componen
     DogDetailComponent,
     ErrorComponent,
     DogDirective,
-    DogManagementComponent
+    DogManagementComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
