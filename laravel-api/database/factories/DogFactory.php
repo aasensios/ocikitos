@@ -54,7 +54,7 @@ $factory->define(Dog::class, function (Faker $faker) {
         'name' => $name,
         'gender' => $gender,
         'breed_id' => $faker->numberBetween(1, 216),
-        'color_id' => $faker->randomElement([1, 9]),
+        'color_id' => $faker->numberBetween(1, 9),
         'birthdate' => $birthdate,
         'deathdate' => $faker->randomElement([NULL, $deathdate]), // Randomize alive or dead.
         'owner_dni' => $faker->dni, // Only available with 'faker_locale' => 'es_ES' (in config/app.php).

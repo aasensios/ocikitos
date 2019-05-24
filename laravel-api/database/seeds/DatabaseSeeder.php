@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         // Business tables that do not have an associated model.
         $this->call(BreedsTableSeeder::class);
         $this->call(ColorsTableSeeder::class);
+        $this->call(StrsTableSeeder::class);
 
         // Tables that do have an associated model.
         $this->call(DogsTableSeeder::class);

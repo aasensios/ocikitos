@@ -23,7 +23,7 @@ class CreateSamplesTable extends Migration
             // $table->binary('sequence');
             $table->string('sequence');
             $table->json('pattern');
-            $table->bigInteger('dog_id')->unsigned();
+            $table->bigInteger('dog_id')->unsigned()->nullable();
 
             // created_at and updated_at
             $table->timestamps();

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Sample;
 use App\Http\Controllers\Controller;
+use App\Sample;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class SampleController extends Controller
@@ -163,6 +164,27 @@ class SampleController extends Controller
             'success' => true,
             'data' => $data,
             'message' => 'Sample deleted successfully.',
+        ];
+
+        return response()->json($response, 200);
+    }
+
+    // Additional methods to retrieve data from non-modeled tables.
+
+    /**
+     * Display a listing of the Short Tandem Repeats (STRs).
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getStrs()
+    {
+        $strs = DB::table('strs')->get();
+        $data = $strs->toArray();
+
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'STRs retrieved successfully.',
         ];
 
         return response()->json($response, 200);
