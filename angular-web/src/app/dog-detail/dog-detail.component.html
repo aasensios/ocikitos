@@ -26,29 +26,33 @@
           </div>
 
 
-
-          <!-- <div class="form-group">
-            <label>Gender</label>
-            <input type="text" formControlName="gender" class="form-control" [(ngModel)]="dog.gender"
-              [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" />
-          </div> -->
-
           <div class="form-group">
-            <select formControlName="countryControl">
-              <option [value]="gender" *ngFor="let gender of genders"> {{gender}}</option>
-            </select>
+            <label>Gender</label>
+            <mat-radio-group formControlName="gender" class="tp-radio-group" [(ngModel)]="dog.gender">
+              <mat-radio-button class="tp-radio-button" *ngFor="let gender of genders" [value]="gender">
+                {{gender}}
+              </mat-radio-button>
+            </mat-radio-group>
+
+            <!--  <div class="tp-selected-value">
+              Selected Season: {{dog.gender}}
+            </div> -->
           </div>
+
 
           <div class="form-group">
             <label>Breed</label>
-            <input type="text" formControlName="breed" class="form-control" [(ngModel)]="dog.breed_id"
-              [ngClass]="{ 'is-invalid': submitted && f.breed.errors }" />
+            <select class="form-control" formControlName="color" [(ngModel)]="dog.breed_id">
+              <option [value]="breed" *ngFor="let breed of breeds">{{breed}}</option>
+            </select>
           </div>
 
+
           <div class="form-group">
-            <label>color</label>
-            <input type="text" formControlName="color" class="form-control" [(ngModel)]="dog.color_id"
-              [ngClass]="{ 'is-invalid': submitted && f.color.errors }" />
+            <label>Color</label>
+            <select class="form-control" formControlName="color" [(ngModel)]="dog.color_id">
+              <option [value]="color" *ngFor="let color of colors">{{color}}</option>
+            </select>
           </div>
 
 
@@ -85,7 +89,7 @@
           <div class="form-group">
             <label>Email*</label>
             <input type="text" formControlName="owner_email" class="form-control" [(ngModel)]="dog.owner_email"
-              [ngClass]="{ 'is-invalid': submitted && f.owner_email.errors }" />
+              [ngClass]="{ 'is-invalid': submitted && f.owner_email.errors }" placeholder="Enter owner email" />
             <div *ngIf="submitted && !!f.owner_email.errors" class="invalid-feedback">
               <div *ngIf="!!f.owner_email.errors.required">Owner email is required</div>
               <div *ngIf="!!f.owner_email.errors.email">Owner email must be a valid email address</div>
@@ -95,15 +99,57 @@
           <div class="form-group">
             <label>Residence</label>
             <input type="text" formControlName="residence" class="form-control" [(ngModel)]="dog.residence"
-              [ngClass]="{ 'is-invalid': submitted && f.residence.errors }" />
+              [ngClass]="{ 'is-invalid': submitted && f.residence.errors }" placeholder="Enter residence" />
           </div>
+
+          <hr>
+          <h3>Sample dog</h3>
+
+          <!-- <mat-form-field appearance = "standard">
+              <input matInput placeholder = "Barcode">
+              <mat-hint>Serial number</mat-hint>
+           </mat-form-field> -->
+
+          <div class="form-group">
+            <label>Barcode Sample*</label>
+            <input type="text" formControlName="barcode" class="form-control" [(ngModel)]="dog.barcode"
+              [ngClass]="{ 'is-invalid': submitted && f.barcode.errors }" placeholder="Enter sample barcode" />
+            <div *ngIf="submitted && !!f.barcode.errors" class="invalid-feedback">
+              <div *ngIf="!!f.barcode.errors.required">Barcode sample is required</div>
+            </div>
+          </div>
+
+
+          <ngx-barcode *ngIf="dog.barcode" [bc-value]="dog.barcode" [bc-display-value]="true"></ngx-barcode>
+
+          <div class="form-group">
+            <label>Sample Origin</label>
+            <mat-radio-group formControlName="sampleorigin" class="tp-radio-group" [(ngModel)]="dog.sampleOrigin">
+              <mat-radio-button class="tp-radio-button" *ngFor="let origin of origins" [value]="origin">
+                {{origin}}
+              </mat-radio-button>
+            </mat-radio-group>
+            <!--  <div class="tp-selected-value">
+                  Selected Season: {{dog.gender}}
+                </div> -->
+          </div>
+
+
+
+          <!--  <mat-form-field appearance = "fill">
+                 <textarea matInput placeholder = "Textarea"></textarea>
+              </mat-form-field> -->
+
+
+
+
 
 
           <div class="form-group">
             <button class="btn btn-sm btn-primary">Register</button>
-            <button class="btn btn-sm btn-primary" (click)="save()">Save</button>
+            <!-- <button class="btn btn-sm btn-primary" (click)="save()">Save</button>
             <button class="btn btn-sm btn-primary" (click)="delete()">Delete</button>
-            <button class="btn btn-sm btn-primary" (click)="goBack()">Back</button>
+            <button class="btn btn-sm btn-primary" (click)="goBack()">Back</button> -->
           </div>
         </form>
       </div>

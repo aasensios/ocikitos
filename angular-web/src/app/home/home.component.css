@@ -1,0 +1,21 @@
+.banner{
+    height: 20vh;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .content {
+    background: url("./../../assets/images/fondo.jpeg");
+    
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .jumbotron {
+    background: none;             /* Transparent background */
+  }
+  
+  .colorBlack {
+    color:black;
+    }

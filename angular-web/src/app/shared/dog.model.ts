@@ -12,7 +12,9 @@ export class Dog {
          public owner_dni: string,
 		 public owner_fullname: string,
 		 public owner_email: string,
-         public residence: string
+		 public residence: string,
+		 public barcode: string,
+		 public sampleOrigin: string,
 	) {
 	}
 }

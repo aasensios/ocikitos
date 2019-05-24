@@ -16,6 +16,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DogManagementComponent } from './dog-management/dog-management.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MatRadioModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
+import { MatDividerModule, MatListModule} from '@angular/material'
+
+import {MatInputModule,MatOptionModule, MatIconModule} from '@angular/material'
+
+import { NgxBarcodeModule } from 'ngx-barcode';
+import { HomeComponent } from './home/home.component';
+
+
+
 
 
 @NgModule({
@@ -27,7 +38,8 @@ import { RegisterComponent } from './register/register.component';
     DogDirective,
     DogManagementComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +47,13 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     NgxPaginationModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatInputModule,MatOptionModule, MatIconModule,
+    MatDividerModule, MatListModule,
+    NgxBarcodeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

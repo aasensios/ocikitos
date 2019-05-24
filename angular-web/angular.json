@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ocikitosFront": {
+    "ocikitos": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ocikitosFront",
+            "outputPath": "dist/ocikitos",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ocikitosFront:build"
+            "browserTarget": "ocikitos:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ocikitosFront:build:production"
+              "browserTarget": "ocikitos:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ocikitosFront:build"
+            "browserTarget": "ocikitos:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         }
       }
     },
-    "ocikitosFront-e2e": {
+    "ocikitos-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +115,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ocikitosFront:serve"
+            "devServerTarget": "ocikitos:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ocikitosFront:serve:production"
+              "devServerTarget": "ocikitos:serve:production"
             }
           }
         },
@@ -135,5 +135,5 @@
       }
     }
   },
-  "defaultProject": "ocikitosFront"
+  "defaultProject": "ocikitos"
 }
