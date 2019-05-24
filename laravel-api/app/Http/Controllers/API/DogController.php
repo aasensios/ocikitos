@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Dog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class DogController extends Controller
@@ -173,6 +174,46 @@ class DogController extends Controller
             'success' => true,
             'data' => $data,
             'message' => 'Dog deleted successfully.',
+        ];
+
+        return response()->json($response, 200);
+    }
+
+    // Auxiliar methods to retrieve data from static tables.
+
+    /**
+     * Display a listing of the breeds.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getBreeds()
+    {
+        $breeds = DB::table('breeds')->get();
+        $data = $breeds->toArray();
+
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Breeds retrieved successfully.',
+        ];
+
+        return response()->json($response, 200);
+    }
+
+    /**
+     * Display a listing of the colors.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getColors()
+    {
+        $colors = DB::table('colors')->get();
+        $data = $colors->toArray();
+
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'colors retrieved successfully.',
         ];
 
         return response()->json($response, 200);

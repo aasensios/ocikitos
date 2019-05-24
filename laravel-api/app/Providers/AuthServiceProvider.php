@@ -29,5 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // Added manually to enable passport routes.
         Passport::routes();
+
+        Passport::enableImplicitGrant();
     }
 }

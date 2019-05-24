@@ -21,7 +21,7 @@ class CreateDogsTable extends Migration
             $table->string('chip')->unique();
             $table->string('name');
             $table->enum('gender', ['male', 'female']);
-            $table->integer('breed_id')->unsigned();
+            $table->integer('breed_id')->unsigned()->nullable();
             $table->integer('color_id')->unsigned();
             $table->date('birthdate');
             $table->date('deathdate')->nullable();

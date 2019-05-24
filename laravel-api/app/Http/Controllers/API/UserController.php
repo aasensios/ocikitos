@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class UserController extends Controller
@@ -20,15 +21,18 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required',
-            'c_password' => 'required|same:password',
+
+            // 'password' => 'required',
+            // 'c_password' => 'required|same:password',
+
+            'password' => 'required|confirmed', // <input name="password_confirmation">
         ]);
 
         if ($validator->fails()) {
             $response = [
                 'success' => false,
                 'data' => 'Validation Error.',
-                'message' => $validator->errors()
+                'message' => $validator->errors(),
             ];
             return response()->json($response, 404);
         }
@@ -42,7 +46,7 @@ class UserController extends Controller
         $response = [
             'success' => true,
             'data' => $success,
-            'message' => 'User registered successfully.'
+            'message' => 'User registered successfully.',
         ];
 
         return response()->json($response, 200);
@@ -78,7 +82,39 @@ class UserController extends Controller
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'Users retrieved successfully.'
+            'message' => 'Users retrieved successfully.',
+        ];
+
+        return response()->json($response, 200);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $email
+     * @return \Illuminate\Http\Response
+     */
+    public function show(string $email)
+    {
+        $user = DB::table('users')->where('email', $email)->first();
+
+        dd($user);
+
+        if (is_null($user)) {
+            $response = [
+                'success' => false,
+                'data' => 'Empty',
+                'message' => 'User not found.',
+            ];
+            return response()->json($response, 404);
+        }
+
+        $data = $user->toArray();
+
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'User retrieved successfully.',
         ];
 
         return response()->json($response, 200);

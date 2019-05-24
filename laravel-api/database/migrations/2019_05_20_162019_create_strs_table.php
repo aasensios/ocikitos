@@ -14,10 +14,6 @@ class CreateStrsTable extends Migration
     public function up()
     {
         Schema::create('strs', function (Blueprint $table) {
-            // Primary key
-            $table->increments('id');
-            
-            // Fillable fields
             $table->string('locus')->unique();
             $table->integer('chromosome');
             $table->integer('start_coordenate');
@@ -28,9 +24,6 @@ class CreateStrsTable extends Migration
             $table->integer('min_repeats');
             $table->integer('max_repeats');
             $table->integer('annealing_temp');
-
-            // created_at and updated_at
-            $table->timestamps();
         });
     }
 
