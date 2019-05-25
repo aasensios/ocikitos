@@ -16,8 +16,13 @@ import { Food } from '../shared/Food.mode';
 export class DogDetailComponent implements OnInit {
   registerDogForm: FormGroup;
   submitted = false;
+
   dog: Dog;
   dogs: Dog[] = [];
+
+  sampleBarcode: string = ''  ;
+  sampleOrigin: string = '';
+
 
   origins: string[] = ['droppings', 'blood', 'saliva'];
   genders: string[] = ['male', 'female'];
@@ -26,11 +31,7 @@ export class DogDetailComponent implements OnInit {
   breeds = ['Pastor Aleman','Husky','Caniche','Chiguagua','Chucho']
   
   selectedValue: string; 
-  foods: Food[] = [
-     {value: 'steak', display: 'Steak'},
-     {value: 'pizza', display: 'Pizza'},
-     {value: 'tacos', display: 'Tacos'}
-  ];
+  
 
 
 
@@ -38,7 +39,7 @@ export class DogDetailComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.dog = new Dog(0, "", "", "", 0, 0, "", "","", "", "", "","","");
+    this.dog = new Dog(0, "", "", "", 0, 0, "", "","", "", "", "");
     
 
     

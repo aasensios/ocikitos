@@ -1,8 +1,6 @@
 <h2>My Dogs</h2>
-<!-- <div *ngIf="selectedDog">
-  <button (click)="gotoDetail()">View details</button>
-</div> -->
-<table class="table table-bordered">
+
+<table *ngIf=dogs class="table table-bordered">
   <thead>
     <tr>
       <th>chip</th>
@@ -17,13 +15,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let dog of dogs" (click)="onSelect(dog)"
-        [class.selected]="dog === selectedDog">
+  
+    <tr *ngFor="let dog of dogs">
       <td>{{dog.chip}}</td>
       <td>{{dog.name}}</td>
 
-      <td *ngIf="dog.gender == 'male'">M<i class="fas fa-dog"></i></td>  
-      <td *ngIf="dog.gender == 'female'">F<i class="fas fa-dog"></i></td>  
+      <td *ngIf="dog.gender == 'male'">M<i class="fas fa-dog"></i></td>
+      <td *ngIf="dog.gender == 'female'">F<i class="fas fa-dog"></i></td>
       <td>{{dog.birthDate}}</td>
       <td>{{dog.owner_dni}}</td>
       <td>{{dog.owner_fullname}}</td>
@@ -31,7 +29,7 @@
 
 
       <span>
-        <button class="delete" (click)="delete(dog); $event.stopPropagation()">x</button>
+        <button class="delete">x</button>
       </span>
     </tr>
   </tbody>

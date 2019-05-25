@@ -3,9 +3,7 @@
   <div class="container-fluid">
     <form [formGroup]="registerDogForm" (ngSubmit)="onSubmit()">
 
-      <div class="row">
-
-        
+      <div class="row">      
         <div class="col-md-4">
 
           <div class="form-group">
@@ -47,10 +45,33 @@
           </div>
         </div>
         <div class="col-md-4">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                   <mat-panel-title>
+                      Photo dog
+                   </mat-panel-title>
+                   <mat-panel-description>
+                      {{dog.name}}
+                   </mat-panel-description>
+                </mat-expansion-panel-header>
+                <img src="./../../assets/images/dogs/1.jpeg" alt="">
+             </mat-expansion-panel>
 
+             <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                   <mat-panel-title>
+                      Photo dog
+                   </mat-panel-title>
+                   <mat-panel-description>
+                      {{dog.name}}
+                   </mat-panel-description>
+                </mat-expansion-panel-header>
+                <img src="./../../assets/images/dogs/1.jpeg" alt="">
+             </mat-expansion-panel>
           </div>
-      </div>
-
+          </div>
+          
+      
 
       <div class="row">
 
@@ -105,7 +126,71 @@
       </div>
 
 
+      <div class="form-group">
+          <label>Owner DNI*</label>
+          <input type="text" formControlName="owner_dni" class="form-control" [(ngModel)]="dog.owner_dni"
+            [ngClass]="{ 'is-invalid': submitted && f.owner_dni.errors }" placeholder="Enter owner id" />
+          <div *ngIf="submitted && !!f.owner_dni.errors" class="invalid-feedback">
+            <div *ngIf="!!f.owner_dni.errors.required">Owner DNI is required</div>
+          </div>
+        </div>
 
+        <div class="form-group">
+          <label>Owner fullname*</label>
+          <input type="text" formControlName="owner_fullname" class="form-control" [(ngModel)]="dog.owner_fullname"
+            [ngClass]="{ 'is-invalid': submitted && f.owner_fullname.errors }" placeholder="Enter owner name" />
+          <div *ngIf="submitted && !!f.owner_fullname.errors" class="invalid-feedback">
+            <div *ngIf="!!f.owner_fullname.errors.required">Owner fullname is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email*</label>
+          <input type="text" formControlName="owner_email" class="form-control" [(ngModel)]="dog.owner_email"
+            [ngClass]="{ 'is-invalid': submitted && f.owner_email.errors }" placeholder="Enter owner email" />
+          <div *ngIf="submitted && !!f.owner_email.errors" class="invalid-feedback">
+            <div *ngIf="!!f.owner_email.errors.required">Owner email is required</div>
+            <div *ngIf="!!f.owner_email.errors.email">Owner email must be a valid email address</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Residence</label>
+          <input type="text" formControlName="residence" class="form-control" [(ngModel)]="dog.residence"
+            [ngClass]="{ 'is-invalid': submitted && f.residence.errors }" placeholder="Enter residence" />
+        </div>
+
+        <hr>
+        <h3>Sample dog</h3>
+
+        <!-- <mat-form-field appearance = "standard">
+            <input matInput placeholder = "Barcode">
+            <mat-hint>Serial number</mat-hint>
+         </mat-form-field> -->
+
+        <div class="form-group">
+          <label>Barcode Sample*</label>
+          <input type="text" formControlName="barcode" class="form-control" [(ngModel)]="sampleBarcode"
+            [ngClass]="{ 'is-invalid': submitted && f.barcode.errors }" placeholder="Enter sample barcode" />
+          <div *ngIf="submitted && !!f.barcode.errors" class="invalid-feedback">
+            <div *ngIf="!!f.barcode.errors.required">Barcode sample is required</div>
+          </div>
+        </div>
+
+
+        <ngx-barcode *ngIf="sampleBarcode" [bc-value]="sampleBarcode" [bc-display-value]="true"></ngx-barcode>
+
+        <div class="form-group">
+          <label>Sample Origin</label>
+          <mat-radio-group formControlName="sampleorigin" class="tp-radio-group" [(ngModel)]="sampleOrigin">
+            <mat-radio-button class="tp-radio-button" *ngFor="let origin of origins" [value]="origin">
+              {{origin}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <!--  <div class="tp-selected-value">
+                Selected Season: {{dog.gender}}
+              </div> -->
+        </div>
 
 
 
