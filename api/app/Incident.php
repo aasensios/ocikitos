@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Dog extends Model
+class Incident extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,17 +12,11 @@ class Dog extends Model
      * @var array
      */
     protected $fillable = [
-        'chip',
-        'name',
-        'gender',
-        'breed_id',
-        'color_id',
-        'birthdate',
-        'deathdate',
-        'owner_dni',
-        'owner_fullname',
-        'residence',
+        'photo',
+        'location',
+        'sample_barcode',
     ];
 
     public $timestamps = false;
+
 }

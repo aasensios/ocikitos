@@ -213,7 +213,7 @@ class DogController extends Controller
         $response = [
             'success' => true,
             'data' => $data,
-            'message' => 'colors retrieved successfully.',
+            'message' => 'Colors retrieved successfully.',
         ];
 
         return response()->json($response, 200);

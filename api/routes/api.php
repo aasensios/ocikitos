@@ -21,8 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources([
     // 'users' => 'API\UserController',
     'dogs' => 'API\DogController',
-    // 'samples' => 'API\SampleController',
-    // 'incidents' => 'API\IncidentController',
+    'samples' => 'API\SampleController',
+    'incidents' => 'API\IncidentController',
     // 'infractions' => 'API\InfractionsController',
 ]);
 

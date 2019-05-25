@@ -27,4 +27,6 @@ class Sample extends Model
     protected $casts = [
         'pattern' => 'array'
    ];
+
+   public $timestamps = false;
 }
