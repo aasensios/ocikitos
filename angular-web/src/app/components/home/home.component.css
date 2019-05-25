@@ -5,7 +5,7 @@
   }
   
   .content {
-    background: url("./../../assets/images/fondo.jpeg");
+    background: url("../../../assets/images/fondo.jpeg");
     
     height: 100vh;
     background-size: cover;
@@ -13,7 +13,7 @@
   }
   
   .jumbotron {
-    background: none;             /* Transparent background */
+    background: none; /* Transparent background */
   }
   
   .colorBlack {

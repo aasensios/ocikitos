@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DogsComponent } from './dogs/dogs.component';
-import { DogDetailComponent } from './dog-detail/dog-detail.component';
-import { ErrorComponent } from './error/error.component';
-import { DogManagementComponent } from './dog-management/dog-management.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
+import { DogsComponent } from './components/dogs/dogs.component';
+import { DogDetailComponent } from './components/dog-detail/dog-detail.component';
+import { ErrorComponent } from './components/error/error.component';
+import { DogManagementComponent } from './components/dog-management/dog-management.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
 

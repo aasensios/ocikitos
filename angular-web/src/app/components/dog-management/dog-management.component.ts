@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { DogService } from '../services/dog.service';
-import { Dog } from '../shared/dog.model';
-import { DOGS } from '../services/mock.dogs';
+import { DogsService } from '../../services/dogs.service';
+import { Dog } from '../../models/dog.model';
 
 @Component({
   selector: 'app-dog-management',
@@ -13,49 +12,45 @@ import { DOGS } from '../services/mock.dogs';
 
 export class DogManagementComponent implements OnInit {
 
-  //properties
+  // properties
   dogs: Dog[] = [];
   dogsFiltered: Dog[] = [];
 
 
-  //Pagination properties
+  // Pagination properties
   itemsPerPage: number;
   currentPage: number;
   totalItems: number;
 
-  //Filter properties
+  // Filter properties
   chipFilter: string;
   nameFilter: string;
   ownerDniFilter: string;
   ownerNameFilter: string;
   dogSelected: Dog;
 
-  constructor(private router: Router, private dogService: DogService) { }
+  constructor(private router: Router, private dogsService: DogsService) { }
 
   ngOnInit() {
+    this.dogsService.getDogs()
+      .subscribe(
+        response => {
+          const success = response['success'];
+          this.dogs = response['data'];
+          const message = response['message'];
 
-/*     this.getFriendsO();
- */    this.dogs = DOGS;
-
-    this.itemsPerPage = 10;
-    this.currentPage = 1;
-    this.totalItems = this.dogs.length;
-
-    this.dogsFiltered = this.dogs;
-
+          // Debugging
+          console.log(success);
+          console.log(message);
+          console.log(this.dogs);
+        }
+      );
   }
 
-  //loaddata of web service
-  /*  getFriendsO(): void {
-     this.dogService
-       .getAllDogs()
-       .subscribe(friends => this.dogs = friends);
-   } */
-
-  //Method of filter
+  // Method of filter
   filter(): void {
-    //Array.filter needs a callback function
-    //as a parameter
+    // Array.filter needs a callback function
+    // as a parameter
     this.dogsFiltered = this.dogs.filter(
       dog => {
         let chipValid = false;
@@ -64,30 +59,30 @@ export class DogManagementComponent implements OnInit {
         let ownerNameValid = false;
 
 
-        if (this.chipFilter && this.chipFilter != "") { //filter by chip
+        if (this.chipFilter && this.chipFilter !== '') { // filter by chip
           chipValid = dog.chip.toLowerCase().
-            indexOf(this.chipFilter.toLowerCase()) != -1;
+            indexOf(this.chipFilter.toLowerCase()) !== -1;
         } else {
           chipValid = true;
         }
 
-        if (this.nameFilter && this.nameFilter != "") { //filter by name
+        if (this.nameFilter && this.nameFilter !== '') { // filter by name
           nameValid = dog.name.toLowerCase().
-            indexOf(this.nameFilter.toLowerCase()) != -1;
+            indexOf(this.nameFilter.toLowerCase()) !== -1;
         } else {
           nameValid = true;
         }
 
-        if (this.ownerDniFilter && this.ownerDniFilter != "") { //filter by owner_dni
+        if (this.ownerDniFilter && this.ownerDniFilter !== '') { // filter by owner_dni
           ownerDniValid = dog.owner_dni.toLowerCase().
-            indexOf(this.ownerDniFilter.toLowerCase()) != -1;
+            indexOf(this.ownerDniFilter.toLowerCase()) !== -1;
         } else {
           ownerDniValid = true;
         }
 
-        if (this.ownerNameFilter && this.ownerNameFilter != "") { //filter by owner_dni
+        if (this.ownerNameFilter && this.ownerNameFilter !== '') { // filter by owner_dni
           ownerNameValid = dog.owner_fullname.toLowerCase().
-            indexOf(this.ownerNameFilter.toLowerCase()) != -1;
+            indexOf(this.ownerNameFilter.toLowerCase()) !== -1;
         } else {
           ownerNameValid = true;
         }
@@ -98,9 +93,8 @@ export class DogManagementComponent implements OnInit {
     );
   }
 
-  onSelect(dog: Dog){
+  onSelect(dog: Dog) {
     this.dogSelected = dog;
   }
-
 
 }

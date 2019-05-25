@@ -8,14 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DogsComponent } from './dogs/dogs.component';
-import { DogDetailComponent } from './dog-detail/dog-detail.component';
-import { ErrorComponent } from './error/error.component';
+import { DogsComponent } from './components/dogs/dogs.component';
+import { DogDetailComponent } from './components/dog-detail/dog-detail.component';
+import { ErrorComponent } from './components/error/error.component';
 import { DogDirective } from './directives/dog.directive';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DogManagementComponent } from './dog-management/dog-management.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { DogManagementComponent } from './components/dog-management/dog-management.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { MatRadioModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatDividerModule, MatListModule } from '@angular/material';
@@ -25,7 +25,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material'
 
 import { NgxBarcodeModule } from 'ngx-barcode';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 

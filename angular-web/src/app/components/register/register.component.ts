@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // import custom validator to validate that password and confirm password fields match
-import { MustMatch } from '../services/must-match.validator';
+import { MustMatch } from '../../services/must-match.validator';
 //model
-import { User } from '../shared/user.model';
-import { LoginService } from '../services/login.service';
+import { User } from '../../models/user.model';
+import { LoginService } from '../../services/login.service';
 
 
 @Component({

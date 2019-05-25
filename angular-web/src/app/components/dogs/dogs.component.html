@@ -1,0 +1,39 @@
+<h2>My Dogs <i class="fas fa-dog"></i></h2>
+
+<table *ngIf=dogs class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Chip</th>
+      <th scope="col">Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Breed</th>
+      <th scope="col">Color</th>
+      <th scope="col">Birthdate</th>
+      <th scope="col">Deathdate</th>
+      <!-- <th>Age</th> -->
+      <th scope="col">Owner DNI</th>
+      <th scope="col">Owner Fullname</th>
+      <th scope="col">Residence</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Updated at</th>
+      <th scope="col">Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dog of dogs">
+      <th scope="row">{{ dog.chip }}</th>
+      <td>{{ dog.name }}</td>
+      <td>{{ dog.gender }}</td>
+      <td>{{ dog.breed_id }}</td>
+      <td>{{ dog.color_id }}</td>
+      <td>{{ dog.birthdate }}</td>
+      <td>{{ dog.deathdate }}</td>
+      <td>{{ dog.owner_dni }}</td>
+      <td>{{ dog.owner_fullname }}</td>
+      <td>{{ dog.residence }}</td>
+      <td>{{ dog.created_at }}</td>
+      <td>{{ dog.updated_at }}</td>
+      <td><button class="btn btn-primary">Edit</button></td>
+    </tr>
+  </tbody>
+</table>

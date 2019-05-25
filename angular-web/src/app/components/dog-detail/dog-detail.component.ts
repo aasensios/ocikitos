@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // import custom validator to validate that password and confirm password fields match
-import { MustMatch } from '../services/must-match.validator';
-import { Dog } from '../shared/dog.model';
-import { Color } from '../shared/color.model';
-import { Food } from '../shared/Food.mode';
+import { MustMatch } from '../../services/must-match.validator';
+import { Dog } from '../../models/dog.model';
 
 @Component({
   selector: 'app-dog-detail',
@@ -14,50 +12,45 @@ import { Food } from '../shared/Food.mode';
 })
 
 export class DogDetailComponent implements OnInit {
+
   registerDogForm: FormGroup;
   submitted = false;
 
   dog: Dog;
   dogs: Dog[] = [];
 
-  sampleBarcode: string = ''  ;
-  sampleOrigin: string = '';
-
+  sampleBarcode = '';
+  sampleOrigin = '';
 
   origins: string[] = ['droppings', 'blood', 'saliva'];
   genders: string[] = ['male', 'female'];
 
-  colors = ['white', 'black', 'grey']
-  breeds = ['Pastor Aleman','Husky','Caniche','Chiguagua','Chucho']
-  
-  selectedValue: string; 
-  
+  // Debugging
+  colors = ['white', 'black', 'grey'];
+  breeds = ['Pastor Aleman', 'Husky', 'Caniche', 'Chiguagua', 'Chucho'];
 
-
-
+  selectedValue: string;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.dog = new Dog(0, "", "", "", 0, 0, "", "","", "", "", "");
-    
+    this.dog = new Dog();
 
-    
     this.registerDogForm = this.formBuilder.group({
-      chip: ['', [Validators.required, Validators.minLength(15),Validators.maxLength(15)]],
+      chip: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(15)]],
       name: ['', Validators.required],
-      gender: ['',null],
-      breed: ['',null],
-      color: ['',null],
-      birthdate: ['',null],
-      deathdate: ['',null],
+      gender: ['', null],
+      breed: ['', null],
+      color: ['', null],
+      birthdate: ['', null],
+      deathdate: ['', null],
       owner_dni: ['', Validators.required],
       owner_fullname: ['', Validators.required],
       owner_email: ['', [Validators.required, Validators.email]],
       residence: ['', null],
       barcode: ['', Validators.required],
-      sampleorigin: ['',null],
-      });
+      sampleorigin: ['', null],
+    });
   }
 
   // convenience getter for easy access to form fields
@@ -72,6 +65,7 @@ export class DogDetailComponent implements OnInit {
       return;
     }
 
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerDogForm.value))
+    // Debugging
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerDogForm.value));
   }
 }
