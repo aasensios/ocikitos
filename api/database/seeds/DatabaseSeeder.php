@@ -15,16 +15,16 @@ class DatabaseSeeder extends Seeder
         // $this->call(RolesTableSeeder::class);
 
         // Then, the users will need the previous generated roles.
-        // $this->call(UsersTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
         
         // Business tables that do not have an associated model.
         $this->call(BreedsTableSeeder::class);
         $this->call(ColorsTableSeeder::class);
-        // $this->call(StrsTableSeeder::class);
+        $this->call(StrsTableSeeder::class);
 
         // Tables that do have an associated model.
         $this->call(DogsTableSeeder::class);
-        // $this->call(SamplesTableSeeder::class);
+        $this->call(SamplesTableSeeder::class);
         // $this->call(IncidentsTableSeeder::class);
         // $this->call(InfractionsTableSeeder::class);
     }
