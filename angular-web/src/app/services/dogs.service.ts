@@ -26,7 +26,7 @@ export class DogsService {
       .append('gender', dog.gender)
       .append('breed_id', dog.breed_id.toString())
       .append('color_id', dog.color_id.toString())
-      .append('birthdate', '')
+      .append('birthdate', dog.birthdate.toString())
       .append('owner_dni', dog.owner_dni)
       .append('owner_fullname', dog.owner_fullname)
       .append('residence', dog.residence);
@@ -35,8 +35,8 @@ export class DogsService {
     // configure headers for form data.
     let httpHeaders: HttpHeaders = new HttpHeaders();
     
-    httpHeaders.set('Accept',"application/json");
-
+/*     httpHeaders.set('Accept',"application/json");
+ */
 
 
     // send request
