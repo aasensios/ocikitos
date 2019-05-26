@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import custom validator to validate that password and confirm password fields match
 import { MustMatch } from '../../services/must-match.validator';
 import { Dog } from '../../models/dog.model';
+import { DogsService } from 'src/app/services/dogs.service';
 
 @Component({
   selector: 'app-dog-detail',
@@ -31,7 +32,8 @@ export class DogDetailComponent implements OnInit {
 
   selectedValue: string;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private dogsService: DogsService,
+private formBuilder: FormBuilder) { }
   
 
 
@@ -67,7 +69,26 @@ export class DogDetailComponent implements OnInit {
       return;
     }
 
+    
+
     // Debugging
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.DogForm.value));
+  }
+
+  createDog(dog: Dog) {
+    this.dogsService.insert(dog)
+      .subscribe(
+        response => {
+          const success = response['success'];
+          this.dogs = response['data'];
+          const message = response['message'];
+
+          // Debugging
+          console.log(success);
+          console.log(message);
+          console.log(this.dogs);
+
+        }
+      );
   }
 }

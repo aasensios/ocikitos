@@ -48,6 +48,7 @@ export class DogsComponent implements OnInit {
       );
   }
 
+ 
   // Method of filter
   filter(): void {
     // Array.filter needs a callback function
@@ -96,7 +97,7 @@ export class DogsComponent implements OnInit {
 
   onSelect(dog: Dog) {
     this.dogSelected = dog;
-    
+    console.log(this.dogSelected);
   }
 
 }

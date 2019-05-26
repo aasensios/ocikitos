@@ -31,7 +31,12 @@ export class DogManagementComponent implements OnInit {
   ownerNameFilter: string;
   dogSelected: Dog;
 
-  constructor(private router: Router, private dogsService: DogsService) { }
+  constructor(
+    private dogsService: DogsService,
+    private router: Router) {
+
+
+   }
 
   ngOnInit() {
     this.dogsService.getDogs()
