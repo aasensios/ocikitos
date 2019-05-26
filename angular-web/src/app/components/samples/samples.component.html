@@ -1,0 +1,89 @@
+<h3>Filter Samples <i class="fas fa-vial"></i></h3>
+<div>
+  <form #samplesFilterForm="ngForm">
+    <table class="table table-bordered">
+      <div class="row">
+        <div class="col-md-4">
+          <tr>
+            <td>Filter by barcode</td>
+            <td>
+              <input type="text" [(ngModel)]="barcodeFilter" name="barcodeFilter" (keyup)="filter()">
+            </td>
+          </tr>
+
+          <tr>
+            <td>Filter by origin</td>
+            <td>
+              <input type="text" [(ngModel)]="originFilter" name="originFilter" (keyup)="filter()">
+            </td>
+          </tr>
+
+        </div>
+        
+        <div class="col-md-4">
+
+          <tr>
+            <td>Items per page: </td>
+            <td>
+              <input type="number" [(ngModel)]="itemsPerPage" name="itemsPerPage">
+            </td>
+          </tr>
+
+          <tr>
+            <td>Number of Samples:</td>
+            <td>{{samplesFiltered.length}}</td>
+          </tr>
+        </div>
+      </div>
+
+    </table>
+    <div class="container well" *ngIf="samplesFiltered.length==0">
+      <h3>No samples found</h3>
+    </div>
+    <div class="container well" *ngIf="samplesFiltered.length>0">
+      <form #samplesManagementForm="ngForm" novalidate>
+        <h3>Samples found:</h3>
+
+
+        <table *ngIf=samples class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Barcode</th>
+              <th scope="col">Origin</th>
+              <th scope="col">Sequence file</th>
+              <th scope="col">Pattern</th>
+              <th scope="col">Dog</th>
+              
+              <th scope="col">Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sample
+                  of samplesFiltered
+                  | paginate: {itemsPerPage: itemsPerPage,
+                  currentPage : currentPage}; let i = index;" (click)="onSelect(sample)">
+              <th scope="row">{{ sample.barcode }}</th>
+              <td>{{ sample.origin }}</td>
+              <!-- <td *ngIf="dog.gender == 'male'"><i class="fas fa-dog" style="color: blue;"></i></td>
+              <td *ngIf="dog.gender == 'female'"><i class="fas fa-dog" style="color: fuchsia;"></i></td>
+              -->
+              <td>{{ sample.sequence }}</td>
+              <td>Pattern data</td>
+              <td>{{ sample.dog_id }}</td>
+             
+              
+              <td><button class="btn btn-primary">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+        <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+        </pagination-controls>
+      </form>
+    </div>
+  </form>
+  <!-- <app-dog-detail [dog]="dogSelected" *ngIf="dogSelected">
+    </app-dog-detail>  -->
+</div>

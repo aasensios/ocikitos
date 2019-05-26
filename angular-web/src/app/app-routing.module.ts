@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DogsFilterComponent } from './components/dogs-filter/dogs-filter.component';
+import { StrsComponent } from './components/strs/strs.component';
+import { SamplesComponent } from './components/samples/samples.component';
 
 const routes: Routes = [
 
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path: 'dog-detail',  component: DogDetailComponent},
   {path: 'dog-filter',  component: DogsFilterComponent},
   {path: 'dog-management',  component: DogManagementComponent},
+  {path: 'samples',  component: SamplesComponent},
+  {path: 'strs',  component: StrsComponent},
   {path: '**',  component: ErrorComponent},
   {path: '',  component: ErrorComponent},
 

@@ -19,3 +19,7 @@
 .tp-container>* {
    width: 100%;
 }
+
+.jumbo {
+   padding: 5px;
+ }

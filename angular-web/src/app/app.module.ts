@@ -26,6 +26,8 @@ import {MatExpansionModule} from '@angular/material'
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { HomeComponent } from './components/home/home.component';
 import { DogsFilterComponent } from './components/dogs-filter/dogs-filter.component';
+import { SamplesComponent } from './components/samples/samples.component';
+import { StrsComponent } from './components/strs/strs.component';
 
 
 
@@ -42,7 +44,9 @@ import { DogsFilterComponent } from './components/dogs-filter/dogs-filter.compon
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    DogsFilterComponent
+    DogsFilterComponent,
+    SamplesComponent,
+    StrsComponent
   ],
   imports: [
     BrowserModule,

@@ -72,11 +72,11 @@
 
     </table>
     <div class="container well" *ngIf="dogsFiltered.length==0">
-      <h2>No dogs found</h2>
+      <h3>No dogs found</h3>
     </div>
     <div class="container well" *ngIf="dogsFiltered.length>0">
       <form #dogsManagementForm="ngForm" novalidate>
-        <h2>Dogs found:</h2>
+        <h3>Dogs found:</h3>
 
 
         <table *ngIf=dogs class="table table-hover">
