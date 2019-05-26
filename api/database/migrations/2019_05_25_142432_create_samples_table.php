@@ -23,12 +23,14 @@ class CreateSamplesTable extends Migration
             $table->string('sequence')->nullable();
             $table->json('pattern')->nullable();
             $table->bigInteger('dog_id')->unsigned()->nullable();
+            $table->bigInteger('bioinformatic_id')->unsigned()->nullable();
 
             // created_at and updated_at
             $table->timestamps();
 
             // Foreign keys
             $table->foreign('dog_id')->references('id')->on('dogs');
+            // $table->foreign('bioinformatic_id')->references('id')->on('users');
         });
     }
 

@@ -23,7 +23,7 @@ Route::apiResources([
     'dogs' => 'API\DogController',
     'samples' => 'API\SampleController',
     'incidents' => 'API\IncidentController',
-    // 'infractions' => 'API\InfractionsController',
+    'infractions' => 'API\InfractionController',
 ]);
 
 // Additional routes to access data from non-modeled tables.

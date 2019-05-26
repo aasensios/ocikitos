@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Incident extends Model
+class Infraction extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,9 +12,8 @@ class Incident extends Model
      * @var array
      */
     protected $fillable = [
-        'photo',
-        'location',
-        'sample_barcode',
+        'status',
+        'document',
+        'incident_id',
     ];
-
 }
