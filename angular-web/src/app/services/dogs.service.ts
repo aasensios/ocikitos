@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class DogsService {
 
-  private url = 'http://apps.proven.cat/~dawbi1901/api/api/dogs';
+  private url = 'http://apps.proven.cat/~dawbi1901/api/api/';
 
   constructor(
     private http: HttpClient
   ) { }
 
   getDogs(): Observable<Dog[]> {
-    return this.http.get<Dog[]>(this.url);
+    return this.http.get<Dog[]>(this.url+'dogs');
   }
 }

@@ -4,9 +4,11 @@ import { Router } from '@angular/router';
 import { DogsService } from '../../services/dogs.service';
 import { Dog } from '../../models/dog.model';
 
+
 @Component({
   selector: 'app-dog-management',
   templateUrl: './dog-management.component.html',
+  
   styleUrls: ['./dog-management.component.css']
 })
 

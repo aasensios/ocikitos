@@ -7,6 +7,7 @@ import { DogManagementComponent } from './components/dog-management/dog-manageme
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
+import { DogsFilterComponent } from './components/dogs-filter/dogs-filter.component';
 
 const routes: Routes = [
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'register',  component: RegisterComponent} ,
   {path: 'dogs',  component: DogsComponent} ,
   {path: 'dog-detail',  component: DogDetailComponent},
+  {path: 'dog-filter',  component: DogsFilterComponent},
   {path: 'dog-management',  component: DogManagementComponent},
   {path: '**',  component: ErrorComponent},
   {path: '',  component: ErrorComponent},

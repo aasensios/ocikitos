@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // import custom validator to validate that password and confirm password fields match
@@ -13,7 +13,7 @@ import { Dog } from '../../models/dog.model';
 
 export class DogDetailComponent implements OnInit {
 
-  registerDogForm: FormGroup;
+  DogForm: FormGroup;
   submitted = false;
 
   dog: Dog;
@@ -32,11 +32,13 @@ export class DogDetailComponent implements OnInit {
   selectedValue: string;
 
   constructor(private formBuilder: FormBuilder) { }
+  
+
 
   ngOnInit() {
     this.dog = new Dog();
 
-    this.registerDogForm = this.formBuilder.group({
+    this.DogForm = this.formBuilder.group({
       chip: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(15)]],
       name: ['', Validators.required],
       gender: ['', null],
@@ -54,18 +56,18 @@ export class DogDetailComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.registerDogForm.controls; }
+  get f() { return this.DogForm.controls; }
 
   onSubmit() {
     this.submitted = true;
     console.log(this.dog);
 
     // stop here if form is invalid
-    if (this.registerDogForm.invalid) {
+    if (this.DogForm.invalid) {
       return;
     }
 
     // Debugging
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerDogForm.value));
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.DogForm.value));
   }
 }
