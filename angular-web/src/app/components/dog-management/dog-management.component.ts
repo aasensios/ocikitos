@@ -8,7 +8,8 @@ import { Dog } from '../../models/dog.model';
 @Component({
   selector: 'app-dog-management',
   templateUrl: './dog-management.component.html',
-  
+  providers: [DogsService],
+
   styleUrls: ['./dog-management.component.css']
 })
 

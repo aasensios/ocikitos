@@ -17,7 +17,7 @@ export class DogsService {
   }
 
   insert(dog: Dog): Observable<Dog> {
-    const url = `${this.url}/dogs`;
+    const url = `${this.url}dogs`;
     // set query parameters from form data
 
     let httpParams = new HttpParams()

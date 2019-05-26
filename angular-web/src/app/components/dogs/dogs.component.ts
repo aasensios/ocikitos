@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Dog } from '../../models/dog.model';
 import { DogsService } from '../../services/dogs.service';
 
+
 @Component({
   selector: 'app-dogs',
   templateUrl: './dogs.component.html',
@@ -27,7 +28,8 @@ export class DogsComponent implements OnInit {
 
 
 
-  constructor(private dogsService: DogsService) { }
+  constructor(
+    private dogsService: DogsService) { }
 
 
   ngOnInit() {
@@ -46,6 +48,8 @@ export class DogsComponent implements OnInit {
 
         }
       );
+
+    
   }
 
  
