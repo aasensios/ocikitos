@@ -60,5 +60,6 @@ $factory->define(Dog::class, function (Faker $faker) {
         'owner_dni' => $faker->dni, // Only available with 'faker_locale' => 'es_ES' (in config/app.php).
         'owner_fullname' => $faker->name, // Adaptable depending on 'faker_locale' value (in config/app.php).
         'residence' => $faker->address, // Adaptable depending on 'faker_locale' value (in config/app.php).
+        // 'veterinarian_id' => User::where('role', 'vet')->first()->id
     ];
 });

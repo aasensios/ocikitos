@@ -24,5 +24,4 @@ class Dog extends Model
         'residence',
     ];
 
-    public $timestamps = false;
 }

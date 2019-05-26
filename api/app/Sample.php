@@ -28,5 +28,4 @@ class Sample extends Model
         'pattern' => 'array'
    ];
 
-   public $timestamps = false;
 }

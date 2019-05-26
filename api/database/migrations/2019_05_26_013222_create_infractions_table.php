@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIncidentsTable extends Migration
+class CreateInfractionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateIncidentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('incidents', function (Blueprint $table) {
+        Schema::create('infractions', function (Blueprint $table) {
             // Primary key
             $table->bigIncrements('id');
 
             // Fillable fields
-            $table->string('photo');
-            $table->string('location');
-            $table->string('sample_barcode');
-            $table->bigInteger('agent_id')->unsigned()->nullable();
+            $table->enum('status', ['pending', 'approved', 'rejected']);
+            $table->string('document');
+            $table->bigInteger('incident_id')->unsigned()->nullable();
+            $table->bigInteger('officer_id')->unsigned()->nullable();
 
             // created_at and updated_at
             $table->timestamps();
 
             // Foreign keys
-            $table->foreign('sample_barcode')->references('barcode')->on('samples');
-            // $table->foreign('agent_id')->references('id')->on('users');
+            // $table->foreign('incident_id')->references('id')->on('incidents');
+            // $table->foreign('officer_id')->references('id')->on('users');
         });
     }
 
@@ -39,6 +39,6 @@ class CreateIncidentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incidents');
+        Schema::dropIfExists('infractions');
     }
 }

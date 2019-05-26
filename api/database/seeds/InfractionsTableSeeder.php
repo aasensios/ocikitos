@@ -1,9 +1,9 @@
 <?php
 
-use App\Incident;
+use App\Infraction;
 use Illuminate\Database\Seeder;
 
-class IncidentsTableSeeder extends Seeder
+class InfractionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class IncidentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Incident::class, 27)->create();
+        factory(Infraction::class, 13)->create();
     }
 }
