@@ -12,14 +12,13 @@ import { TablesService } from '../../services/tables.service';
 import { Sample } from 'src/app/models/sample.model';
 
 @Component({
-  selector: 'app-dog-detail',
-  templateUrl: './dog-detail.component.html',
+  selector: 'app-dog',
+  templateUrl: './dog.component.html',
+  styleUrls: ['./dog.component.css'],
   providers: [DogsService, TablesService],
-
-  styleUrls: ['./dog-detail.component.css']
 })
 
-export class DogDetailComponent implements OnInit {
+export class DogComponent implements OnInit {
 
   @Input() dog: Dog;
   @ViewChild('dogForm') dogForm: HTMLFormElement;
@@ -39,16 +38,13 @@ export class DogDetailComponent implements OnInit {
   origins: string[] = ['droppings', 'blood', 'saliva'];
   genders: string[] = ['male', 'female'];
 
-  // Debugging
-  /* colors = ['white', 'black', 'grey'];
-  breeds = ['Pastor Aleman', 'Husky', 'Caniche', 'Chiguagua', 'Chucho']; */
-
   selectedValue: string;
 
   constructor(
     private dogsService: DogsService,
     private tablesService: TablesService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
 
@@ -58,12 +54,6 @@ export class DogDetailComponent implements OnInit {
           const success = response['success'];
           this.colors = response['data'];
           const message = response['message'];
-
-          // Debugging
-          console.log(success);
-          console.log(message);
-          console.log(this.colors);
-
         }
       );
     this.tablesService.getBreeds()
@@ -72,12 +62,6 @@ export class DogDetailComponent implements OnInit {
           const success = response['success'];
           this.breeds = response['data'];
           const message = response['message'];
-
-          // Debugging
-          console.log(success);
-          console.log(message);
-          console.log(this.breeds);
-
         }
       );
 
@@ -91,21 +75,22 @@ export class DogDetailComponent implements OnInit {
       deathdate: ['', null],
       owner_dni: ['', Validators.required],
       owner_fullname: ['', Validators.required],
-      owner_email: ['', [Validators.required, Validators.email]],
+      // owner_email: ['', [Validators.required, Validators.email]],
       residence: ['', null],
       barcode: ['', Validators.required],
-      sampleOrigin: ['', null],
+      origin: ['', null],
     });
+
+    this.error = undefined;
   }
 
-  // convenience getter for easy access to form fields
+  // Convenience getter for easy access to form fields
   get f() { return this.form.controls; }
-
 
   onSubmit() {
     this.submitted = true;
 
-    // stop here if form is invalid
+    // Stop here if form is invalid
     // if (this.form.invalid) {
     //   return;
     // }
@@ -126,16 +111,9 @@ export class DogDetailComponent implements OnInit {
 
         // Complete
         () => {
-          // Feedback to the user -- TODO: redirect to the home page
-          // Debugging
-          console.log(this.success);
-          console.log(this.dog);
-          console.log(this.message);
+          alert(this.message);
         }
       );
-
-    // Debugging
-    console.log(this.error);
   }
 
   modifyDog() {
@@ -153,16 +131,28 @@ export class DogDetailComponent implements OnInit {
 
         // Complete
         () => {
-          // Feedback to the user -- TODO: redirect to the home page
-          // Debugging
-          console.log(this.success);
-          console.log(this.dog);
-          console.log(this.message);
+          alert(this.message);
         }
       );
+  }
 
-    // Debugging
-    console.log(this.error);
+  deleteDog(dog: Dog) {
+    this.dogsService.delete(dog)
+      .subscribe(
+        response => {
+          this.success = response['success'];
+          this.dogs = response['data'];
+          this.message = response['message'];
+        },
+
+        // Error handling
+        error => this.error = error,
+
+        // Complete
+        () => {
+          alert(this.message);
+        }
+      );
   }
 
 }

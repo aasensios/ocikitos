@@ -7,7 +7,7 @@ import { DogsService } from '../../services/dogs.service';
   selector: 'app-dogs',
   templateUrl: './dogs.component.html',
   styleUrls: ['./dogs.component.css'],
-  providers: [DogsService]
+  providers: [DogsService],
 })
 export class DogsComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class DogsComponent implements OnInit {
   editing = false;
 
   // Pagination properties
-  itemsPerPage: number = 10;
+  itemsPerPage = 10;
   currentPage: number;
   totalItems: number;
 
@@ -32,6 +32,10 @@ export class DogsComponent implements OnInit {
   dogSelected: Dog;
 
   constructor(private dogsService: DogsService) { }
+
+  ngOnInit() {
+    this.getDogs();
+  }
 
   getDogs() {
     this.dogsService.getDogs()
@@ -47,51 +51,10 @@ export class DogsComponent implements OnInit {
 
         // Complete
         () => {
-          // Debugging
-          console.log(this.success);
-          console.log(this.message);
-          console.log(this.dogs);
           this.dogsFiltered = this.dogs;
-
-          // Error showing (debugging)
-          console.log(this.error);
         }
       );
   }
-
-  deleteDog(dog: Dog) {
-    this.dogsService.delete(dog)
-      .subscribe(
-        response => {
-          this.success = response['success'];
-          this.dogs = response['data'];
-          this.message = response['message'];
-        },
-
-        // Error handling
-        error => this.error = error,
-
-        // Complete
-        () => {
-          // Debugging
-          console.log(this.success);
-          console.log(this.message);
-          console.log(this.dogs);
-          this.dogsFiltered = this.dogs;
-
-          // Error showing (debugging)
-          console.log(this.error);
-        }
-      );
-  }
-
-  
-  ngOnInit() {
-    this.getDogs();
-
-
-  }
-
 
   // Method of filter
   filter(): void {
@@ -140,13 +103,7 @@ export class DogsComponent implements OnInit {
   }
 
   onSelect(dog: Dog) {
-    console.log(dog);
-
     this.dogSelected = dog;
-    this.toggleEditing();
-  }
-
-  toggleEditing() {
     this.editing = true;
   }
 

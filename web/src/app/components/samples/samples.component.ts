@@ -39,20 +39,10 @@ export class SamplesComponent implements OnInit {
           const success = response['success'];
           this.samples = response['data'];
           const message = response['message'];
-
-          // Debugging
-          console.log(success);
-          console.log(message);
-          console.log(this.samples);
-          this.samplesFiltered = this.samples;
-
         }
       );
-
-    
   }
 
- 
   // Method of filter
   filter(): void {
     // Array.filter needs a callback function
@@ -85,7 +75,6 @@ export class SamplesComponent implements OnInit {
 
   onSelect(sample: Sample) {
     this.sampleSelected = sample;
-    console.log(this.sampleSelected);
   }
 
 }

@@ -39,19 +39,9 @@ export class StrsComponent implements OnInit {
           const success = response['success'];
           this.strs = response['data'];
           const message = response['message'];
-
-          // Debugging
-          console.log(success);
-          console.log(message);
-          console.log(this.strs);
-          this.strsFiltered = this.strs;
-
         }
       );
-
-
   }
-
 
   // Method of filter
   filter(): void {
@@ -63,7 +53,6 @@ export class StrsComponent implements OnInit {
         let chromValid = false;
         let repeatValid = false;
         let tempValid = false;
-
 
         if (this.locusFilter && this.locusFilter !== '') { // filter by locus
           locusValid = str.locus.toLowerCase().
@@ -91,7 +80,6 @@ export class StrsComponent implements OnInit {
 
   onSelect(str: Str) {
     this.strSelected = str;
-    console.log(this.strSelected);
   }
 
 }

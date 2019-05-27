@@ -39,12 +39,6 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('access_token', response['data'].token);
           this.user.name = response['data'].name;
           this.message = response['message'];
-
-          // Debugging
-          console.log(response['success']);
-          console.log(localStorage.getItem('access_token'));
-          console.log(this.user);
-          console.log(this.message);
         },
 
         // Error handling
@@ -61,83 +55,10 @@ export class RegisterComponent implements OnInit {
             );
         }
       );
-
-    // Debugging
-    console.log(this.error);
   }
 
   ngOnInit() {
     this.user = new User();
-
-    // this.loginForm = this.formBuilder.group({
-
-    //   user: ['', [Validators.required, Validators.email]],
-    //   password: ['', [Validators.required]],
-    // confirmPassword: ['', Validators.required]
-    // }, {
-    //     validator: MustMatch('password', 'confirmPassword')
-    // });
   }
-
-  // Convenience getter for easy access to form fields
-  // get f() { return this.loginForm.controls; }
-
-  // registerForm: FormGroup;
-  // submitted = false;
-  // public user: User;
-
-
-  // constructor(
-  //   private formBuilder: FormBuilder,
-  //   private loginService: LoginService
-  //   ) { }
-
-  // login() {
-  //   /* const user = new User();
-  //   user.email = this.user.email;
-  //   user.password = this.user.password; */
-
-  //   return this.loginService.login(this.user).subscribe(result => {
-  //     if (result.error) {
-  //       alert(result.message);
-  //     } else if (result.access_token) {
-  //       alert('Bienvenido');
-  //       localStorage.setItem('token', JSON.stringify(result));
-  //     }
-  //   });
-  // }
-
-
-  // ngOnInit() {
-  //   this.user = new User();
-
-  //   this.registerForm = this.formBuilder.group({
-
-  //     user: ['', [Validators.required, Validators.email]],
-  //     password: ['', [Validators.required]],
-  //     confirmPassword: ['', Validators.required] 
-  //   }, {
-  //       validator: MustMatch('password', 'confirmPassword') 
-  //     });
-  // }
-
-  // // convenience getter for easy access to form fields
-  // get f() { return this.registerForm.controls; }
-
-  // onSubmit() {
-  //   this.submitted = true;
-
-  //   // stop here if form is invalid
-  //   if (this.registerForm.invalid) {
-  //     return;
-  //   }
-
-  //   alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
-  //   console.log(this.user);
-  // }
-
-  // goBack(){
-
-  // }
 
 }

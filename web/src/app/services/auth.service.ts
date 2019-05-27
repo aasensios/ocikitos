@@ -46,7 +46,6 @@ export class AuthService {
 
     // const options = API.options;
     // options.headers.append('Authorization', `Bearer ${accessToken}`);
-    // console.log(options.headers);
 
     const options = {
       headers: new HttpHeaders({

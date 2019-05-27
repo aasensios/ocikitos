@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
       .subscribe(
         // Success
         response => {
-          // console.log(response); // Debugging
           localStorage.setItem('access_token', response.access_token);
           localStorage.setItem('refresh_token', response.refresh_token);
         },
@@ -54,9 +53,6 @@ export class LoginComponent implements OnInit {
                 alert(`Welcome ${response.name}`);
               }
             );
-
-          // Error showing (debugging)
-          console.log(this.error);
         }
       );
   }
