@@ -9,6 +9,7 @@ import { Breed } from '../../models/breed.model';
 
 import { DogsService } from '../../services/dogs.service';
 import { TablesService } from '../../services/tables.service';
+import { Sample } from 'src/app/models/sample.model';
 
 @Component({
   selector: 'app-dog-detail',
@@ -20,17 +21,20 @@ import { TablesService } from '../../services/tables.service';
 
 export class DogDetailComponent implements OnInit {
 
-  DogForm: FormGroup;
+  @Input() dog: Dog;
+  @ViewChild('dogForm') dogForm: HTMLFormElement;
+  form: FormGroup;
   submitted = false;
 
-  dog: Dog;
   dogs: Dog[] = [];
   public colors: Color[];
   public breeds: Breed[];
+  error: string;
+  success: boolean;
+  message: string;
+  editing = false;
 
-  sampleBarcode = '';
-  sampleOrigin = '';
-
+  sample: Sample = new Sample();
 
   origins: string[] = ['droppings', 'blood', 'saliva'];
   genders: string[] = ['male', 'female'];
@@ -45,8 +49,6 @@ export class DogDetailComponent implements OnInit {
     private dogsService: DogsService,
     private tablesService: TablesService,
     private formBuilder: FormBuilder) { }
-  
-
 
   ngOnInit() {
 
@@ -79,9 +81,7 @@ export class DogDetailComponent implements OnInit {
         }
       );
 
-    this.dog = new Dog();
-
-    this.DogForm = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       chip: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(15)]],
       name: ['', Validators.required],
       gender: ['', null],
@@ -94,42 +94,75 @@ export class DogDetailComponent implements OnInit {
       owner_email: ['', [Validators.required, Validators.email]],
       residence: ['', null],
       barcode: ['', Validators.required],
-      sampleorigin: ['', null],
+      sampleOrigin: ['', null],
     });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.DogForm.controls; }
+  get f() { return this.form.controls; }
+
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.dog);
 
     // stop here if form is invalid
-    if (this.DogForm.invalid) {
-      return;
-    }
-
-    
-
-    // Debugging
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.DogForm.value));
+    // if (this.form.invalid) {
+    //   return;
+    // }
   }
 
-  createDog(dog: Dog) {
-    this.dogsService.addDog(dog)
+  addDog() {
+    this.dogsService.create(this.dog)
       .subscribe(
+        // Success
         response => {
-          const success = response['success'];
-          this.dogs = response['data'];
-          const message = response['message'];
+          this.success = response['success'];
+          this.dog = response['data'];
+          this.message = response['message'];
+        },
 
+        // Error handling
+        error => this.error = error,
+
+        // Complete
+        () => {
+          // Feedback to the user -- TODO: redirect to the home page
           // Debugging
-          console.log(success);
-          console.log(message);
-          console.log(this.dogs);
-
+          console.log(this.success);
+          console.log(this.dog);
+          console.log(this.message);
         }
       );
+
+    // Debugging
+    console.log(this.error);
   }
+
+  modifyDog() {
+    this.dogsService.update(this.dog)
+      .subscribe(
+        // Success
+        response => {
+          this.success = response['success'];
+          this.dog = response['data'];
+          this.message = response['message'];
+        },
+
+        // Error handling
+        error => this.error = error,
+
+        // Complete
+        () => {
+          // Feedback to the user -- TODO: redirect to the home page
+          // Debugging
+          console.log(this.success);
+          console.log(this.dog);
+          console.log(this.message);
+        }
+      );
+
+    // Debugging
+    console.log(this.error);
+  }
+
 }

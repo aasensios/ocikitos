@@ -6,7 +6,7 @@ export class Sample {
     sequence: string;
     pattern: string;
     dog_id: number;
-    
+
     constructor(
         id?: number,
         barcode?: string,

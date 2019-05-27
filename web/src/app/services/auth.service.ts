@@ -11,7 +11,7 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  registerUser(user: User) {
+  registerUser(user: User): Observable<any> {
     const url = `${API.URL}/register`;
 
     const body = {
@@ -24,8 +24,8 @@ export class AuthService {
     return this.http.post(url, body, API.options);
   }
 
-  loginUser(user: User): Observable<any> {
-    const url = `${API.BASE_URL}/oauth/token`;
+  getToken(user: User): Observable<any> {
+    const url = `${API.LOGIN_URL}/oauth/token`;
 
     const body = {
       username: user.email,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Dog } from '../../models/dog.model';
 import { DogsService } from '../../services/dogs.service';
 
@@ -6,14 +6,19 @@ import { DogsService } from '../../services/dogs.service';
 @Component({
   selector: 'app-dogs',
   templateUrl: './dogs.component.html',
-  providers: [DogsService],
-  styleUrls: ['./dogs.component.css']
+  styleUrls: ['./dogs.component.css'],
+  providers: [DogsService]
 })
 export class DogsComponent implements OnInit {
 
   public dogs: Dog[];
   public dogsFiltered: Dog[] = [];
- 
+
+  error: string;
+  success: boolean;
+  message: string;
+  editing = false;
+
   // Pagination properties
   itemsPerPage: number = 10;
   currentPage: number;
@@ -26,33 +31,68 @@ export class DogsComponent implements OnInit {
   ownerNameFilter: string;
   dogSelected: Dog;
 
+  constructor(private dogsService: DogsService) { }
 
-
-  constructor(
-    private dogsService: DogsService) { }
-
-
-  ngOnInit() {
+  getDogs() {
     this.dogsService.getDogs()
       .subscribe(
         response => {
-          const success = response['success'];
+          this.success = response['success'];
           this.dogs = response['data'];
-          const message = response['message'];
+          this.message = response['message'];
+        },
 
+        // Error handling
+        error => this.error = error,
+
+        // Complete
+        () => {
           // Debugging
-          console.log(success);
-          console.log(message);
+          console.log(this.success);
+          console.log(this.message);
           console.log(this.dogs);
           this.dogsFiltered = this.dogs;
 
+          // Error showing (debugging)
+          console.log(this.error);
         }
       );
-
-    
   }
 
- 
+  deleteDog(dog: Dog) {
+    this.dogsService.delete(dog)
+      .subscribe(
+        response => {
+          this.success = response['success'];
+          this.dogs = response['data'];
+          this.message = response['message'];
+        },
+
+        // Error handling
+        error => this.error = error,
+
+        // Complete
+        () => {
+          // Debugging
+          console.log(this.success);
+          console.log(this.message);
+          console.log(this.dogs);
+          this.dogsFiltered = this.dogs;
+
+          // Error showing (debugging)
+          console.log(this.error);
+        }
+      );
+  }
+
+  
+  ngOnInit() {
+    this.getDogs();
+
+
+  }
+
+
   // Method of filter
   filter(): void {
     // Array.filter needs a callback function
@@ -100,8 +140,14 @@ export class DogsComponent implements OnInit {
   }
 
   onSelect(dog: Dog) {
+    console.log(dog);
+
     this.dogSelected = dog;
-    console.log(this.dogSelected);
+    this.toggleEditing();
+  }
+
+  toggleEditing() {
+    this.editing = true;
   }
 
 }

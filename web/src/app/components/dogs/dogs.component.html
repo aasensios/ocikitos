@@ -114,7 +114,10 @@
               <td>{{ dog.owner_dni }}</td>
               <td>{{ dog.owner_fullname }}</td>
               <td>{{ dog.created_at }}</td>
-              <td><button class="btn btn-primary">Edit</button></td>
+              <td>
+                <button class="btn btn-primary" (click)="onSelect(dog)">Edit</button>
+                <button class="btn btn-danger" (click)="deleteDog(dog)">Delete</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -126,6 +129,6 @@
       </form>
     </div>
   </form>
-  <!-- <app-dog-detail [dog]="dogSelected" *ngIf="dogSelected">
-    </app-dog-detail>  -->
+  <app-dog-detail [dog]="dogSelected" *ngIf="dogSelected">
+  </app-dog-detail>
 </div>

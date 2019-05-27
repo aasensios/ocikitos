@@ -1,0 +1,6 @@
+<form #dogForm="ngForm">
+  <input type="text" name="chip" #chip="ngModel" [(ngModel)]="dog.chip">
+  <input type="text" name="name" #name="ngModel" [(ngModel)]="dog.name">
+  <button type="submit" (click)="addDog()">Add Dog</button>
+  <button type="submit" (click)="modifyDog()">Modify Dog</button>
+</form>

@@ -4,7 +4,7 @@ export class API {
 
     // URLs
     // public static BASE_URL = 'http://localhost:8000';
-    public static BASE_URL = 'http://apps.proven.cat/~dawbi1901/api';
+    public static LOGIN_URL = 'http://apps.proven.cat/~dawbi1901/api';
     // public static URL = 'http://localhost:8000/api';
     public static URL = 'http://apps.proven.cat/~dawbi1901/api/api';
 

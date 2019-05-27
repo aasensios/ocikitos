@@ -1,18 +1,11 @@
 <!-- main app container -->
 <div class="jumbotron">
   <div class="container-fluid">
-    <form [formGroup]="DogForm" (ngSubmit)="onSubmit()">
+    <!-- <form #dogForm="ngForm" [formGroup]="form"> -->
+    <form [formGroup]="form">
 
       <div class="row">
         <div class="col-md-4">
-           <!--  <div class="col-sm-4">
-                <input class="form-control" type="text" name="citizenStreet" #citizenStreet="ngModel" [(ngModel)]="citizen.street" required />
-              </div>
-              <div class="has-error" *ngIf="citizenStreet.touched && citizenStreet.invalid">
-                <span *ngIf="citizenStreet.errors.required" class="alert alert-danger">Please, street can not be empty</span>
-                <span *ngIf="citizenStreet.errors.isNotCorrect && !citizenStreet.errors.required" class="alert alert-danger">
-                  Please, name must have 6 characters at least</span>
-              </div> -->
           <div class="form-group">
             <label>Chip*</label>
             <input type="text" tabindex="1" formControlName="chip" class="form-control" [(ngModel)]="dog.chip"
@@ -26,7 +19,7 @@
 
           <div class="form-group">
             <label>Breed</label>
-            <select tabindex="3" class="form-control" formControlName="breed" [(ngModel)]="dog.breed_id">
+            <select tabindex="3" class="form-control" formControlName="breed" [(ngModel)]="dog.breed">
               <option [value]="breed.id" *ngFor="let breed of breeds">{{breed.name}}</option>
             </select>
           </div>
@@ -36,19 +29,20 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Color</label>
-                <select tabindex="6" class="form-control" formControlName="color" [(ngModel)]="dog.color_id">
+                <select tabindex="6" class="form-control" formControlName="color" [(ngModel)]="dog.color">
                   <option [value]="color.id" *ngFor="let color of colors">{{color.name}}</option>
                 </select>
               </div>
             </div>
-            
+
 
             <div class="col-md-6">
 
               <div class="form-group">
                 <label>Gender</label>
-                <mat-radio-group tabindex="7" formControlName="gender" class="tp-radio-group" [(ngModel)]="dog.gender">
-                  <mat-radio-button class="tp-radio-button" *ngFor="let gender of genders" [value]="gender">
+                <mat-radio-group tabindex="7" formControlName="gender" class="tp-radio-group">
+                  <mat-radio-button class="tp-radio-button" *ngFor="let gender of genders" [value]="gender"
+                    [(ngModel)]="dog.gender">
                     {{gender}}
                   </mat-radio-button>
                 </mat-radio-group>
@@ -58,16 +52,18 @@
           </div>
           <div class="form-group">
             <label>Owner DNI*</label>
-            <input type="text" tabindex="9" formControlName="owner_dni" class="form-control" [(ngModel)]="dog.owner_dni"
-              [ngClass]="{ 'is-invalid': f.owner_dni.touched && f.owner_dni.errors }" placeholder="Enter owner id" />
+            <input type="text" tabindex="9" formControlName="owner_dni" class="form-control"
+              [ngClass]="{ 'is-invalid': f.owner_dni.touched && f.owner_dni.errors }" placeholder="Enter owner id"
+              [(ngModel)]="dog.owner_dni">
             <div *ngIf="!!f.owner_dni.touched && !!f.owner_dni.errors" class="invalid-feedback">
               <div *ngIf="!!f.owner_dni.errors.required">Owner DNI is required</div>
             </div>
           </div>
           <div class="form-group">
             <label>Owner fullname*</label>
-            <input type="text" tabindex="10" formControlName="owner_fullname" class="form-control" [(ngModel)]="dog.owner_fullname"
-              [ngClass]="{ 'is-invalid': f.owner_fullname.touched && f.owner_fullname.errors }" placeholder="Enter owner name" />
+            <input type="text" tabindex="10" formControlName="owner_fullname" class="form-control"
+              [ngClass]="{ 'is-invalid': f.owner_fullname.touched && f.owner_fullname.errors }"
+              placeholder="Enter owner name" [(ngModel)]="dog.owner_fullname">
             <div *ngIf="!!f.owner_fullname.touched && !!f.owner_fullname.errors" class="invalid-feedback">
               <div *ngIf="!!f.owner_fullname.errors.required">Owner fullname is required</div>
             </div>
@@ -80,8 +76,9 @@
 
           <div class="form-group">
             <label>Name dog*</label>
-            <input type="text" tabindex="2" formControlName="name" class="form-control" [(ngModel)]="dog.name"
-              [ngClass]="{ 'is-invalid': f.name.touched && f.name.errors }" placeholder="Enter name dog" />
+            <input type="text" tabindex="2" formControlName="name" class="form-control"
+              [ngClass]="{ 'is-invalid': f.name.touched && f.name.errors }" placeholder="Enter name dog"
+              [(ngModel)]="dog.name">
             <div *ngIf="!!f.name.touched && !!f.name.errors" class="invalid-feedback">
               <div *ngIf="!!f.name.errors.required">Name dog is required</div>
             </div>
@@ -91,25 +88,24 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Birthdate dog</label>
-                <input type="date" tabindex="4" formControlName="birthdate" class="form-control" [(ngModel)]="dog.birthdate"/>
+                <input type="date" tabindex="4" formControlName="birthdate" class="form-control"
+                  [(ngModel)]="dog.birthdate">
               </div>
             </div>
 
             <div class="col-md-6">
-
               <div class="form-group">
                 <label>Deathdate dog</label>
-                <input type="date" tabindex="5" formControlName="deathdate" class="form-control" [(ngModel)]="dog.deathdate" />              </div>
-
+                <input type="date" tabindex="5" formControlName="deathdate" class="form-control"
+                  [(ngModel)]="dog.deathdate"> </div>
             </div>
           </div>
 
-
-
           <div class="form-group">
             <label>Email*</label>
-            <input type="text" tabindex="8" formControlName="owner_email" class="form-control" 
-                [ngClass]="{ 'is-invalid': f.owner_email.touched && f.owner_email.errors }" placeholder="Enter owner email" />
+            <input type="text" tabindex="8" formControlName="owner_email" class="form-control"
+              [ngClass]="{ 'is-invalid': f.owner_email.touched && f.owner_email.errors }"
+              placeholder="Enter owner email">
             <div *ngIf="!!f.owner_email.touched && !!f.owner_email.errors" class="invalid-feedback">
               <div *ngIf="!!f.owner_email.errors.required">Owner email is required</div>
               <div *ngIf="!!f.owner_email.errors.email">Owner email must be a valid email address</div>
@@ -119,7 +115,7 @@
           <div class="form-group">
             <label>Residence</label>
             <textarea tabindex="11" class="form-control" id="exampleFormControlTextarea1" placeholder="Enter residence"
-              [(ngModel)]="dog.residence" rows="4"></textarea>
+              rows="4" [(ngModel)]="dog.residence"></textarea>
           </div>
 
         </div>
@@ -137,7 +133,7 @@
             </mat-expansion-panel-header>
             <img src="./../../assets/images/dogs/1.jpeg" alt="">
           </mat-expansion-panel>
-         
+
 
         </div>
       </div>
@@ -146,8 +142,8 @@
 
       <div class="form-group">
         <label>Barcode Sample*</label>
-        <input type="text" tabindex="12" formControlName="barcode" class="form-control" [(ngModel)]="sampleBarcode"
-          [ngClass]="{ 'is-invalid': f.barcode.touched && f.barcode.errors }" placeholder="Enter sample barcode" />
+        <input type="text" tabindex="12" formControlName="barcode" class="form-control"
+          [ngClass]="{ 'is-invalid': f.barcode.touched && f.barcode.errors }" placeholder="Enter sample barcode" [(ngModel)]="sample.barcode">
         <div *ngIf="!!f.barcode.touched && !!f.barcode.errors" class="invalid-feedback">
           <div *ngIf="!!f.barcode.errors.required">Barcode sample is required</div>
         </div>
@@ -158,18 +154,17 @@
 
       <div class="form-group">
         <label>Sample Origin</label>
-        <mat-radio-group tabindex="13" formControlName="sampleorigin" class="tp-radio-group" [(ngModel)]="sampleOrigin">
-          <mat-radio-button class="tp-radio-button" *ngFor="let origin of origins" [value]="origin">
+        <mat-radio-group tabindex="13" formControlName="sampleOrigin" class="tp-radio-group">
+          <mat-radio-button class="tp-radio-button" *ngFor="let origin of origins" [value]="origin"  [(ngModel)]="sample.origin">
             {{origin}}
           </mat-radio-button>
         </mat-radio-group>
-        <!--  <div class="tp-selected-value">
-                Selected Season: {{dog.gender}}
-              </div> -->
       </div>
 
       <div class="form-group">
-        <button class="btn btn-sm btn-primary" (click)="createDog(dog)" [disabled]="DogForm.invalid">Register</button>
+        <button class="btn btn-sm btn-primary" (click)="addDog(dog)" [disabled]="form.invalid">Add Dog</button>
+        <!-- <button class="btn btn-sm btn-warning" (click)="modofyDog(dog)" [disabled]="form.invalid" *nfIf="editing">Modify Dog</button> -->
+        <button class="btn btn-sm btn-warning" (click)="modifyDog(dog)" [disabled]="form.invalid">Modify Dog</button>
         <!-- <button class="btn btn-sm btn-primary" (click)="save()">Save</button>
             <button class="btn btn-sm btn-primary" (click)="delete()">Delete</button>
             <button class="btn btn-sm btn-primary" (click)="goBack()">Back</button> -->

@@ -12,7 +12,8 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [AuthService]
 })
 
 export class LoginComponent implements OnInit {
@@ -20,26 +21,42 @@ export class LoginComponent implements OnInit {
   public user: User;
   // loginForm: FormGroup;
   submitted = false;
+  private error = '';
 
   constructor(
     // private formBuilder: FormBuilder,
     private authService: AuthService,
   ) { }
 
+  /**
+   * Log in an existing user, storing the access token and the refresh token
+   * from the API response in web browser's local storage.
+   */
   login() {
-    this.authService.loginUser(this.user)
+    this.authService.getToken(this.user)
       .subscribe(
+        // Success
         response => {
-          localStorage.access_token = response['access_token'];
-          localStorage.refresh_token = response['refresh_token'];
-        }
-      );
+          // console.log(response); // Debugging
+          localStorage.setItem('access_token', response.access_token);
+          localStorage.setItem('refresh_token', response.refresh_token);
+        },
 
-    // Feedback to the user
-    this.authService.getUser()
-      .subscribe(
-        response => {
-          alert(`Welcome ${response.name}`);
+        // Error handling
+        error => this.error = error,
+
+        // Complete
+        () => {
+          // Feedback to the user -- TODO: redirect to the home page
+          this.authService.getUser()
+            .subscribe(
+              response => {
+                alert(`Welcome ${response.name}`);
+              }
+            );
+
+          // Error showing (debugging)
+          console.log(this.error);
         }
       );
   }

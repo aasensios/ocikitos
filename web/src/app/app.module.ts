@@ -12,7 +12,6 @@ import { DogDetailComponent } from './components/dog-detail/dog-detail.component
 import { ErrorComponent } from './components/error/error.component';
 import { DogDirective } from './directives/dog.directive';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DogManagementComponent } from './components/dog-management/dog-management.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MatRadioModule } from '@angular/material';
@@ -25,14 +24,8 @@ import {MatExpansionModule} from '@angular/material'
 
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { HomeComponent } from './components/home/home.component';
-import { DogsFilterComponent } from './components/dogs-filter/dogs-filter.component';
 import { SamplesComponent } from './components/samples/samples.component';
 import { StrsComponent } from './components/strs/strs.component';
-import { AuthService } from './services/auth.service';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -41,11 +34,9 @@ import { AuthService } from './services/auth.service';
     DogDetailComponent,
     ErrorComponent,
     DogDirective,
-    DogManagementComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    DogsFilterComponent,
     SamplesComponent,
     StrsComponent
   ],
@@ -64,10 +55,10 @@ import { AuthService } from './services/auth.service';
     MatSelectModule,
     MatInputModule, MatOptionModule, MatIconModule,
     MatDividerModule, MatListModule,
-    NgxBarcodeModule
+    NgxBarcodeModule,
 
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
