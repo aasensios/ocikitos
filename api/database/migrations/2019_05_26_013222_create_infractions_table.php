@@ -27,8 +27,8 @@ class CreateInfractionsTable extends Migration
             $table->timestamps();
 
             // Foreign keys
-            // $table->foreign('incident_id')->references('id')->on('incidents');
-            // $table->foreign('officer_id')->references('id')->on('users');
+            $table->foreign('incident_id')->references('id')->on('incidents');
+            $table->foreign('officer_id')->references('id')->on('users');
         });
     }
 

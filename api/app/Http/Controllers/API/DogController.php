@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\API;
 
 use App\Dog;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Validator;
 
-class DogController extends Controller
+class DogController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +18,20 @@ class DogController extends Controller
      */
     public function index()
     {
+        // $dogs = Dog::all();
+        // $data = $dogs->toArray();
+
+        // $response = [
+        //     'success' => true,
+        //     'data' => $data,
+        //     'message' => 'Dogs retrieved successfully.',
+        // ];
+
+        // return response()->json($response, 200);
+
         $dogs = Dog::all();
-        $data = $dogs->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Dogs retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($dogs->toArray(), 'Dogs retrieved successfully.');
     }
 
     /**
@@ -40,7 +45,7 @@ class DogController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'chip' => 'numeric',
+            'chip' => 'numeric|unique:dogs',
             'name' => 'required',
             'gender' => 'required',
             'breed_id',
@@ -53,24 +58,20 @@ class DogController extends Controller
         ]);
 
         if ($validator->fails()) {
-            $response = [
-                'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors(),
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Validation Error.', $validator->errors());
         }
 
         $dog = Dog::create($input);
-        $data = $dog->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Dog stored successfully.',
-        ];
+        // $response = [
+        //     'success' => true,
+        //     'data' => $data,
+        //     'message' => 'Dog stored successfully.',
+        // ];
 
-        return response()->json($response, 200);
+        // return response()->json($response, 200);
+
+        return $this->sendResponse($dog->toArray(), 'Dog added successfully.');
     }
 
     /**
@@ -84,23 +85,20 @@ class DogController extends Controller
         $dog = Dog::find($id);
 
         if (is_null($dog)) {
-            $response = [
-                'success' => false,
-                'data' => 'Empty',
-                'message' => 'Dog not found.',
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Dog not found.');
         }
 
-        $data = $dog->toArray();
+        // $data = $dog->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Dog retrieved successfully.',
-        ];
+        // $response = [
+        //     'success' => true,
+        //     'data' => $data,
+        //     'message' => 'Dog retrieved successfully.',
+        // ];
 
-        return response()->json($response, 200);
+        // return response()->json($response, 200);
+
+        return $this->sendResponse($dog->toArray(), 'Dog retrieved successfully.');
     }
 
     /**
@@ -115,7 +113,10 @@ class DogController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'chip' => 'numeric',
+            'chip' => [
+                'numeric',
+                Rule::unique('dogs')->ignore($dog->id),
+            ],
             'name' => 'required',
             'gender' => 'required',
             'breed_id',
@@ -128,12 +129,7 @@ class DogController extends Controller
         ]);
 
         if ($validator->fails()) {
-            $response = [
-                'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors(),
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Validation Error.', $validator->errors());
         }
 
         $dog->chip = $input['chip'];
@@ -146,17 +142,40 @@ class DogController extends Controller
         $dog->owner_dni = $input['owner_dni'];
         $dog->owner_fullname = $input['owner_fullname'];
         $dog->residence = $input['residence'];
+
+        // if ($request->has('chip')) {
+        //     $dog->chip = $input['chip'];
+        // }
+        // if ($request->has('name')) {
+        //     $dog->name = $input['name'];
+        // }
+        // if ($request->has('gender')) {
+        //     $dog->gender = $input['gender'];
+        // }
+        // if ($request->has('breed_id')) {
+        //     $dog->breed_id = $input['breed_id'];
+        // }
+        // if ($request->has('color_id')) {
+        //     $dog->color_id = $input['color_id'];
+        // }
+        // if ($request->has('birthdate')) {
+        //     $dog->birthdate = $input['birthdate'];
+        // }
+        // if ($request->has('deathdate')) {
+        //     $dog->deathdate = $input['deathdate'];
+        // }
+        // if ($request->has('owner_dni')) {
+        //     $dog->owner_dni = $input['owner_dni'];
+        // }
+        // if ($request->has('owner_fullname')) {
+        //     $dog->owner_fullname = $input['owner_fullname'];
+        // }
+        // if ($request->has('residence')) {
+        //     $dog->residence = $input['residence'];
+        // }
         $dog->save();
 
-        $data = $dog->toArray();
-
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Dog updated successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($dog->toArray(), 'Dog updated successfully.');
     }
 
     /**
@@ -168,18 +187,16 @@ class DogController extends Controller
     public function destroy(Dog $dog)
     {
         $dog->delete();
-        $data = $dog->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Dog deleted successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($dog->toArray(), 'Dog deleted successfully.');
     }
 
-    // Auxiliar methods to retrieve data from static tables.
+    /*
+    |-------------------------------------------------------------------------
+    | Methods to retrieve data from other tables related to this resource.
+    |-------------------------------------------------------------------------
+    |
+     */
 
     /**
      * Display a listing of the breeds.
@@ -189,15 +206,8 @@ class DogController extends Controller
     public function getBreeds()
     {
         $breeds = DB::table('breeds')->get();
-        $data = $breeds->toArray();
-
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Breeds retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        
+        return $this->sendResponse($breeds->toArray(), 'Breeds retrieved successfully.');
     }
 
     /**
@@ -208,14 +218,7 @@ class DogController extends Controller
     public function getColors()
     {
         $colors = DB::table('colors')->get();
-        $data = $colors->toArray();
-
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Colors retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        
+        return $this->sendResponse($colors->toArray(), 'Colors retrieved successfully.');
     }
 }

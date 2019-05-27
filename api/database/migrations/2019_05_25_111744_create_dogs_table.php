@@ -36,7 +36,7 @@ class CreateDogsTable extends Migration
             // Foreign keys
             $table->foreign('breed_id')->references('id')->on('breeds');
             $table->foreign('color_id')->references('id')->on('colors');
-            // $table->foreign('veterinarian_id')->references('id')->on('users');
+            $table->foreign('veterinarian_id')->references('id')->on('users');
         });
     }
 

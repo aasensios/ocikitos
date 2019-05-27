@@ -13,20 +13,26 @@ use Illuminate\Http\Request;
 |
 */
 
+// User routes.
+Route::post('register', 'API\RegisterController@register');
+// Login route is /oauth/token, managed by Laravel Passport.
+
+// Protected logged in user information.
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Resource routes.
-Route::apiResources([
-    // 'users' => 'API\UserController',
-    'dogs' => 'API\DogController',
-    'samples' => 'API\SampleController',
-    'incidents' => 'API\IncidentController',
-    'infractions' => 'API\InfractionController',
-]);
+// Protected resource routes.
+Route::middleware('auth:api')->group( function () {
+	Route::apiResources([
+        'dogs' => 'API\DogController',
+        'samples' => 'API\SampleController',
+        'incidents' => 'API\IncidentController',
+        'infractions' => 'API\InfractionController',
+    ]);
+});
 
-// Additional routes to access data from non-modeled tables.
+// Non-protected additional routes to access non-confidential bussiness data.
 Route::get('breeds', 'API\DogController@getBreeds');
 Route::get('colors', 'API\DogController@getColors');
 Route::get('strs', 'API\SampleController@getStrs');

@@ -28,7 +28,7 @@ class CreateIncidentsTable extends Migration
 
             // Foreign keys
             $table->foreign('sample_barcode')->references('barcode')->on('samples');
-            // $table->foreign('agent_id')->references('id')->on('users');
+            $table->foreign('agent_id')->references('id')->on('users');
         });
     }
 

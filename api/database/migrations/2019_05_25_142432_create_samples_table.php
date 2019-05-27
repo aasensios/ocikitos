@@ -30,7 +30,7 @@ class CreateSamplesTable extends Migration
 
             // Foreign keys
             $table->foreign('dog_id')->references('id')->on('dogs');
-            // $table->foreign('bioinformatic_id')->references('id')->on('users');
+            $table->foreign('bioinformatic_id')->references('id')->on('users');
         });
     }
 
