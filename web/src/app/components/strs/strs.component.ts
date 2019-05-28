@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Str } from '../../models/str.model';
 import { StrsService } from '../../services/strs.service';
 
@@ -6,39 +6,51 @@ import { StrsService } from '../../services/strs.service';
 @Component({
   selector: 'app-strs',
   templateUrl: './strs.component.html',
+  styleUrls: ['./strs.component.css'],
   providers: [StrsService],
-  styleUrls: ['./strs.component.css']
 })
 export class StrsComponent implements OnInit {
 
   public strs: Str[];
   public strsFiltered: Str[] = [];
 
+  error: string;
+  success: boolean;
+  message: string;
+  editing = false;
+
   // Pagination properties
-  itemsPerPage: number = 10;
+  itemsPerPage = 10;
   currentPage: number;
   totalItems: number;
 
   // Filter properties
   locusFilter: string;
-  chromFilter: Number;;
-  repeatFilter: String;
-  tempFilter: Number;
+  chromoFilter: number;
+  repeatFilter: string;
   strSelected: Str;
 
-
-
-  constructor(
-    private strsService: StrsService) { }
-
+  constructor(private dogsService: StrsService) { }
 
   ngOnInit() {
-    this.strsService.getStrs()
+    this.getStrs();
+  }
+
+  getStrs() {
+    this.dogsService.getStrs()
       .subscribe(
         response => {
-          const success = response['success'];
+          this.success = response['success'];
           this.strs = response['data'];
-          const message = response['message'];
+          this.message = response['message'];
+        },
+
+        // Error handling
+        error => this.error = error,
+
+        // Complete
+        () => {
+          this.strsFiltered = this.strs;
         }
       );
   }
@@ -50,9 +62,9 @@ export class StrsComponent implements OnInit {
     this.strsFiltered = this.strs.filter(
       str => {
         let locusValid = false;
-        let chromValid = false;
         let repeatValid = false;
-        let tempValid = false;
+        let chromoValid = false;
+
 
         if (this.locusFilter && this.locusFilter !== '') { // filter by locus
           locusValid = str.locus.toLowerCase().
@@ -61,18 +73,19 @@ export class StrsComponent implements OnInit {
           locusValid = true;
         }
 
-        chromValid = str.chromosome <= this.chromFilter; // filter by chromosome
-
-        if (this.repeatFilter && this.repeatFilter !== '') { // filter by repeaat motif
+        if (this.repeatFilter && this.repeatFilter !== '') { // filter by repeat motif
           repeatValid = str.repeat_motif.toLowerCase().
             indexOf(this.repeatFilter.toLowerCase()) !== -1;
         } else {
           repeatValid = true;
         }
 
-        tempValid = str.annealing_temp <= this.tempFilter; // filter by annealing temp
+        chromoValid = str.chromosome === this.chromoFilter; // filter by chromosome
 
-        return (locusValid && repeatValid && chromValid || tempValid);
+
+        
+
+        return ((locusValid && repeatValid) && chromoValid);
       }
 
     );
@@ -80,6 +93,7 @@ export class StrsComponent implements OnInit {
 
   onSelect(str: Str) {
     this.strSelected = str;
+    this.editing = true;
   }
 
 }

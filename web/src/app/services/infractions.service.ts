@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Str } from '../models/str.model';
+import { Infraction } from '../models/infraction.model';
 import { Observable } from 'rxjs';
 import { API } from './api.constants';
 
 @Injectable()
-export class StrsService {
+export class InfractionsService {
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getStrs(): Observable<Str[]> {
-    const url = `${API.URL}/strs`;
+  getInfractions(): Observable<Infraction[]> {
+    const url = `${API.URL}/infractions`;
 
     // User access token stored in the browser's local storage.
     const accessToken = localStorage.access_token;
@@ -27,13 +27,13 @@ export class StrsService {
       })
     };
 
-    return this.http.get<Str[]>(url, options);
+    return this.http.get<Infraction[]>(url, options);
   }
 
-  create(str: Str): Observable<Str> {
-    const url = `${API.URL}/strs`;
+  create(infraction: Infraction): Observable<Infraction> {
+    const url = `${API.URL}/infractions`;
 
-    const body = str;
+    const body = infraction;
 
     const accessToken = localStorage.access_token;
 
@@ -44,13 +44,13 @@ export class StrsService {
       })
     };
 
-    return this.http.post<Str>(url, body, options);
+    return this.http.post<Infraction>(url, body, options);
   }
 
-  update(str: Str): Observable<Str> {
-    const url = `${API.URL}/strs/${str.id}`;
+  update(infraction: Infraction): Observable<Infraction> {
+    const url = `${API.URL}/infractions/${infraction.id}`;
 
-    const body = str;
+    const body = infraction;
 
     const accessToken = localStorage.access_token;
 
@@ -61,11 +61,11 @@ export class StrsService {
       })
     };
 
-    return this.http.put<Str>(url, body, options);
+    return this.http.put<Infraction>(url, body, options);
   }
 
-  delete(str: Str): Observable<Str[]> {
-    const url = `${API.URL}/strs/${str.id}`;
+  delete(infraction: Infraction): Observable<Infraction[]> {
+    const url = `${API.URL}/infractions/${infraction.id}`;
 
     // User access token stored in the browser's local storage.
     const accessToken = localStorage.access_token;
@@ -80,7 +80,7 @@ export class StrsService {
       })
     };
 
-    return this.http.delete<Str[]>(url, options);
+    return this.http.delete<Infraction[]>(url, options);
   }
 
 }

@@ -22,6 +22,9 @@ import { NgxBarcodeModule } from 'ngx-barcode';
 import { HomeComponent } from './components/home/home.component';
 import { SamplesComponent } from './components/samples/samples.component';
 import { StrsComponent } from './components/strs/strs.component';
+import { IncidentsComponent } from './components/incidents/incidents.component';
+import { InfractionsComponent } from './components/infractions/infractions.component';
+import { InfoComponent } from './components/info/info.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { StrsComponent } from './components/strs/strs.component';
     HomeComponent,
     SamplesComponent,
     StrsComponent,
+    IncidentsComponent,
+    InfractionsComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,

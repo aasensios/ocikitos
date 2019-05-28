@@ -1,4 +1,4 @@
-<h3>Filter dogs <i class="fas fa-dna"></i></h3>
+<h4>Filter STR's <i class="fas fa-dna"></i></h4>
 <div>
   <form #dogsFilterForm="ngForm">
     <table class="table table-bordered">
@@ -25,16 +25,11 @@
           <tr>
             <td>Filter by chromosome</td>
             <td>
-              <input type="number" [(ngModel)]="chromFilter" name="chromFilter" (keyup)="filter()">
+              <input type="number" [(ngModel)]="chromoFilter" name="chromFilter" (keyup)="filter()">
             </td>
           </tr>
 
-          <tr>
-            <td>Filter by anneling temp.</td>
-            <td>
-              <input type="number" [(ngModel)]="tempFilter" name="tempFilter" (keyup)="filter()">
-            </td>
-          </tr>
+          
 
         </div>
         <div class="col-md-4">

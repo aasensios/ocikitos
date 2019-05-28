@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Str } from '../models/str.model';
+import { Incident } from '../models/incident.model';
 import { Observable } from 'rxjs';
 import { API } from './api.constants';
 
 @Injectable()
-export class StrsService {
+export class IncidentsService {
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getStrs(): Observable<Str[]> {
-    const url = `${API.URL}/strs`;
+  getIncidents(): Observable<Incident[]> {
+    const url = `${API.URL}/incidents`;
 
     // User access token stored in the browser's local storage.
     const accessToken = localStorage.access_token;
@@ -27,13 +27,13 @@ export class StrsService {
       })
     };
 
-    return this.http.get<Str[]>(url, options);
+    return this.http.get<Incident[]>(url, options);
   }
 
-  create(str: Str): Observable<Str> {
-    const url = `${API.URL}/strs`;
+  create(incident: Incident): Observable<Incident> {
+    const url = `${API.URL}/incidents`;
 
-    const body = str;
+    const body = incident;
 
     const accessToken = localStorage.access_token;
 
@@ -44,13 +44,13 @@ export class StrsService {
       })
     };
 
-    return this.http.post<Str>(url, body, options);
+    return this.http.post<Incident>(url, body, options);
   }
 
-  update(str: Str): Observable<Str> {
-    const url = `${API.URL}/strs/${str.id}`;
+  update(incident: Incident): Observable<Incident> {
+    const url = `${API.URL}/incidents/${incident.id}`;
 
-    const body = str;
+    const body = incident;
 
     const accessToken = localStorage.access_token;
 
@@ -61,11 +61,11 @@ export class StrsService {
       })
     };
 
-    return this.http.put<Str>(url, body, options);
+    return this.http.put<Incident>(url, body, options);
   }
 
-  delete(str: Str): Observable<Str[]> {
-    const url = `${API.URL}/strs/${str.id}`;
+  delete(incident: Incident): Observable<Incident[]> {
+    const url = `${API.URL}/incidents/${incident.id}`;
 
     // User access token stored in the browser's local storage.
     const accessToken = localStorage.access_token;
@@ -80,7 +80,7 @@ export class StrsService {
       })
     };
 
-    return this.http.delete<Str[]>(url, options);
+    return this.http.delete<Incident[]>(url, options);
   }
 
 }

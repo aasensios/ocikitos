@@ -1,47 +1,86 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Sample } from '../models/sample.model';
 import { Observable } from 'rxjs';
+import { API } from './api.constants';
 
 @Injectable()
 export class SamplesService {
-
-/*     private url = 'http://apps.proven.cat/~dawbi1901/api/api/';
- */    private url = 'http://localhost:8000/api/';
 
   constructor(
     private http: HttpClient
   ) { }
 
   getSamples(): Observable<Sample[]> {
-    return this.http.get<Sample[]>(this.url+'samples');
+    const url = `${API.URL}/samples`;
+
+    // User access token stored in the browser's local storage.
+    const accessToken = localStorage.access_token;
+
+    // const options = API.options;
+    // options.headers.append('Authorization', `Bearer ${accessToken}`);
+
+    const options = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        Authorization: `Bearer ${accessToken}`
+      })
+    };
+
+    return this.http.get<Sample[]>(url, options);
   }
 
-  /* insert(dog: Dog): Observable<Dog> {
-    const url = `${this.url}dogs`;
-    // set query parameters from form data
+  create(sample: Sample): Observable<Sample> {
+    const url = `${API.URL}/samples`;
 
-    let httpParams = new HttpParams()
-      .append('chip', dog.chip)
-      .append('name', dog.name)
-      .append('gender', dog.gender)
-      .append('breed_id', dog.breed_id.toString())
-      .append('color_id', dog.color_id.toString())
-      .append('birthdate', dog.birthdate.toString())
-      .append('owner_dni', dog.owner_dni)
-      .append('owner_fullname', dog.owner_fullname)
-      .append('residence', dog.residence);
+    const body = sample;
 
+    const accessToken = localStorage.access_token;
 
-    // configure headers for form data.
-    let httpHeaders: HttpHeaders = new HttpHeaders();
-    
+    const options = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        Authorization: `Bearer ${accessToken}`
+      })
+    };
 
+    return this.http.post<Sample>(url, body, options);
+  }
 
+  update(sample: Sample): Observable<Sample> {
+    const url = `${API.URL}/samples/${sample.id}`;
 
-  
-    return this.http
-      .post<Dog>(url, httpParams, { headers: httpHeaders })
-    
-  } */
+    const body = sample;
+
+    const accessToken = localStorage.access_token;
+
+    const options = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        Authorization: `Bearer ${accessToken}`
+      })
+    };
+
+    return this.http.put<Sample>(url, body, options);
+  }
+
+  delete(sample: Sample): Observable<Sample[]> {
+    const url = `${API.URL}/samples/${sample.id}`;
+
+    // User access token stored in the browser's local storage.
+    const accessToken = localStorage.access_token;
+
+    // const options = API.options;
+    // options.headers.append('Authorization', `Bearer ${accessToken}`);
+
+    const options = {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        Authorization: `Bearer ${accessToken}`
+      })
+    };
+
+    return this.http.delete<Sample[]>(url, options);
+  }
+
 }

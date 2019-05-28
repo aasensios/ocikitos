@@ -1,10 +1,10 @@
 <!-- main app container -->
 <div class="jumbotron">
   <div class="container-fluid">
-    <!-- <form #dogForm="ngForm" [formGroup]="form"> -->
     <form #dogForm="ngForm" [formGroup]="form">
       <div class="row">
         <div class="col-md-4">
+
           <div class="form-group">
             <label>Chip</label>
             <input type="text" tabindex="1" formControlName="chip" class="form-control" [(ngModel)]="dog.chip"
@@ -15,12 +15,14 @@
               <div *ngIf="!!f.chip.errors.minlength">enter 15 carateres min.</div>
             </div>
           </div>
+
           <div class="form-group">
             <label>Breed</label>
             <select tabindex="3" class="form-control" formControlName="breed" [(ngModel)]="dog.breed_id">
               <option [value]="breed.id" *ngFor="let breed of breeds">{{ breed.name }}</option>
             </select>
           </div>
+
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">

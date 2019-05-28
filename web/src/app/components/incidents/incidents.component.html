@@ -1,0 +1,81 @@
+<h4>Filter incidents <i class="fas fa-poo"></i></h4>
+<div class="container">
+  <!-- <app-incident [incident]="incidentSelected" *ngIf="incidentSelected">
+  </app-incident> -->
+  <form #incidentsFilterForm="ngForm">
+    <table id="filter" class="table table-bordered">
+      <caption>Filters</caption>
+      <div class="row">
+        <div class="col-md-4">
+          <tr>
+            <td>Location</td>
+            <td>
+              <input type="text" [(ngModel)]="locationFilter" name="locationFilter" (keyup)="filter()">
+            </td>
+          </tr>
+          <tr>
+            <td>Sample barcode</td>
+            <td>
+              <input type="text" [(ngModel)]="barcodeFilter" name="barceodeFilter" (keyup)="filter()">
+            </td>
+          </tr>
+        </div>
+        
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <tr>
+            <td>Items per page</td>
+            <td>
+              <input type="number" [(ngModel)]="itemsPerPage" name="itemsPerPage">
+            </td>
+          </tr>
+          <tr>
+            <td>Number of filtered incidents</td>
+            <td>{{ incidentsFiltered.length }}</td>
+          </tr>
+        </div>
+      </div>
+    </table>
+
+    <div *ngIf="incidentsFiltered.length == 0">
+      <h3>No incidents found</h3>
+    </div>
+
+    <div *ngIf="incidentsFiltered.length > 0">
+      <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+      </pagination-controls>
+      <form #incidentsManagementForm="ngForm" novalidate>
+        <table *ngIf=incidents class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Photo</th>
+              <th scope="col">Location</th>
+              <th scope="col">Sample barcode</th>
+              <th scope="col">Agent ID</th>
+              <th scope="col">Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let incident of incidentsFiltered
+                  | paginate: {itemsPerPage: itemsPerPage, currentPage : currentPage}; let i = index;">
+              <th scope="row">{{ incident.id }}</th>
+              <td>{{ incident.photo }}</td>
+             <!--  <td *ngIf="dog.gender == 'male'">{{ dog.gender }}<br><i class="fas fa-dog" style="color: blue;"></i></td>
+              <td *ngIf="dog.gender == 'female'">{{ dog.gender }}<br><i class="fas fa-dog" style="color: fuchsia;"></i> 
+              </td>-->
+              <td>{{ incident.location }}</td>
+              <td>{{ incident.sample_barcode }}</td>
+              <td>{{ incident.agent_id }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="onSelect(incident)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+        </pagination-controls>
+      </form>
+    </div>
+  </form>
+</div>

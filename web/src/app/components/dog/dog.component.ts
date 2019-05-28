@@ -65,6 +65,10 @@ export class DogComponent implements OnInit {
         }
       );
 
+    if (this.dog==null) {
+      this.dog = new Dog();
+    }
+
     this.form = this.formBuilder.group({
       chip: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(15)]],
       name: ['', Validators.required],
@@ -89,11 +93,13 @@ export class DogComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    console.log(this.dog);
+
 
     // Stop here if form is invalid
-    // if (this.form.invalid) {
-    //   return;
-    // }
+    if (this.form.invalid) {
+     return;
+    }
   }
 
   addDog() {
