@@ -20,6 +20,7 @@ class CreateSamplesTable extends Migration
             // Fillable fields
             $table->string('barcode')->unique();
             $table->string('origin');
+            // $table->binary('sequence')->nullable();
             $table->string('sequence')->nullable();
             $table->json('pattern')->nullable();
             $table->bigInteger('dog_id')->unsigned()->nullable();

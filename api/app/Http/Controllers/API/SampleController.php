@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController as BaseController;
 use App\Sample;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Validator;
 
-class SampleController extends Controller
+class SampleController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +19,8 @@ class SampleController extends Controller
     public function index()
     {
         $samples = Sample::all();
-        $data = $samples->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Samples retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($samples->toArray(), 'Samples retrieved successfully.');
     }
 
     /**
@@ -40,7 +34,7 @@ class SampleController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'barcode' => 'required',
+            'barcode' => 'required|unique:samples',
             'origin' => ['required', Rule::in(['saliva', 'blood', 'droppings'])],
             'sequence', // => 'nullable|mimetypes:text/plain', // plain/fasta
             'pattern' => 'nullable|json',
@@ -48,24 +42,12 @@ class SampleController extends Controller
         ]);
 
         if ($validator->fails()) {
-            $response = [
-                'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors(),
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Validation Error.', $validator->errors());
         }
 
         $sample = Sample::create($input);
-        $data = $sample->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Sample stored successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($sample->toArray(), 'Sample added successfully.');
     }
 
     /**
@@ -79,23 +61,10 @@ class SampleController extends Controller
         $sample = Sample::find($id);
 
         if (is_null($sample)) {
-            $response = [
-                'success' => false,
-                'data' => 'Empty',
-                'message' => 'Sample not found.',
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Sample not found.');
         }
 
-        $data = $sample->toArray();
-
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Sample retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($sample->toArray(), 'Sample retrieved successfully.');
     }
 
     /**
@@ -110,38 +79,36 @@ class SampleController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'barcode' => 'required',
-            'origin' => ['required', Rule::in(['saliva', 'blood', 'droppings'])],
+            'barcode' => Rule::unique('samples')->ignore($sample->id),
+            'origin' => Rule::in(['saliva', 'blood', 'droppings']),
             'sequence', // => 'nullable|mimetypes:text/plain', // plain/fasta
             'pattern' => 'nullable|json',
             'dog_id' => 'nullable|numeric',
         ]);
 
         if ($validator->fails()) {
-            $response = [
-                'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors(),
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Validation Error.', $validator->errors());
         }
 
-        $sample->barcode = $input['barcode'];
-        $sample->origin = $input['origin'];
-        $sample->sequence = $input['sequence'];
-        $sample->pattern = $input['pattern'];
-        $sample->dog_id = $input['dog_id'];
+        if ($request->has('barcode')) {
+            $sample->barcode = $input['barcode'];
+        }
+        if ($request->has('origin')) {
+            $sample->origin = $input['origin'];
+        }
+        if ($request->has('sequence')) {
+            $sample->sequence = $input['sequence'];
+        }
+        if ($request->has('pattern')) {
+            $sample->pattern = $input['pattern'];
+        }
+        if ($request->has('dog_id')) {
+            $sample->dog_id = $input['dog_id'];
+        }
+
         $sample->save();
 
-        $data = $sample->toArray();
-
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Sample updated successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($sample->toArray(), 'Sample updated successfully.');
     }
 
     /**
@@ -153,15 +120,8 @@ class SampleController extends Controller
     public function destroy(Sample $sample)
     {
         $sample->delete();
-        $data = $sample->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Sample deleted successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($sample->toArray(), 'Sample deleted successfully.');
     }
 
     // Additional methods to retrieve data from non-modeled tables.
@@ -174,14 +134,7 @@ class SampleController extends Controller
     public function getStrs()
     {
         $strs = DB::table('strs')->get();
-        $data = $strs->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'STRs retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($strs->toArray(), 'STRs retrieved successfully.');
     }
 }
