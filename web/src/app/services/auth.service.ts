@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Observable } from 'rxjs';
 import { API } from './api.constants';
@@ -21,7 +21,9 @@ export class AuthService {
       password_confirmation: user.password_confirmation
     };
 
-    return this.http.post(url, body, API.options);
+    const options = API.getBasicOptions();
+
+    return this.http.post(url, body, options);
   }
 
   getToken(user: User): Observable<any> {
@@ -35,42 +37,45 @@ export class AuthService {
       client_secret: API.CLIENT_SECRET
     };
 
-    return this.http.post(url, body, API.options);
+    const options = API.getBasicOptions();
+
+    return this.http.post(url, body, options);
   }
 
   getUser(): Observable<User> {
     const url = `${API.URL}/user`;
 
-    // User access token stored in the browser's local storage.
-    const accessToken = localStorage.access_token;
+    const accessToken = localStorage.getItem('access_token');
 
-    // const options = API.options;
-    // options.headers.append('Authorization', `Bearer ${accessToken}`);
-
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      })
-    };
+    const options = API.getAuthOptions(accessToken);
 
     return this.http.get<User>(url, options);
   }
 
-  // // Add User
-  // addUser(user: User): Observable<any> {
-  //   return this.http.post<User>(`${URL}/users`, user, this.options);
+  // TODO implementation in Laravel API
+  //
+  // modifyUser(user: User): Observable<User> {
+  //   const url = `${API.URL}/users/${user.id}`;
+
+  //   const body = user;
+
+  //   const accessToken = localStorage.getItem('access_token');
+
+  //   const options = API.getAuthOptions(accessToken);
+
+  //   return this.http.post<User>(url, body, options);
   // }
 
-  // // Toggle Completed
-  // modifyUser(user: User): Observable<any> {
-  //   return this.http.put(`${URL}/users/${user.id}`, user, this.options);
-  // }
+  // TODO implementation in Laravel API
+  //
+  // deleteUser(user: User): Observable<User> {
+  //   const url = `${API.URL}/users/${user.id}`;
 
-  // // Delete User
-  // deleteUser(user: User): Observable<any> {
-  //   const url = `${URL}/${user.id}`;
-  //   return this.http.delete<User>(`${URL}/users/${user.id}`, this.options);
+  //   const accessToken = localStorage.getItem('access_token');
+
+  //   const options = API.getAuthOptions(accessToken);
+
+  //   return this.http.delete<User>(url, options);
   // }
 
 }

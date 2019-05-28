@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Incident } from '../models/incident.model';
 import { Observable } from 'rxjs';
 import { API } from './api.constants';
@@ -14,18 +14,9 @@ export class IncidentsService {
   getIncidents(): Observable<Incident[]> {
     const url = `${API.URL}/incidents`;
 
-    // User access token stored in the browser's local storage.
-    const accessToken = localStorage.access_token;
+    const accessToken = localStorage.getItem('access_token');
 
-    // const options = API.options;
-    // options.headers.append('Authorization', `Bearer ${accessToken}`);
-
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      })
-    };
+    const options = API.getAuthOptions(accessToken);
 
     return this.http.get<Incident[]>(url, options);
   }
@@ -35,14 +26,9 @@ export class IncidentsService {
 
     const body = incident;
 
-    const accessToken = localStorage.access_token;
+    const accessToken = localStorage.getItem('access_token');
 
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      })
-    };
+    const options = API.getAuthOptions(accessToken);
 
     return this.http.post<Incident>(url, body, options);
   }
@@ -52,14 +38,9 @@ export class IncidentsService {
 
     const body = incident;
 
-    const accessToken = localStorage.access_token;
+    const accessToken = localStorage.getItem('access_token');
 
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      })
-    };
+    const options = API.getAuthOptions(accessToken);
 
     return this.http.put<Incident>(url, body, options);
   }
@@ -67,18 +48,9 @@ export class IncidentsService {
   delete(incident: Incident): Observable<Incident[]> {
     const url = `${API.URL}/incidents/${incident.id}`;
 
-    // User access token stored in the browser's local storage.
-    const accessToken = localStorage.access_token;
+    const accessToken = localStorage.getItem('access_token');
 
-    // const options = API.options;
-    // options.headers.append('Authorization', `Bearer ${accessToken}`);
-
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      })
-    };
+    const options = API.getAuthOptions(accessToken);
 
     return this.http.delete<Incident[]>(url, options);
   }

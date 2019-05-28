@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Dog } from '../models/dog.model';
 import { Observable } from 'rxjs';
 import { API } from './api.constants';
@@ -14,18 +14,9 @@ export class DogsService {
   getDogs(): Observable<Dog[]> {
     const url = `${API.URL}/dogs`;
 
-    // User access token stored in the browser's local storage.
-    const accessToken = localStorage.access_token;
+    const accessToken = localStorage.getItem('access_token');
 
-    // const options = API.options;
-    // options.headers.append('Authorization', `Bearer ${accessToken}`);
-
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      })
-    };
+    const options = API.getAuthOptions(accessToken);
 
     return this.http.get<Dog[]>(url, options);
   }
@@ -35,14 +26,9 @@ export class DogsService {
 
     const body = dog;
 
-    const accessToken = localStorage.access_token;
+    const accessToken = localStorage.getItem('access_token');
 
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      })
-    };
+    const options = API.getAuthOptions(accessToken);
 
     return this.http.post<Dog>(url, body, options);
   }
@@ -52,14 +38,9 @@ export class DogsService {
 
     const body = dog;
 
-    const accessToken = localStorage.access_token;
+    const accessToken = localStorage.getItem('access_token');
 
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      })
-    };
+    const options = API.getAuthOptions(accessToken);
 
     return this.http.put<Dog>(url, body, options);
   }
@@ -67,18 +48,9 @@ export class DogsService {
   delete(dog: Dog): Observable<Dog[]> {
     const url = `${API.URL}/dogs/${dog.id}`;
 
-    // User access token stored in the browser's local storage.
-    const accessToken = localStorage.access_token;
+    const accessToken = localStorage.getItem('access_token');
 
-    // const options = API.options;
-    // options.headers.append('Authorization', `Bearer ${accessToken}`);
-
-    const options = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      })
-    };
+    const options = API.getAuthOptions(accessToken);
 
     return this.http.delete<Dog[]>(url, options);
   }
