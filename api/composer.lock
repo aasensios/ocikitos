@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f72749a4ccccc1f98bc131b342c9d8a4",
+    "content-hash": "053212c98fd5c6dd3076e1e7f7ee256d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2289,6 +2289,45 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "skilla/validator-cif-nif-nie",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skilla/ValidatorCifNifNie.git",
+                "reference": "23df5adb7539ae2710c988f13ad47d0dea23033d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skilla/ValidatorCifNifNie/zipball/23df5adb7539ae2710c988f13ad47d0dea23033d",
+                "reference": "23df5adb7539ae2710c988f13ad47d0dea23033d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergio Zambrano Delfa",
+                    "email": "sergio.zambrano@gmail.com"
+                }
+            ],
+            "description": "Validator for Spanish National documents (CIF, NIF, NIE)",
+            "time": "2017-02-19T22:19:00+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
