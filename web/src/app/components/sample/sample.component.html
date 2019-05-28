@@ -1,0 +1,50 @@
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container-fluid">
+    <form #sampleForm="ngForm" [formGroup]="form">
+      <div class="row">
+        <div class="col-md-4">
+
+          <div class="form-group">
+            <label>Kit Barcode</label>
+          </div>
+          <ngx-barcode *ngIf="sample.barcode" [bc-value]="sample.barcode" [bc-display-value]="true"></ngx-barcode>
+
+          <div class="form-group">
+              <label>Origin</label>
+              {{ sample.origin }}
+            </div>
+          
+
+
+          <div class="form-group">
+            <label>Sequence</label>
+            <!-- <input type="file" tabindex="1" formControlName="sequence" class="form-control"
+              [(ngModel)]="sample.sequence" placeholder="Enter sequence file"> -->
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                      aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                  </div>
+                </div>
+          </div>
+        </div>
+</div>
+
+        
+      
+
+
+  <div class="form-group">
+<!--     <button class="btn btn-primary" (click)="addSample(dog)" [disabled]="form.invalid">Add Dog</button>
+ -->    <!-- <button class="btn btn-sm btn-warning" (click)="modofyDog(dog)" [disabled]="form.invalid" *nfIf="editing">Modify Dog</button> -->
+    <button class="btn btn-warning" (click)="modifySample(sample)" [disabled]="form.invalid">Modify Sample</button>
+    <button class="btn btn-secondary" >Cancel</button>
+  </div>
+  </form>
+</div>
+</div>

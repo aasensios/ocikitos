@@ -5,6 +5,8 @@ export class Infraction {
     document: string;
     incident_id: number;
     officer_id: number;
+    created_at: any;
+    updated_at: any;
 
     constructor(
         id?: number,
@@ -12,6 +14,8 @@ export class Infraction {
         document?: string,
         incident_id?: number,
         officer_id?: number,
+        created_at?: any,
+        updated_at?: any,
     ) { }
 
 }

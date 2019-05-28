@@ -5,6 +5,8 @@ export class Incident {
     location: string;
     sample_barcode: string;
     agent_id: number;
+    created_at: any;
+    updated_at: any;
 
     constructor(
         id?: number,
@@ -12,6 +14,8 @@ export class Incident {
         location?: string,
         sample_barcode?: string,
         agent_id?: number,
+        created_at?: any,
+        updated_at?: any,
     ) { }
 
 }

@@ -58,6 +58,8 @@
               <th scope="col">Incident ID</th>
               <th scope="col">Officer ID</th>
               <th scope="col">Manage</th>
+              <th scope="col">Create at</th>
+              <th scope="col">Update at</th>
             </tr>
           </thead>
           <tbody>
@@ -71,6 +73,8 @@
               <td>{{ infraction.document }}</td>
               <td>{{ infraction.incident_id }}</td>
               <td>{{ infraction.officer_id }}</td>
+              <td>{{ infraction.created_at }}</td>
+              <td>{{ infraction.updated_at }}</td>
               
               <td>
                 <button class="btn btn-primary" (click)="onSelect(infraction)">Edit</button>

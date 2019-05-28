@@ -1,3 +1,5 @@
+<app-sample [sample]="sampleSelected" *ngIf="sampleSelected">
+  </app-sample>
 <h4>Filter Samples <i class="fas fa-vial"></i></h4>
 <div>
   <form #samplesFilterForm="ngForm">
@@ -64,7 +66,9 @@
               <th scope="col">Sequence file</th>
               <th scope="col">Pattern</th>
               <th scope="col">Dog</th>
-
+              <th scope="col">Create at</th>
+              <th scope="col">Update at</th>
+              
               <th scope="col">Manage</th>
             </tr>
           </thead>
@@ -81,6 +85,8 @@
               <td>{{ sample.sequence }}</td>
               <td>Pattern data</td>
               <td>{{ sample.dog_id }}</td>
+              <td>{{ sample.created_at }}</td>
+              <td>{{ sample.updated_at }}</td>
 
 
               <td><button class="btn btn-primary">Edit</button></td>

@@ -1,7 +1,8 @@
+<app-dog [dog]="dogSelected" *ngIf="dogSelected">
+  </app-dog>
 <h4>Filter dogs <i class="fas fa-dog"></i></h4>
 <div class="container">
-  <app-dog [dog]="dogSelected" *ngIf="dogSelected">
-  </app-dog>
+  
   <form #dogsFilterForm="ngForm">
     <table id="filter" class="table table-bordered">
       <caption>Filters</caption>
@@ -79,8 +80,8 @@
                   | paginate: {itemsPerPage: itemsPerPage, currentPage : currentPage}; let i = index;">
               <th scope="row">{{ dog.chip }}</th>
               <td>{{ dog.name }}</td>
-              <td *ngIf="dog.gender == 'male'">{{ dog.gender }}<br><i class="fas fa-dog" style="color: blue;"></i></td>
-              <td *ngIf="dog.gender == 'female'">{{ dog.gender }}<br><i class="fas fa-dog" style="color: fuchsia;"></i>
+              <td *ngIf="dog.gender == 'male'"><i class="fas fa-dog" style="color: blue;"></i></td>
+              <td *ngIf="dog.gender == 'female'"><i class="fas fa-dog" style="color: fuchsia;"></i>
               </td>
               <td>{{ dog.breed_id }}</td>
               <td>{{ dog.color_id }}</td>

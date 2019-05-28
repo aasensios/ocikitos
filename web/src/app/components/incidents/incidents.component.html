@@ -1,7 +1,7 @@
 <h4>Filter incidents <i class="fas fa-poo"></i></h4>
 <div class="container">
-  <!-- <app-incident [incident]="incidentSelected" *ngIf="incidentSelected">
-  </app-incident> -->
+  <app-incident [incident]="incidentSelected" *ngIf="incidentSelected">
+  </app-incident>
   <form #incidentsFilterForm="ngForm">
     <table id="filter" class="table table-bordered">
       <caption>Filters</caption>
@@ -53,6 +53,8 @@
               <th scope="col">Location</th>
               <th scope="col">Sample barcode</th>
               <th scope="col">Agent ID</th>
+              <th scope="col">Create at</th>
+              <th scope="col">Update at</th>
               <th scope="col">Manage</th>
             </tr>
           </thead>
@@ -67,6 +69,8 @@
               <td>{{ incident.location }}</td>
               <td>{{ incident.sample_barcode }}</td>
               <td>{{ incident.agent_id }}</td>
+              <td>{{ incident.created_at }}</td>
+              <td>{{ incident.updated_at }}</td>
               <td>
                 <button class="btn btn-primary" (click)="onSelect(incident)">Edit</button>
               </td>

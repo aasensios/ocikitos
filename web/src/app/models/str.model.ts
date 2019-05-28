@@ -11,6 +11,7 @@ export class Str {
     min_repeats: number;
     max_repeats: number;
     annealing_temp: number;
+ 
    
     
     constructor(

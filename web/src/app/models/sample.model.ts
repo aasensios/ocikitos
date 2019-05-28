@@ -6,6 +6,8 @@ export class Sample {
     sequence: string;
     pattern: string;
     dog_id: number;
+    created_at: any;
+    updated_at: any;
 
     constructor(
         id?: number,
@@ -14,6 +16,8 @@ export class Sample {
         sequence?: string,
         pattern?: string,
         dog_id?: number,
+        created_at?: any,
+        updated_at?: any,
     ) { }
 
 }

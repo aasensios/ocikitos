@@ -1,0 +1,61 @@
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container-fluid">
+      <form #incidentForm="ngForm" [formGroup]="form">
+        <div class="row">
+          <div class="col-md-4">
+  
+            <div class="form-group">
+              <label>ID Incident</label>
+            </div>
+            <ngx-barcode *ngIf="incident.id" [bc-value]="incident.id" [bc-display-value]="true"></ngx-barcode>
+  
+            <div class="form-group">
+                <label>Photo</label>
+                {{ incident.photo }}
+              </div>
+
+              <label>Location*</label>
+              <input type="text" tabindex="1" formControlName="location" class="form-control" [(ngModel)]="incident.location"
+                [ngClass]="{ 'is-invalid': f.location.touched && f.location.errors }" placeholder="Enter location number">
+              <div *ngIf="!!f.location.touched && !!f.location.errors" class="invalid-feedback">
+                <div *ngIf="!!f.location.errors.required">Chip is required</div>
+
+              </div>
+
+              <div class="form-group">
+                  <label>Photo</label>
+                  <!-- <input type="file" tabindex="1" formControlName="sequence" class="form-control"
+                    [(ngModel)]="sample.sequence" placeholder="Enter sequence file"> -->
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="inputGroupFile01"
+                            aria-describedby="inputGroupFileAddon01">
+                          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            
+  
+  
+            
+          </div>
+  
+  
+          
+        
+  
+  
+    <div class="form-group">
+  <!--     <button class="btn btn-primary" (click)="addSample(dog)" [disabled]="form.invalid">Add Dog</button>
+   -->    <!-- <button class="btn btn-sm btn-warning" (click)="modofyDog(dog)" [disabled]="form.invalid" *nfIf="editing">Modify Dog</button> -->
+      <button class="btn btn-warning" (click)="modifyIncident(incident)" [disabled]="form.invalid">Modify Incident</button>
+      <button class="btn btn-secondary" >Cancel</button>
+    </div>
+    </form>
+  </div>
+  </div>

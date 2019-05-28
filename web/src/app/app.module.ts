@@ -25,6 +25,9 @@ import { StrsComponent } from './components/strs/strs.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { InfractionsComponent } from './components/infractions/infractions.component';
 import { InfoComponent } from './components/info/info.component';
+import { SampleComponent } from './components/sample/sample.component';
+import { IncidentComponent } from './components/incident/incident.component';
+import { InfractionComponent } from './components/infraction/infraction.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { InfoComponent } from './components/info/info.component';
     IncidentsComponent,
     InfractionsComponent,
     InfoComponent,
+    SampleComponent,
+    IncidentComponent,
+    InfractionComponent,
   ],
   imports: [
     BrowserModule,

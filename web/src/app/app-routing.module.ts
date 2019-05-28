@@ -11,6 +11,9 @@ import { SamplesComponent } from './components/samples/samples.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { InfractionsComponent } from './components/infractions/infractions.component';
 import { InfoComponent } from './components/info/info.component';
+import { SampleComponent } from './components/sample/sample.component';
+import { IncidentComponent } from './components/incident/incident.component';
+import { InfractionComponent } from './components/infraction/infraction.component';
 
 const routes: Routes = [
   {path: 'home',  component: HomeComponent} ,
@@ -19,9 +22,12 @@ const routes: Routes = [
   {path: 'register',  component: RegisterComponent} ,
   {path: 'dog',  component: DogComponent},
   {path: 'dogs',  component: DogsComponent} ,
+  {path: 'sample',  component: SampleComponent},
   {path: 'samples',  component: SamplesComponent},
   {path: 'strs',  component: StrsComponent},
+  {path: 'incident',  component: IncidentComponent},
   {path: 'incidents',  component: IncidentsComponent},
+  {path: 'infraction',  component: InfractionComponent},
   {path: 'infractions',  component: InfractionsComponent},
   {path: '**',  component: ErrorComponent},
   {path: '',  component: InfoComponent},

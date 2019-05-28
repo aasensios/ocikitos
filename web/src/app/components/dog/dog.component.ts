@@ -9,7 +9,7 @@ import { Breed } from '../../models/breed.model';
 
 import { DogsService } from '../../services/dogs.service';
 import { TablesService } from '../../services/tables.service';
-import { Sample } from 'src/app/models/sample.model';
+import { Sample } from '../../models/sample.model';
 
 @Component({
   selector: 'app-dog',
@@ -103,6 +103,7 @@ export class DogComponent implements OnInit {
   }
 
   addDog() {
+    console.log(this.dog);
     this.dogsService.create(this.dog)
       .subscribe(
         // Success
@@ -118,6 +119,7 @@ export class DogComponent implements OnInit {
         // Complete
         () => {
           alert(this.message);
+          //to do sample
         }
       );
   }
