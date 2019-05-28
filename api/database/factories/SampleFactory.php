@@ -18,7 +18,7 @@ $factory->define(Sample::class, function (Faker $faker) {
         'barcode' => $faker->unique()->numerify('KIT-########'), // Format: 'KIT-' followed by 8 digits
         'origin' => $faker->randomElement(['blood', 'saliva', 'droppings']),
         // 'sequence' => file_get_contents("storage/app/fasta/sample_$sample_number.fasta"),
-        'sequence' => 'path/to/fasta/file',
+        'sequence' => 'storage/app/fasta/sample_1.fasta',
         'pattern' => $pattern,
         'dog_id' => $faker->randomElement([NULL, $faker->numberBetween(1, 50)]),
     ];

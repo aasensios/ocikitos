@@ -19,8 +19,8 @@ class CreateInfractionsTable extends Migration
 
             // Fillable fields
             $table->enum('status', ['pending', 'approved', 'rejected']);
-            $table->string('document');
-            $table->bigInteger('incident_id')->unsigned()->nullable();
+            $table->string('document')->nullable();
+            $table->bigInteger('incident_id')->unsigned();
             $table->bigInteger('officer_id')->unsigned()->nullable();
 
             // created_at and updated_at

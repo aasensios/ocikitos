@@ -20,13 +20,13 @@ class CreateDogsTable extends Migration
             // Fillable fields
             $table->string('chip')->unique();
             $table->string('name');
-            $table->enum('gender', ['male', 'female']);
+            $table->enum('gender', ['male', 'female'])->nullable();
             $table->bigInteger('breed_id')->unsigned()->nullable();
             $table->bigInteger('color_id')->unsigned()->nullable();
-            $table->date('birthdate');
+            $table->date('birthdate')->nullable();
             $table->date('deathdate')->nullable();
             $table->string('owner_dni');
-            $table->string('owner_fullname');
+            $table->string('owner_fullname')->nullable();
             $table->text('residence')->nullable();
             $table->bigInteger('veterinarian_id')->unsigned()->nullable();
 

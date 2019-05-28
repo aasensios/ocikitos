@@ -36,6 +36,14 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             // \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
+            /**
+             * Enable laravel_token creation in an automated cookie sent into every HTTP response.
+             * Official documentation: https://laravel.com/docs/5.8/passport#consuming-your-api-with-javascript
+             * 
+             * TODO: UNCOMMENT BELOW TO ENABLE THE AUTOMATIC COOKIE. --->
+             */
+            // \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
         ],
 
         'api' => [

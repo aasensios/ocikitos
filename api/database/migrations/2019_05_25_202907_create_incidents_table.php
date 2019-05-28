@@ -18,10 +18,10 @@ class CreateIncidentsTable extends Migration
             $table->bigIncrements('id');
 
             // Fillable fields
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('location');
             $table->string('sample_barcode');
-            $table->bigInteger('agent_id')->unsigned()->nullable();
+            $table->bigInteger('agent_id')->unsigned()->nullable(); // TODO: Make required (remove '->nullable()')
 
             // created_at and updated_at
             $table->timestamps();
