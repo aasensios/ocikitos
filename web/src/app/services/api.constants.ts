@@ -24,7 +24,7 @@ export class API {
      */
     public static GRANT_TYPE = 'password';
     public static CLIENT_ID = 2;
-    public static CLIENT_SECRET = 'zOvpJ2BE5Dez4qqcJWEn7BgVPatMWQwfBb1TqnVV';
+    public static CLIENT_SECRET = 'O9atTMktOOJdu53HvjzuDqYAjOfRO2jKXuLYcv57';
 
     /**
      * Options that accepts JSON requests and responses

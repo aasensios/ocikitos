@@ -14,12 +14,7 @@ export class AuthService {
   registerUser(user: User): Observable<any> {
     const url = `${API.API_URL}/register`;
 
-    const body = {
-      name: user.name,
-      email: user.email,
-      password: user.password,
-      password_confirmation: user.password_confirmation
-    };
+    const body = user;
 
     const options = API.getBasicOptions();
 

@@ -5,13 +5,15 @@ export class User {
   email: string;
   password: string;
   password_confirmation: string;
+  role: string;
 
   constructor(
     id?: number,
     name?: string,
     email?: string,
     password?: string,
-    password_confirmation?: number,
+    password_confirmation?: string,
+    role?: string,
   ) { }
 
 }
