@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController as BaseController;
 use App\Infraction;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Validator;
 
-class InfractionController extends Controller
+class InfractionController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +18,8 @@ class InfractionController extends Controller
     public function index()
     {
         $infractions = Infraction::all();
-        $data = $infractions->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Infractions retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($infractions->toArray(), 'Infractions retrieved successfully.');
     }
 
     /**
@@ -40,28 +33,17 @@ class InfractionController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            //
+            // Nothing to validate due to an infraction proposal is generated
+            // automatically when an STR match occurs.
         ]);
 
         if ($validator->fails()) {
-            $response = [
-                'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors(),
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Validation Error.', $validator->errors());
         }
 
         $infraction = Infraction::create($input);
-        $data = $infraction->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Infraction stored successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($infraction->toArray(), 'Infraction added successfully.');
     }
 
     /**
@@ -75,23 +57,10 @@ class InfractionController extends Controller
         $infraction = Infraction::find($id);
 
         if (is_null($infraction)) {
-            $response = [
-                'success' => false,
-                'data' => 'Empty',
-                'message' => 'Infraction not found.',
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Infraction not found.');
         }
 
-        $data = $infraction->toArray();
-
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Infraction retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($infraction->toArray(), 'Infraction retrieved successfully.');
     }
 
     /**
@@ -113,26 +82,21 @@ class InfractionController extends Controller
         ]);
 
         if ($validator->fails()) {
-            $response = [
-                'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors(),
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Validation Error.', $validator->errors());
         }
 
-        $infraction->status = $input['status'];
+        if ($request->has('status')) {
+            $infraction->status = $input['status'];
+        }
+
         $infraction->save();
 
-        $data = $infraction->toArray();
+        if ($infraction->status = 'approved') {
+            // TODO: generate a PDF document with the official Infraction (later to be emitted to the local government).
+            //
+        }
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Infraction updated successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($infraction->toArray(), 'Infraction updated successfully.');
     }
 
     /**
@@ -144,15 +108,8 @@ class InfractionController extends Controller
     public function destroy(Infraction $infraction)
     {
         $infraction->delete();
-        $data = $infraction->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Infraction deleted successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($infraction->toArray(), 'Infraction deleted successfully.');
     }
 
 }

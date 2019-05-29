@@ -12,14 +12,24 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $role_guest = new Role();
-        $role_guest->name = 'guest';
-        $role_guest->description = 'Guest';
-        $role_guest->save();
+        $this->createRole('guest', 'Guest');
+        $this->createRole('admin', 'Admin');
+        $this->createRole('vet', 'Veterinarian');
+        $this->createRole('bio', 'Bioinformatic');
+        $this->createRole('agent', 'Street Agent');
+        $this->createRole('officer', 'Police Officer');
+    }
 
+    /**
+     * Create a user.
+     *
+     * @return void
+     */
+    private function createRole(string $name, string $description)
+    {
         $role_admin = new Role();
-        $role_admin->name = 'admin';
-        $role_admin->description = 'Administrator';
+        $role_admin->name = $name;
+        $role_admin->description = $description;
         $role_admin->save();
     }
 }

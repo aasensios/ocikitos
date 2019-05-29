@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\BaseController as BaseController;
 use App\Incident;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Validator;
 
-class IncidentController extends Controller
+class IncidentController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +19,8 @@ class IncidentController extends Controller
     public function index()
     {
         $incidents = Incident::all();
-        $data = $incidents->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Incidents retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($incidents->toArray(), 'Incidents retrieved successfully.');
     }
 
     /**
@@ -40,30 +34,19 @@ class IncidentController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'photo' => 'required', // 'mimes:jpeg,jpg,png'
+            'photo', // 'mimes:jpeg,jpg,png'
             'location' => 'required',
             'sample_barcode' => 'required',
+            'agent_user_id',
         ]);
 
         if ($validator->fails()) {
-            $response = [
-                'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors(),
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Validation Error.', $validator->errors());
         }
 
         $incident = Incident::create($input);
-        $data = $incident->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Incident stored successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($incident->toArray(), 'Incident added successfully.');
     }
 
     /**
@@ -77,23 +60,10 @@ class IncidentController extends Controller
         $incident = Incident::find($id);
 
         if (is_null($incident)) {
-            $response = [
-                'success' => false,
-                'data' => 'Empty',
-                'message' => 'Incident not found.',
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Incident not found.');
         }
 
-        $data = $incident->toArray();
-
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Incident retrieved successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($incident->toArray(), 'Incident retrieved successfully.');
     }
 
     /**
@@ -108,34 +78,32 @@ class IncidentController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'photo' => 'required', // 'mimes:jpeg,jpg,png'
-            'location' => 'required',
+            'photo', // 'mimes:jpeg,jpg,png'
+            'location',
             'sample_barcode' => 'required',
+            'agent_user_id',
         ]);
 
         if ($validator->fails()) {
-            $response = [
-                'success' => false,
-                'data' => 'Validation Error.',
-                'message' => $validator->errors(),
-            ];
-            return response()->json($response, 404);
+            return $this->sendError('Validation Error.', $validator->errors());
         }
 
-        $incident->photo = $input['photo'];
-        $incident->location = $input['location'];
-        $incident->sample_id = $input['sample_id'];
+        if ($request->has('photo')) {
+            $incident->photo = $input['photo'];
+        }
+        if ($request->has('location')) {
+            $incident->location = $input['location'];
+        }
+        if ($request->has('sample_barcode')) {
+            $incident->sample_barcode = $input['sample_barcode'];
+        }
+        if ($request->has('agent_user_id')) {
+            $incident->agent_user_id = $input['agent_user_id'];
+        }
+
         $incident->save();
 
-        $data = $incident->toArray();
-
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Incident updated successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($incident->toArray(), 'Incident updated successfully.');
     }
 
     /**
@@ -147,15 +115,8 @@ class IncidentController extends Controller
     public function destroy(Incident $incident)
     {
         $incident->delete();
-        $data = $incident->toArray();
 
-        $response = [
-            'success' => true,
-            'data' => $data,
-            'message' => 'Incident deleted successfully.',
-        ];
-
-        return response()->json($response, 200);
+        return $this->sendResponse($incident->toArray(), 'Incident deleted successfully.');
     }
 
 }

@@ -21,14 +21,14 @@ class CreateIncidentsTable extends Migration
             $table->string('photo')->nullable();
             $table->string('location');
             $table->string('sample_barcode');
-            $table->bigInteger('agent_id')->unsigned()->nullable(); // TODO: Make required (remove '->nullable()')
+            $table->bigInteger('agent_user_id')->unsigned()->nullable(); // TODO: Make required (remove '->nullable()')
 
             // created_at and updated_at
             $table->timestamps();
 
             // Foreign keys
             $table->foreign('sample_barcode')->references('barcode')->on('samples');
-            $table->foreign('agent_id')->references('id')->on('users');
+            $table->foreign('agent_user_id')->references('id')->on('users');
         });
     }
 

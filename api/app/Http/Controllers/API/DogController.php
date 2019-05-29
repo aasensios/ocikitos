@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Dog;
+use App\Role;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,16 +36,30 @@ class DogController extends BaseController
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'chip' => 'required|numeric|unique:dogs',
+            'chip' => 'required|unique:dogs|numeric|digits:15',
             'name' => 'required',
-            'gender' => Rule::in(['male', 'female']),
-            'breed_id' => 'numeric',
-            'color_id' => 'numeric',
+            'gender' => [
+                'nullable',
+                Rule::in(['male', 'female']),
+            ],
+            'breed_id' => [
+                'nullable',
+                Rule::in(DB::table('breeds')->pluck('id')),
+            ],
+            'color_id' => [
+                'nullable',
+                Rule::in(DB::table('colors')->pluck('id')),
+            ],
             'birthdate' => 'nullable|date|before_or_equal:today',
             'deathdate' => 'nullable|date|before_or_equal:today|after_or_equal:birthdate',
-            'owner_dni' => 'regex:/^([a-zA-Z0-9])[0-9]{7}([a-zA-Z0-9])$/i',
+            'owner_dni' => 'required|regex:/^([a-zA-Z0-9])[0-9]{7}([a-zA-Z0-9])$/i',
             'owner_fullname' => 'required',
             'residence' => 'required',
+            // Track the veterinarian who registered the dog.
+            'vet_user_id' => [
+                'required',
+                Rule::in(Role::where('name', 'vet')->first()->users()->pluck('id')),
+            ],
         ]);
 
         if ($validator->fails()) {
@@ -87,23 +102,40 @@ class DogController extends BaseController
         $validator = Validator::make($input, [
             'chip' => [
                 'numeric',
+                'digits:15',
+                // Ignore the uniqueness constraint of dog_id when updating.
                 Rule::unique('dogs')->ignore($dog->id),
             ],
             'name',
-            'gender' => Rule::in(['male', 'female']),
-            'breed_id' => 'numeric',
-            'color_id' => 'numeric',
+            'gender' => [
+                'nullable',
+                Rule::in(['male', 'female']),
+            ],
+            'breed_id' => [
+                'nullable',
+                Rule::in(DB::table('breeds')->pluck('id')),
+            ],
+            'color_id' => [
+                'nullable',
+                Rule::in(DB::table('colors')->pluck('id')),
+            ],
             'birthdate' => 'nullable|date|before_or_equal:today',
             'deathdate' => 'nullable|date|before_or_equal:today|after_or_equal:birthdate',
-            'owner_dni' => 'regex:/^([a-zA-Z0-9])[0-9]{7}([a-zA-Z0-9])$/i',
+            'owner_dni' => 'required|regex:/^([a-zA-Z0-9])[0-9]{7}([a-zA-Z0-9])$/i',
             'owner_fullname',
             'residence',
+            // Track the veterinarian who last updated the dog.
+            'vet_user_id' => [
+                'required',
+                Rule::in(Role::where('name', 'vet')->first()->users()->pluck('id')),
+            ],
         ]);
 
         if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors());
         }
 
+        // Check every field in the request, to avoid accessing a key that might not exist.
         if ($request->has('chip')) {
             $dog->chip = $input['chip'];
         }
@@ -134,6 +166,10 @@ class DogController extends BaseController
         if ($request->has('residence')) {
             $dog->residence = $input['residence'];
         }
+        if ($request->has('vet_user_id')) {
+            $dog->vet_user_id = $input['vet_user_id'];
+        }
+
         $dog->save();
 
         return $this->sendResponse($dog->toArray(), 'Dog updated successfully.');

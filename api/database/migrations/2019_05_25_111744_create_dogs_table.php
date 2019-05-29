@@ -28,7 +28,7 @@ class CreateDogsTable extends Migration
             $table->string('owner_dni');
             $table->string('owner_fullname')->nullable();
             $table->text('residence')->nullable();
-            $table->bigInteger('veterinarian_id')->unsigned()->nullable();
+            $table->bigInteger('vet_user_id')->unsigned()->nullable();
 
             // created_at and updated_at
             $table->timestamps();
@@ -36,7 +36,7 @@ class CreateDogsTable extends Migration
             // Foreign keys
             $table->foreign('breed_id')->references('id')->on('breeds');
             $table->foreign('color_id')->references('id')->on('colors');
-            $table->foreign('veterinarian_id')->references('id')->on('users');
+            $table->foreign('vet_user_id')->references('id')->on('users');
         });
     }
 

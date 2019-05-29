@@ -12,6 +12,6 @@ class InfractionsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Infraction::class, 13)->create();
+        factory(Infraction::class, 11)->create();
     }
 }

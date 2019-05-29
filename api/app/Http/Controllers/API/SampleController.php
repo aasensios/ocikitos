@@ -35,10 +35,14 @@ class SampleController extends BaseController
 
         $validator = Validator::make($input, [
             'barcode' => 'required|unique:samples',
-            'origin' => ['required', Rule::in(['saliva', 'blood', 'droppings'])],
+            'origin' => [
+                'required',
+                Rule::in(['saliva', 'blood', 'droppings']),
+            ],
             'sequence', // => 'nullable|mimetypes:text/plain', // plain/fasta
             'pattern' => 'nullable|json',
             'dog_id' => 'nullable|numeric',
+            'bio_user_id',
         ]);
 
         if ($validator->fails()) {
@@ -84,6 +88,11 @@ class SampleController extends BaseController
             'sequence', // => 'nullable|mimetypes:text/plain', // plain/fasta
             'pattern' => 'nullable|json',
             'dog_id' => 'nullable|numeric',
+            // Track the bioinformatic who last updated the sample.
+            'bio_user_id' => [
+                'required',
+                Rule::in(Role::where('name', 'bio')->first()->users()->pluck('id')),
+            ],
         ]);
 
         if ($validator->fails()) {
@@ -104,6 +113,9 @@ class SampleController extends BaseController
         }
         if ($request->has('dog_id')) {
             $sample->dog_id = $input['dog_id'];
+        }
+        if ($request->has('dbio_user_idog_id')) {
+            $sample->bio_user_id = $input['bio_user_id'];
         }
 
         $sample->save();

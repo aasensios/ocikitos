@@ -21,14 +21,14 @@ class CreateInfractionsTable extends Migration
             $table->enum('status', ['pending', 'approved', 'rejected']);
             $table->string('document')->nullable();
             $table->bigInteger('incident_id')->unsigned();
-            $table->bigInteger('officer_id')->unsigned()->nullable();
+            $table->bigInteger('officer_user_id')->unsigned()->nullable();
 
             // created_at and updated_at
             $table->timestamps();
 
             // Foreign keys
             $table->foreign('incident_id')->references('id')->on('incidents');
-            $table->foreign('officer_id')->references('id')->on('users');
+            $table->foreign('officer_user_id')->references('id')->on('users');
         });
     }
 
