@@ -58,12 +58,14 @@ class SampleController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $barcode
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id)
+    public function show(string $barcode)
     {
-        $sample = Sample::find($id);
+        // $sample = Sample::find($id);
+        $sample = Sample::where('barcode', $barcode)->first();
+        
 
         if (is_null($sample)) {
             return $this->sendError('Sample not found.');
