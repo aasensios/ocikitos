@@ -7,7 +7,7 @@
 
 
 .content {
-    background: url("assets/images/fondo.jpeg");
+    background-color: mediumblue;
     
     height:50vh;
     background-size: cover;

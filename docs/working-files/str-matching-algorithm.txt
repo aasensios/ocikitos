@@ -1,0 +1,5 @@
+1. upload manually the multifasta
+2. obtain STR pattern
+3.1 IF dog_id != NULL, it comes from Veterinarian, so only store the JSON pattern.
+3.2 ELSE, it comes from Street, so store JSON pattern AND search among all samsple registers to match the STR pattern.
+   3.2.1 IF match, new Infraction, 
