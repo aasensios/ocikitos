@@ -10,21 +10,21 @@ export class API {
     /**
      * Local URLs for development
      */
-    public static BASE_URL = 'http://localhost:8000';
-    public static API_URL = 'http://localhost:8000/api';
+    // public static BASE_URL = 'http://localhost:8000';
+    // public static API_URL = 'http://localhost:8000/api';
 
     /**
      * Server URLs for production
      */
-    // public static BASE_URL = 'http://apps.proven.cat/~dawbi1901/api';
-    // public static API_URL = 'http://apps.proven.cat/~dawbi1901/api/api';
+    public static BASE_URL = 'http://apps.proven.cat/~dawbi1901/api';
+    public static API_URL = 'http://apps.proven.cat/~dawbi1901/api/api';
 
     /**
      * Laravel Passport values to include in the Body of every HTTP Request
      */
     public static GRANT_TYPE = 'password';
     public static CLIENT_ID = 2;
-    public static CLIENT_SECRET = 'UTKbSrnWfrLuze6Vt1kPdgucC0DJU38xqP7gfwsx';
+    public static CLIENT_SECRET = 'zOvpJ2BE5Dez4qqcJWEn7BgVPatMWQwfBb1TqnVV';
 
     /**
      * Options that accepts JSON requests and responses
