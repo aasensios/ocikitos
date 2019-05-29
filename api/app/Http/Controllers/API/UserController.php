@@ -124,28 +124,24 @@ class UserController extends BaseController
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            //
+            'name',
+            'email' => 'email|unique:users',
+            'role' => Rule::in(DB::table('roles')->pluck('name')),
         ]);
 
         if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors());
         }
 
-        // if ($request->has('barcode')) {
-        //     $user->barcode = $input['barcode'];
-        // }
-        // if ($request->has('origin')) {
-        //     $user->origin = $input['origin'];
-        // }
-        // if ($request->has('sequence')) {
-        //     $user->sequence = $input['sequence'];
-        // }
-        // if ($request->has('pattern')) {
-        //     $user->pattern = $input['pattern'];
-        // }
-        // if ($request->has('dog_id')) {
-        //     $user->dog_id = $input['dog_id'];
-        // }
+        if ($request->has('name')) {
+            $user->name = $input['name'];
+        }
+        if ($request->has('email')) {
+            $user->email = $input['email'];
+        }
+        if ($request->has('role')) {
+            $user->role = $input['role'];
+        }
 
         $user->save();
 
@@ -177,8 +173,8 @@ class UserController extends BaseController
 
         $userTokens = $user->tokens;
 
-        foreach($userTokens as $token) {
-            $token->revoke();   
+        foreach ($userTokens as $token) {
+            $token->revoke();
         }
 
         return $this->sendResponse($user->toArray(), 'User logged out successfully.');

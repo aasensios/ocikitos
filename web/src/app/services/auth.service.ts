@@ -57,30 +57,26 @@ export class AuthService {
     return this.http.post<User>(url, body);
   }
 
-  // TODO implementation in Laravel API
-  //
-  // modifyUser(user: User): Observable<User> {
-  //   const url = `${API.API_URL}/users/${user.id}`;
+  modifyUser(user: User): Observable<User> {
+    const url = `${API.API_URL}/users/${user.id}`;
 
-  //   const body = user;
+    const body = user;
 
-  //   const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('access_token');
 
-  //   const options = API.getAuthOptions(accessToken);
+    const options = API.getAuthOptions(accessToken);
 
-  //   return this.http.post<User>(url, body, options);
-  // }
+    return this.http.post<User>(url, body, options);
+  }
 
-  // TODO implementation in Laravel API
-  //
-  // deleteUser(user: User): Observable<User> {
-  //   const url = `${API.API_URL}/users/${user.id}`;
+  deleteUser(user: User): Observable<User> {
+    const url = `${API.API_URL}/users/${user.id}`;
 
-  //   const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('access_token');
 
-  //   const options = API.getAuthOptions(accessToken);
+    const options = API.getAuthOptions(accessToken);
 
-  //   return this.http.delete<User>(url, options);
-  // }
+    return this.http.delete<User>(url, options);
+  }
 
 }
