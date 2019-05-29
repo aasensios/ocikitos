@@ -141,11 +141,11 @@
         </mat-radio-group>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" (click)="addDog(dog)" [disabled]="form.invalid" >Add Dog</button>
+        <button class="btn btn-primary" (click)="addDog()" [disabled]="form.invalid" >Add Dog</button>
         <!-- <button class="btn btn-sm btn-warning" (click)="modofyDog(dog)" [disabled]="form.invalid" *nfIf="editing">Modify Dog</button> -->
-        <button class="btn btn-warning" (click)="modifyDog(dog)" [disabled]="form.invalid">Modify Dog</button>
-        <button class="btn btn-danger" (click)="deleteDog(dog)">Delete</button>
-<!--         <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
+        <button class="btn btn-warning" (click)="modifyDog()" [disabled]="form.invalid">Modify Dog</button>
+<!--         <button class="btn btn-danger" (click)="deleteDog()">Delete</button>
+ --><!--         <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
  -->      </div>
     </form>
   </div>
