@@ -19,12 +19,10 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   public user: User;
-  // loginForm: FormGroup;
   submitted = false;
   private error = '';
 
   constructor(
-    // private formBuilder: FormBuilder,
     private authService: AuthService,
   ) { }
 

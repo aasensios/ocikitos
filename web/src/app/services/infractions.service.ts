@@ -12,7 +12,7 @@ export class InfractionsService {
   ) { }
 
   getInfractions(): Observable<Infraction[]> {
-    const url = `${API.URL}/infractions`;
+    const url = `${API.API_URL}/infractions`;
 
     const accessToken = localStorage.getItem('access_token');
 
@@ -22,7 +22,7 @@ export class InfractionsService {
   }
 
   create(infraction: Infraction): Observable<Infraction> {
-    const url = `${API.URL}/infractions`;
+    const url = `${API.API_URL}/infractions`;
 
     const body = infraction;
 
@@ -34,7 +34,7 @@ export class InfractionsService {
   }
 
   update(infraction: Infraction): Observable<Infraction> {
-    const url = `${API.URL}/infractions/${infraction.id}`;
+    const url = `${API.API_URL}/infractions/${infraction.id}`;
 
     const body = infraction;
 
@@ -46,7 +46,7 @@ export class InfractionsService {
   }
 
   delete(infraction: Infraction): Observable<Infraction[]> {
-    const url = `${API.URL}/infractions/${infraction.id}`;
+    const url = `${API.API_URL}/infractions/${infraction.id}`;
 
     const accessToken = localStorage.getItem('access_token');
 

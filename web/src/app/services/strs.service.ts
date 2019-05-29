@@ -12,7 +12,7 @@ export class StrsService {
   ) { }
 
   getStrs(): Observable<Str[]> {
-    const url = `${API.URL}/strs`;
+    const url = `${API.API_URL}/strs`;
 
     // User access token stored in the browser's local storage.
     const accessToken = localStorage.getItem('access_token');
@@ -26,7 +26,7 @@ export class StrsService {
   }
 
   create(str: Str): Observable<Str> {
-    const url = `${API.URL}/strs`;
+    const url = `${API.API_URL}/strs`;
 
     const body = str;
 
@@ -38,7 +38,7 @@ export class StrsService {
   }
 
   update(str: Str): Observable<Str> {
-    const url = `${API.URL}/strs/${str.id}`;
+    const url = `${API.API_URL}/strs/${str.id}`;
 
     const body = str;
 
@@ -50,7 +50,7 @@ export class StrsService {
   }
 
   delete(str: Str): Observable<Str[]> {
-    const url = `${API.URL}/strs/${str.id}`;
+    const url = `${API.API_URL}/strs/${str.id}`;
 
     // User access token stored in the browser's local storage.
     const accessToken = localStorage.getItem('access_token');

@@ -12,7 +12,7 @@ export class AuthService {
   ) { }
 
   registerUser(user: User): Observable<any> {
-    const url = `${API.URL}/register`;
+    const url = `${API.API_URL}/register`;
 
     const body = {
       name: user.name,
@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   getToken(user: User): Observable<any> {
-    const url = `${API.LOGIN_URL}/oauth/token`;
+    const url = `${API.BASE_URL}/oauth/token`;
 
     const body = {
       username: user.email,
@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   getUser(): Observable<User> {
-    const url = `${API.URL}/user`;
+    const url = `${API.API_URL}/user`;
 
     const accessToken = localStorage.getItem('access_token');
 
@@ -52,10 +52,20 @@ export class AuthService {
     return this.http.get<User>(url, options);
   }
 
+  revokeToken(user: User): Observable<any> {
+    const url = `${API.BASE_URL}/logout`;
+
+    const body = user;
+
+    // const options = API.getBasicOptions();
+
+    return this.http.post<User>(url, body);
+  }
+
   // TODO implementation in Laravel API
   //
   // modifyUser(user: User): Observable<User> {
-  //   const url = `${API.URL}/users/${user.id}`;
+  //   const url = `${API.API_URL}/users/${user.id}`;
 
   //   const body = user;
 
@@ -69,7 +79,7 @@ export class AuthService {
   // TODO implementation in Laravel API
   //
   // deleteUser(user: User): Observable<User> {
-  //   const url = `${API.URL}/users/${user.id}`;
+  //   const url = `${API.API_URL}/users/${user.id}`;
 
   //   const accessToken = localStorage.getItem('access_token');
 

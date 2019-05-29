@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
+use App\Role;
 use App\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Validator;
 
 class RegisterController extends BaseController
@@ -17,22 +17,30 @@ class RegisterController extends BaseController
      */
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $input = $request->all();
+
+        $validator = Validator::make($input->all(), [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
             'password_confirmation' => 'required',
         ]);
 
-        if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors());
         }
 
-        $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('MyOcikitosApp')->accessToken;
-        $success['name'] =  $user->name;
+
+        // Attach the role to the user.
+        $user
+            ->roles()
+            ->attach(Role::where('name', 'user')->first());
+
+        // Create a token for the new registered user.
+        $success['token'] = $user->createToken('MyOcikitosApp')->accessToken;
+        $success['name'] = $user->name;
 
         return $this->sendResponse($success, 'User registered successfully.');
     }

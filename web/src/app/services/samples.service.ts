@@ -12,7 +12,7 @@ export class SamplesService {
   ) { }
 
   getSamples(): Observable<Sample[]> {
-    const url = `${API.URL}/samples`;
+    const url = `${API.API_URL}/samples`;
 
     const accessToken = localStorage.getItem('access_token');
 
@@ -22,7 +22,7 @@ export class SamplesService {
   }
 
   create(sample: Sample): Observable<Sample> {
-    const url = `${API.URL}/samples`;
+    const url = `${API.API_URL}/samples`;
 
     const body = sample;
 
@@ -34,7 +34,7 @@ export class SamplesService {
   }
 
   update(sample: Sample): Observable<Sample> {
-    const url = `${API.URL}/samples/${sample.id}`;
+    const url = `${API.API_URL}/samples/${sample.id}`;
 
     const body = sample;
 
@@ -46,7 +46,7 @@ export class SamplesService {
   }
 
   delete(sample: Sample): Observable<Sample[]> {
-    const url = `${API.URL}/samples/${sample.id}`;
+    const url = `${API.API_URL}/samples/${sample.id}`;
 
     const accessToken = localStorage.getItem('access_token');
 

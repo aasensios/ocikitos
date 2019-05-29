@@ -14,11 +14,13 @@ import { InfoComponent } from './components/info/info.component';
 import { SampleComponent } from './components/sample/sample.component';
 import { IncidentComponent } from './components/incident/incident.component';
 import { InfractionComponent } from './components/infraction/infraction.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   {path: 'home',  component: HomeComponent} ,
   {path: 'info',  component: InfoComponent} ,
   {path: 'login',  component: LoginComponent} ,
+  {path: 'logout',  component: LogoutComponent} ,
   {path: 'register',  component: RegisterComponent} ,
   {path: 'dog',  component: DogComponent},
   {path: 'dogs',  component: DogsComponent} ,

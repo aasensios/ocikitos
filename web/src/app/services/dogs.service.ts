@@ -12,7 +12,7 @@ export class DogsService {
   ) { }
 
   getDogs(): Observable<Dog[]> {
-    const url = `${API.URL}/dogs`;
+    const url = `${API.API_URL}/dogs`;
 
     const accessToken = localStorage.getItem('access_token');
 
@@ -22,7 +22,7 @@ export class DogsService {
   }
 
   create(dog: Dog): Observable<Dog> {
-    const url = `${API.URL}/dogs`;
+    const url = `${API.API_URL}/dogs`;
 
     const body = dog;
 
@@ -34,7 +34,7 @@ export class DogsService {
   }
 
   update(dog: Dog): Observable<Dog> {
-    const url = `${API.URL}/dogs/${dog.id}`;
+    const url = `${API.API_URL}/dogs/${dog.id}`;
 
     const body = dog;
 
@@ -46,7 +46,7 @@ export class DogsService {
   }
 
   delete(dog: Dog): Observable<Dog[]> {
-    const url = `${API.URL}/dogs/${dog.id}`;
+    const url = `${API.API_URL}/dogs/${dog.id}`;
 
     const accessToken = localStorage.getItem('access_token');
 

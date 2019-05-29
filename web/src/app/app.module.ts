@@ -28,6 +28,7 @@ import { InfoComponent } from './components/info/info.component';
 import { SampleComponent } from './components/sample/sample.component';
 import { IncidentComponent } from './components/incident/incident.component';
 import { InfractionComponent } from './components/infraction/infraction.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { InfractionComponent } from './components/infraction/infraction.componen
     SampleComponent,
     IncidentComponent,
     InfractionComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

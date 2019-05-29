@@ -13,10 +13,10 @@ export class TablesService {
   ) { }
 
   getColors(): Observable<Color[]> {
-    return this.http.get<Color[]>(`${API.URL}/colors`);
+    return this.http.get<Color[]>(`${API.API_URL}/colors`);
   }
   getBreeds(): Observable<Breed[]> {
-    return this.http.get<Breed[]>(`${API.URL}/breeds`);
+    return this.http.get<Breed[]>(`${API.API_URL}/breeds`);
   }
 
 }

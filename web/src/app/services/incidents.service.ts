@@ -12,7 +12,7 @@ export class IncidentsService {
   ) { }
 
   getIncidents(): Observable<Incident[]> {
-    const url = `${API.URL}/incidents`;
+    const url = `${API.API_URL}/incidents`;
 
     const accessToken = localStorage.getItem('access_token');
 
@@ -22,7 +22,7 @@ export class IncidentsService {
   }
 
   create(incident: Incident): Observable<Incident> {
-    const url = `${API.URL}/incidents`;
+    const url = `${API.API_URL}/incidents`;
 
     const body = incident;
 
@@ -34,7 +34,7 @@ export class IncidentsService {
   }
 
   update(incident: Incident): Observable<Incident> {
-    const url = `${API.URL}/incidents/${incident.id}`;
+    const url = `${API.API_URL}/incidents/${incident.id}`;
 
     const body = incident;
 
@@ -46,7 +46,7 @@ export class IncidentsService {
   }
 
   delete(incident: Incident): Observable<Incident[]> {
-    const url = `${API.URL}/incidents/${incident.id}`;
+    const url = `${API.API_URL}/incidents/${incident.id}`;
 
     const accessToken = localStorage.getItem('access_token');
 
