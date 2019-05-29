@@ -21,6 +21,16 @@ export class SamplesService {
     return this.http.get<Sample[]>(url, options);
   }
 
+  getSample(barcode: string): Observable<Sample> {
+    const url = `${API.API_URL}/samples/${barcode}`;
+
+    const accessToken = localStorage.getItem('access_token');
+
+    const options = API.getAuthOptions(accessToken);
+
+    return this.http.get<Sample>(url, options);
+  }
+
   create(sample: Sample): Observable<Sample> {
     const url = `${API.API_URL}/samples`;
 

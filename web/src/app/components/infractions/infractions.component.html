@@ -1,7 +1,7 @@
 <h4>Filter infractions <i class="fas fa-gavel"></i></h4>
 <div class="container">
-  <!-- <app-infraction [infraction]="infractionSelected" *ngIf="infractionSelected">
-  </app-infraction> -->
+  <app-infraction [infraction]="infractionSelected" *ngIf="infractionSelected">
+  </app-infraction>
   <form #infractionsFilterForm="ngForm">
     <table id="filter" class="table table-bordered">
       <caption>Filters</caption>
@@ -11,7 +11,7 @@
           <tr>
             <td>Number ID</td>
             <td>
-              <input type="text" [(ngModel)]="idFilter" name="idFilter" (keyup)="filter()">
+              <input type="number" [(ngModel)]="idFilter" name="idFilter" (keyup)="filter()">
             </td>
           </tr>
           <tr>
@@ -57,9 +57,9 @@
               <th scope="col">Document</th>
               <th scope="col">Incident ID</th>
               <th scope="col">Officer ID</th>
-              <th scope="col">Manage</th>
               <th scope="col">Create at</th>
               <th scope="col">Update at</th>
+              <th scope="col">Manage</th>
             </tr>
           </thead>
           <tbody>
@@ -67,9 +67,7 @@
                   | paginate: {itemsPerPage: itemsPerPage, currentPage : currentPage}; let i = index;">
               <th scope="row">{{ infraction.id }}</th>
               <td>{{ infraction.status }}</td>
-             <!--  <td *ngIf="dog.gender == 'male'">{{ dog.gender }}<br><i class="fas fa-dog" style="color: blue;"></i></td>
-              <td *ngIf="dog.gender == 'female'">{{ dog.gender }}<br><i class="fas fa-dog" style="color: fuchsia;"></i>
-              </td> -->
+              <td *ngIf="infraction.document">{{ infraction.document }}<br><i class="fas fa-file-pdf" style="color: red;"></i></td>
               <td>{{ infraction.document }}</td>
               <td>{{ infraction.incident_id }}</td>
               <td>{{ infraction.officer_id }}</td>
@@ -77,7 +75,7 @@
               <td>{{ infraction.updated_at }}</td>
               
               <td>
-                <button class="btn btn-primary" (click)="onSelect(infraction)">Edit</button>
+                <button class="btn btn-sm btn-primary" (click)="onSelect(infraction)">Edit</button>
               </td>
             </tr>
           </tbody>

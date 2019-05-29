@@ -10,12 +10,13 @@ import { Breed } from '../../models/breed.model';
 import { DogsService } from '../../services/dogs.service';
 import { TablesService } from '../../services/tables.service';
 import { Sample } from '../../models/sample.model';
+import { SamplesService } from 'src/app/services/samples.service';
 
 @Component({
   selector: 'app-dog',
   templateUrl: './dog.component.html',
   styleUrls: ['./dog.component.css'],
-  providers: [DogsService, TablesService],
+  providers: [DogsService, TablesService, SamplesService],
 })
 
 export class DogComponent implements OnInit {
@@ -42,6 +43,7 @@ export class DogComponent implements OnInit {
 
   constructor(
     private dogsService: DogsService,
+    private samplesService: SamplesService,
     private tablesService: TablesService,
     private formBuilder: FormBuilder
   ) { }
@@ -65,7 +67,7 @@ export class DogComponent implements OnInit {
         }
       );
 
-    if (this.dog==null) {
+    if (this.dog == null) {
       this.dog = new Dog();
     }
 
@@ -98,12 +100,13 @@ export class DogComponent implements OnInit {
 
     // Stop here if form is invalid
     if (this.form.invalid) {
-     return;
+      return;
     }
   }
 
   addDog() {
     console.log(this.dog);
+    
     this.dogsService.create(this.dog)
       .subscribe(
         // Success
@@ -119,7 +122,28 @@ export class DogComponent implements OnInit {
         // Complete
         () => {
           alert(this.message);
-          //to do sample
+          this.sample.dog_id = this.dog.id;
+          console.log(this.sample);
+
+          this.samplesService.create(this.sample)
+            .subscribe(
+              // Success
+              response => {
+                this.success = response['success'];
+                this.sample = response['data'];
+                this.message = response['message'];
+              },
+
+              // Error handling
+              error => this.error = error,
+
+              // Complete
+              () => {
+                alert(this.message);
+
+              }
+            );
+
         }
       );
   }

@@ -6,12 +6,13 @@
           <div class="col-md-4">
   
             <div class="form-group">
-              <label>ID Incident</label>
+              <label>ID Incident :</label>
+              {{ incident.id }}
+
             </div>
-            <ngx-barcode *ngIf="incident.id" [bc-value]="incident.id" [bc-display-value]="true"></ngx-barcode>
   
             <div class="form-group">
-                <label>Photo</label>
+                <label>Photo :</label>
                 {{ incident.photo }}
               </div>
 
@@ -20,7 +21,14 @@
                 [ngClass]="{ 'is-invalid': f.location.touched && f.location.errors }" placeholder="Enter location number">
               <div *ngIf="!!f.location.touched && !!f.location.errors" class="invalid-feedback">
                 <div *ngIf="!!f.location.errors.required">Chip is required</div>
+              </div>
 
+              <label>Barcode*</label>
+              <input type="text" tabindex="1" formControlName="barcode" class="form-control" [(ngModel)]="incident.sample_barcode"
+                [ngClass]="{ 'is-invalid': f.barcode.touched && f.barcode.errors }" placeholder="Enter barcode number">
+                
+              <div *ngIf="!!f.barcode.touched && !!f.barcode.errors" class="invalid-feedback">
+                <div *ngIf="!!f.barcode.errors.required">barcode is required</div>
               </div>
 
               <div class="form-group">
@@ -51,8 +59,8 @@
   
   
     <div class="form-group">
-  <!--     <button class="btn btn-primary" (click)="addSample(dog)" [disabled]="form.invalid">Add Dog</button>
-   -->    <!-- <button class="btn btn-sm btn-warning" (click)="modofyDog(dog)" [disabled]="form.invalid" *nfIf="editing">Modify Dog</button> -->
+      <button class="btn btn-primary" (click)="addIncident(incident)" [disabled]="form.invalid">Add Incident</button>
+      <!-- <button class="btn btn-sm btn-warning" (click)="modofyDog(dog)" [disabled]="form.invalid" *nfIf="editing">Modify Dog</button> -->
       <button class="btn btn-warning" (click)="modifyIncident(incident)" [disabled]="form.invalid">Modify Incident</button>
       <button class="btn btn-secondary" >Cancel</button>
     </div>

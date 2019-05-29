@@ -6,12 +6,14 @@ import { MustMatch } from '../../services/must-match.validator';
 import { Incident } from '../../models/incident.model';
 
 import { IncidentsService } from '../../services/incidents.service';
+import { Sample } from 'src/app/models/sample.model';
+import { SamplesService } from 'src/app/services/samples.service';
 
 @Component({
   selector: 'app-incident',
   templateUrl: './incident.component.html',
   styleUrls: ['./incident.component.css'],
-  providers: [IncidentsService],
+  providers: [IncidentsService, SamplesService],
 })
 
 export class IncidentComponent implements OnInit {
@@ -27,11 +29,14 @@ export class IncidentComponent implements OnInit {
   success: boolean;
   message: string;
   editing = false;
+  sample: Sample = new Sample();
+
 
   selectedValue: string;
 
   constructor(
     private incidentsService: IncidentsService,
+    private samplesService: SamplesService,
     private formBuilder: FormBuilder
   ) { }
 
@@ -45,6 +50,7 @@ export class IncidentComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       location: ['', Validators.required],
+      barcode: ['', Validators.required],
       
     });
 
@@ -65,13 +71,16 @@ export class IncidentComponent implements OnInit {
     }
   }
 
-  /* addDog() {
-    this.dogsService.create(this.dog)
+  addIncident() {
+    console.log(this.incident);
+    this.sample.origin = 'droppings';
+    this.sample.barcode = this.incident.sample_barcode;
+    this.samplesService.create(this.sample)
       .subscribe(
         // Success
         response => {
           this.success = response['success'];
-          this.dog = response['data'];
+          this.sample = response['data'];
           this.message = response['message'];
         },
 
@@ -81,10 +90,30 @@ export class IncidentComponent implements OnInit {
         // Complete
         () => {
           alert(this.message);
+          console.log(this.incident);
+
+          this.incidentsService.create(this.incident)
+            .subscribe(
+              // Success
+              response => {
+                this.success = response['success'];
+                this.incident = response['data'];
+                this.message = response['message'];
+              },
+
+              // Error handling
+              error => this.error = error,
+
+              // Complete
+              () => {
+                alert(this.message);
+
+              }
+            );
+
         }
       );
-  } */
-
+  }
   modifyIncident() {
     this.incidentsService.update(this.incident)
       .subscribe(
