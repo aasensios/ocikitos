@@ -91,8 +91,8 @@ class SampleController extends BaseController
             'dog_id' => 'nullable|numeric',
             // Track the bioinformatic who last updated the sample.
             'bio_user_id' => [
-                'required',
-                Rule::in(Role::where('name', 'bio')->first()->users()->pluck('id')),
+                // 'required',
+                // Rule::in(Role::where('name', 'bio')->first()->users()->pluck('id')),
             ],
         ]);
 

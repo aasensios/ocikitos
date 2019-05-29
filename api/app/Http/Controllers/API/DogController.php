@@ -54,11 +54,11 @@ class DogController extends BaseController
             'deathdate' => 'nullable|date|before_or_equal:today|after_or_equal:birthdate',
             'owner_dni' => 'required|regex:/^([a-zA-Z0-9])[0-9]{7}([a-zA-Z0-9])$/i',
             'owner_fullname' => 'required',
-            'residence' => 'required',
+            'residence',
             // Track the veterinarian who registered the dog.
             'vet_user_id' => [
-                'required',
-                Rule::in(Role::where('name', 'vet')->first()->users()->pluck('id')),
+                // 'required',
+                // Rule::in(Role::where('roles.name', 'vet')->first()->users()->pluck('id')),
             ],
         ]);
 
