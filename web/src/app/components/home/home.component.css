@@ -7,7 +7,7 @@
   .content {
     background: url("../../../assets/images/fondo.jpeg");
     
-    height: 100vh;
+    height:70vh;
     background-size: cover;
     background-position: center;
   }

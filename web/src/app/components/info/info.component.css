@@ -1,0 +1,23 @@
+.avatar {
+    border: 0.3rem solid rgba(#fff, 0.3);
+    margin-top: -6rem;
+    margin-bottom: 1rem;
+    max-width: 9rem;
+}
+
+
+.content {
+    background: url("../../../assets/images/fondo.jpeg");
+    
+    height:70vh;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .jumbotron {
+    background: none; /* Transparent background */
+  }
+  
+  .colorBlack {
+    color:black;
+    }

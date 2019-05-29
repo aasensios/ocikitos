@@ -1,33 +1,33 @@
 <div class="container-fluid">
   <div class="row">
-    <img src="./../../../assets/images/banner2.jpg" class="banner col-12 img-fluid" alt="Responsive image">
+    <img src="./../../../assets/images/banner3.jpg" class="banner col-12 img-fluid" alt="Responsive image">
   </div>
 </div>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a href="#" class="navbar-brand">
-      <img src="./../../../assets/images/logo.png" height="38" alt="Ocikitos">
+    <img src="./../../../assets/images/logo.png" height="38" alt="Ocikitos">
   </a>
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-      <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarCollapse">
-      <div class="navbar-nav">
-          <a routerLink="/info"class="nav-item nav-link active">Home</a>
-          <a routerLink="/dog" class="nav-item nav-link" routerLinkActive="active">Dog</a>
-          <a routerLink="/dogs" class="nav-item nav-link" routerLinkActive="active">Dogs</a>
-          <a routerLink="/sample" class="nav-item nav-link" routerLinkActive="active">Sample</a>
-          <a routerLink="/samples" class="nav-item nav-link" routerLinkActive="active">Samples</a>
-          <a routerLink="/strs" class="nav-item nav-link" routerLinkActive="active">STR's</a>
-          <a routerLink="/incidents" class="nav-item nav-link" routerLinkActive="active">Incidents</a>
-          <a routerLink="/infractions" class="nav-item nav-link" routerLinkActive="active">Infractions</a>
-      </div>
-      <div class="navbar-nav ml-auto">
-          <a routerLink="/login" class="nav-item nav-link">Login</a>
-          <a routerLink="/logout" class="nav-item nav-link">Logout</a>
-          <a routerLink="/register" class="nav-item nav-link">Register</a>
-      </div>
+    <div class="navbar-nav">
+      <a routerLink="/info" class="nav-item nav-link active">Home</a>
+      <a routerLink="/dog" class="nav-item nav-link" routerLinkActive="active">Dog</a>
+      <a routerLink="/dogs" class="nav-item nav-link" routerLinkActive="active">Dogs</a>
+      <a routerLink="/sample" class="nav-item nav-link" routerLinkActive="active">Sample</a>
+      <a routerLink="/samples" class="nav-item nav-link" routerLinkActive="active">Samples</a>
+      <a routerLink="/strs" class="nav-item nav-link" routerLinkActive="active">STR's</a>
+      <a routerLink="/incidents" class="nav-item nav-link" routerLinkActive="active">Incidents</a>
+      <a routerLink="/infractions" class="nav-item nav-link" routerLinkActive="active">Infractions</a>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <a routerLink="/login" class="nav-item nav-link">Login</a>
+      <a routerLink="/logout" class="nav-item nav-link">Logout</a>
+      <a routerLink="/register" class="nav-item nav-link">Register</a>
+    </div>
   </div>
 </nav>
 
@@ -49,25 +49,19 @@
 
 
   <!-- Jumbotron Slogan -->
-  <div class="jumbotron  text-white rounded-2 ">
-    <h1 class="display-5">Matching Dogs DNA</h1>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-      fugiat nulla pariatur..</p>
-    <hr class="my-4">
-    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <p class="lead">
-      <a class="btn btn-warning btn-sm" href="#" role="button">Learn more</a>
-    </p>
-  </div>
-
-
-
-
-
-
+  <div class="jumbotron mt-3 text-white rounded-2 ">
+      <h1 class="display-5">Matching Dogs DNA</h1>
+      <p class="lead">This project aims to use bioinformatics tools to identify a certain dog by its Short Tandem Repeats
+        (STR) pattern, located among the different chromosomes of its DNA. That identification may have several uses, and
+        one of them is helping towns and cities to maintain the streets clean from dogs' droppings..</p>
+      <hr class="my-4">
+      <p>To accomplish that mission, we are building a web application with Laravel 5.8 for the backend RESTful API,
+        Angular 7 for the frontend, Python for the scripts and MySQL as relational database for persistance.</p>
+      <p class="lead">
+        <a class="btn btn-warning btn-sm" href="#" role="button">Learn more</a>
+      </p>
+    </div>
+  
 </section> <!-- /.container -->
 
 
@@ -84,11 +78,12 @@
       <div class="col-md-6 col-lg-3 mx-auto">
 
         <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Nuestra empresa</h5>
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="far fa-building"></i> OUR COMPANY
+        </h5>
         <ul class="list-unstyled">
-          <li><a href="#!">¿Quiénes somos?</a></li>
-          <li><a href="#!">Trabaja con nosotros</a></li>
-          <li><a href="#!">Encuentra tu tienda </a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Work with us</a></li>
+          <li><a href="#">Mission Vision</a></li>
         </ul>
 
       </div>
@@ -100,13 +95,12 @@
       <div class="col-md-6 col-lg-3 mx-auto">
 
         <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Servicios</h5>
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="fas fa-concierge-bell"></i> Services</h5>
         <ul class="list-unstyled">
-          <li><a href="#!">Tipos de entrega </a></li>
-          <li><a href="#!">Instalaciones y servicios </a></li>
-          <li><a href="#!">Garantía plus </a></li>
-          <li><a href="#!">Solución para empresas </a></li>
-          <li><a href="#!">Financiación</a></li>
+          <li><a href="#">Clean streets </a></li>
+          <li><a href="#">Crime dog DNA </a></li>
+          <li><a href="#">Idenfication dogs DNA </a></li>
+
         </ul>
 
       </div>
@@ -118,13 +112,12 @@
       <div class="col-md-6 col-lg-3 mx-auto">
 
         <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">¿Te ayudamos?</h5>
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="fas fa-info-circle"></i> We help you?
+          </h5>
 
         <ul class="list-unstyled">
-          <li><a href="#!">Contacto</a></li>
-          <li><a href="#!">Preguntas frecuentes </a></li>
-          <li><a href="#!">Gestiona tu factura </a></li>
-          <li><a href="#!">Tarifas y políticas de envío </a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQ's </a></li>
         </ul>
 
       </div>
@@ -136,11 +129,11 @@
       <div class="col-md-6 col-lg-3 mx-auto">
 
         <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Ofertas y campañas</h5>
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="fas fa-calendar-check"></i> Events</h5>
 
         <ul class="list-unstyled">
           <li><a href="#!">Newsletter</a></li>
-          <li><a href="#!">Folleto y ofertas</a></li>
+          <li><a href="#!">Town halls</a></li>
 
         </ul>
 
