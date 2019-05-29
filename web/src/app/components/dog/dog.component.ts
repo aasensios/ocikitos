@@ -168,8 +168,8 @@ export class DogComponent implements OnInit {
       );
   }
 
-  deleteDog(dog: Dog) {
-    this.dogsService.delete(dog)
+  deleteDog() {
+    this.dogsService.delete(this.dog)
       .subscribe(
         response => {
           this.success = response['success'];
