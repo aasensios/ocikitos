@@ -68,7 +68,6 @@
               <th scope="col">Color</th>
               <th scope="col">Birthdate</th>
               <th scope="col">Deathdate</th>
-              <!-- <th>Age</th> -->
               <th scope="col">Owner DNI</th>
               <th scope="col">Owner Fullname</th>
               <th scope="col">Created at</th>
@@ -80,8 +79,8 @@
                   | paginate: {itemsPerPage: itemsPerPage, currentPage : currentPage}; let i = index;">
               <th scope="row">{{ dog.chip }}</th>
               <td>{{ dog.name }}</td>
-              <td *ngIf="dog.gender == 'male'"><i class="fas fa-dog" style="color: blue;"></i></td>
-              <td *ngIf="dog.gender == 'female'"><i class="fas fa-dog" style="color: fuchsia;"></i>
+              <td *ngIf="dog.gender == 'male'"><i class="fas fa-dog" style="color:cornflowerblue ;"></i></td>
+              <td *ngIf="dog.gender == 'female'"><i class="fas fa-dog" style="color: purple;"></i>
               </td>
               <td>{{ dog.breed_id }}</td>
               <td>{{ dog.color_id }}</td>
@@ -91,7 +90,7 @@
               <td>{{ dog.owner_fullname }}</td>
               <td>{{ dog.created_at }}</td>
               <td>
-                <button class="btn btn-primary" (click)="onSelect(dog)">Edit</button>
+                <button class="btn btn-sm btn-primary" (click)="onSelect(dog)">Edit</button>
               </td>
             </tr>
           </tbody>

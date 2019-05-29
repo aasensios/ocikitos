@@ -21,6 +21,16 @@ export class IncidentsService {
     return this.http.get<Incident[]>(url, options);
   }
 
+  getIncident(id: number): Observable<Incident[]> {
+    const url = `${API.API_URL}/incidents/${id}`;
+
+    const accessToken = localStorage.getItem('access_token');
+
+    const options = API.getAuthOptions(accessToken);
+
+    return this.http.get<Incident[]>(url, options);
+  }
+
   create(incident: Incident): Observable<Incident> {
     const url = `${API.API_URL}/incidents`;
 

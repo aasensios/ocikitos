@@ -73,7 +73,7 @@ export class InfractionsComponent implements OnInit {
         idValid = infraction.id === this.idFilter; // filter by chromosome
 
 
-        return (statusValid && idValid);
+        return (statusValid &&  idValid);
       }
 
     );

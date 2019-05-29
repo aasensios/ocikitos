@@ -134,15 +134,14 @@
       <ngx-barcode *ngIf="sample.barcode" [bc-value]="sample.barcode" [bc-display-value]="true"></ngx-barcode>
       <div class="form-group">
         <label>Sample Origin</label>
-        <mat-radio-group tabindex="13" formControlName="origin" class="tp-radio-group">
-          <mat-radio-button class="tp-radio-button" *ngFor="let origin of origins" [value]="origin"
-            [(ngModel)]="sample.origin">
+        <mat-radio-group tabindex="13" formControlName="origin" class="tp-radio-group" [(ngModel)]="sample.origin">
+          <mat-radio-button class="tp-radio-button" *ngFor="let origin of origins" [value]="origin">
             {{ origin }}
           </mat-radio-button>
         </mat-radio-group>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" (click)="addDog(dog)" >Add Dog</button>
+        <button class="btn btn-primary" (click)="addDog(dog)" [disabled]="form.invalid" >Add Dog</button>
         <!-- <button class="btn btn-sm btn-warning" (click)="modofyDog(dog)" [disabled]="form.invalid" *nfIf="editing">Modify Dog</button> -->
         <button class="btn btn-warning" (click)="modifyDog(dog)" [disabled]="form.invalid">Modify Dog</button>
         <button class="btn btn-danger" (click)="deleteDog(dog)">Delete</button>
