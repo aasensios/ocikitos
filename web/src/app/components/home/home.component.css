@@ -1,21 +1,26 @@
-.banner{
-    height:25vh;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .content {
-    background: url("../../../assets/images/fondo.jpeg");
-    
-    height:70vh;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .jumbotron {
-    background: none; /* Transparent background */
-  }
-  
-  .colorBlack {
-    color:black;
-    }
+.banner {
+  height: 25vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.content {
+  background: url("../../../assets/images/fondo.jpeg");
+
+  height: 35vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.jumbotron {
+  background: none;
+  /* Transparent background */
+}
+
+.colorBlack {
+  color: black;
+}
+
+.fa-dna, .fa-laravel, .fa-angular, .fa-heart {
+  font-size: larger;
+}

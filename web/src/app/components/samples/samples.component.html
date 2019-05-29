@@ -1,7 +1,8 @@
 <app-sample [sample]="sampleSelected" *ngIf="sampleSelected">
   </app-sample>
 <h4>Filter Samples <i class="fas fa-vial"></i></h4>
-<div>
+<div class="container">
+    
   <form #samplesFilterForm="ngForm">
     <table class="table table-bordered">
       <div class="row">
@@ -100,6 +101,5 @@
       </form>
     </div>
   </form>
-  <!-- <app-dog-detail [dog]="dogSelected" *ngIf="dogSelected">
-    </app-dog-detail>  -->
+  
 </div>

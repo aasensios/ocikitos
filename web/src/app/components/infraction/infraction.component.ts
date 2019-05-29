@@ -10,12 +10,15 @@ import { Sample } from 'src/app/models/sample.model';
 import { SamplesService } from 'src/app/services/samples.service';
 import { IncidentsService } from 'src/app/services/incidents.service';
 import { Incident } from 'src/app/models/incident.model';
+import { Dog } from 'src/app/models/dog.model';
+import { DogsService } from 'src/app/services/dogs.service';
+
 
 @Component({
   selector: 'app-infraction',
   templateUrl: './infraction.component.html',
   styleUrls: ['./infraction.component.css'],
-  providers: [InfractionsService, IncidentsService, SamplesService],
+  providers: [InfractionsService, IncidentsService, SamplesService, DogsService],
 })
 
 export class InfractionComponent implements OnInit {
@@ -27,7 +30,8 @@ export class InfractionComponent implements OnInit {
 
   infractions: Infraction[] = [];
   incident: Incident = new Incident();
-    sample: Sample = new Sample();
+  sample: Sample = new Sample();
+  dog: Dog = new Dog();
 
 
   error: string;
@@ -41,6 +45,7 @@ export class InfractionComponent implements OnInit {
 
   constructor(
     private infractionsService: InfractionsService,
+    private dogsService: DogsService,
     private samplesService: SamplesService,
     private incidentsService: IncidentsService,
     private formBuilder: FormBuilder

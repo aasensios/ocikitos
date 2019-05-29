@@ -23,12 +23,13 @@
       <a routerLink="/incidents" class="nav-item nav-link" routerLinkActive="active">Incidents</a>
       <a routerLink="/infractions" class="nav-item nav-link" routerLinkActive="active">Infractions</a>
       <a routerLink="/strs" class="nav-item nav-link" routerLinkActive="active">STR's</a>
-
     </div>
     <div class="navbar-nav ml-auto">
-      <a routerLink="/login" class="nav-item nav-link">Login</a>
-      <a routerLink="/logout" class="nav-item nav-link">Logout</a>
-      <a routerLink="/register" class="nav-item nav-link">Register</a>
+    
+      <button routerLink="/login" class="btn btn-sm btn-primary mx-2 nav-item nav-link" >Login</button>
+      <button routerLink="/register" class="btn btn-sm btn-success mx-2 nav-item nav-link">Register</button>
+      <button class="btn btn-sm btn-secondary mx-2 nav-item nav-link" (click)="logout()">Logout</button>
+
     </div>
   </div>
 </nav>
@@ -37,31 +38,16 @@
 
 
 
-<!-- <nav aria-label="breadcrumb">
-  <ol class="breadcrumb bg-warning">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Current page</li>
-  </ol>
-</nav> -->
-
-
-
 <!-- Page Content -->
 <section class="container-fluid content">
 
 
   <!-- Jumbotron Slogan -->
-  <div class="jumbotron mt-3 text-white rounded-2 ">
-      <h1 class="display-5">Matching Dogs DNA</h1>
-      <p class="lead">This project aims to use bioinformatics tools to identify a certain dog by its Short Tandem Repeats
-        (STR) pattern, located among the different chromosomes of its DNA. That identification may have several uses, and
-        one of them is helping towns and cities to maintain the streets clean from dogs' droppings..</p>
+  <div class="jumbotron mt-3 text-white rounded-2 text-center">
+      <p class="lead">Made with <i class="fas fa-heart" style="color:yellow ;"></i>.</p>
+      <p class="lead">Powered by  <i class="fab fa-angular"></i>    and    <i class="fab fa-laravel"></i>    and our    <i class="fas fa-dna"></i>.</p>
       <hr class="my-4">
-      <p>To accomplish that mission, we are building a web application with Laravel 5.8 for the backend RESTful API,
-        Angular 7 for the frontend, Python for the scripts and MySQL as relational database for persistance.</p>
-      <p class="lead">
-        <a class="btn btn-warning btn-sm" href="#" role="button">Learn more</a>
-      </p>
+      
     </div>
   
 </section> <!-- /.container -->
@@ -83,9 +69,9 @@
         <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="far fa-building"></i> OUR COMPANY
         </h5>
         <ul class="list-unstyled">
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Work with us</a></li>
-          <li><a href="#">Mission Vision</a></li>
+          <li><a>About us</a></li>
+          <li><a>Work with us</a></li>
+          <li><a>Mission Vision</a></li>
         </ul>
 
       </div>
@@ -99,9 +85,9 @@
         <!-- Links -->
         <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="fas fa-concierge-bell"></i> Services</h5>
         <ul class="list-unstyled">
-          <li><a href="#">Clean streets </a></li>
-          <li><a href="#">Crime dog DNA </a></li>
-          <li><a href="#">Idenfication dogs DNA </a></li>
+          <li><a>Clean streets </a></li>
+          <li><a>Crime dog DNA </a></li>
+          <li><a>Idenfication dogs DNA </a></li>
 
         </ul>
 
@@ -118,8 +104,8 @@
           </h5>
 
         <ul class="list-unstyled">
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">FAQ's </a></li>
+          <li><a>Contact</a></li>
+          <li><a>FAQ's </a></li>
         </ul>
 
       </div>
@@ -134,8 +120,8 @@
         <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><i class="fas fa-calendar-check"></i> Events</h5>
 
         <ul class="list-unstyled">
-          <li><a href="#!">Newsletter</a></li>
-          <li><a href="#!">Town halls</a></li>
+          <li><a>Newsletter</a></li>
+          <li><a>Town halls</a></li>
 
         </ul>
 
