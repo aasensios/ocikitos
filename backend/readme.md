@@ -1,0 +1,61 @@
+# Laravel RESTful API Usage Documentation
+
+# There are two HTTP Headers that must be present in every HTTP Request to the API:
+
+HTTP Headers:
+
+Accept:application/json
+Authorization:'Bearer '.$accessToken
+
+# Users management:
+
+POST http://localhost:8000/api/register
+POST http://localhost:8000/api/login
+
+# Dogs, Samples, Incidents and Infractions management:
+
+## Create Dog
+
+POST http://localhost:8000/api/dogs
+
+HTTP Body:
+
+chip:123456789012345
+name:Dug
+gender:male
+breed_id:1
+color_id:2
+birthdate:2000-01-01
+deathdate:
+owner_dni:46477213D
+owner_fullname:Alejandro Asensio
+residence:Calle Falsa, 123
+
+## Read All Dogs
+
+GET http://localhost:8000/api/dogs
+
+## Read One Dog (by its primary key 'id' or the whole Dog object)
+
+GET http://localhost:8000/api/dogs/51
+
+## Update A Dog
+
+PUT/PATCH http://localhost:8000/api/dogs/51?chip=123456789012346&name=Dig&gender=female&breed_id=1&color_id=2&birthdate=2000-01-02&deathdate=2010-12-30&owner_dni=X6477213D&owner_fullname=Alejandro Asensio&residence=Calle de la Piruleta S/N
+
+HTTP Params:
+
+chip:123456789012346
+name:Dig
+gender:female
+breed_id:1
+color_id:2
+birthdate:2000-01-02
+deathdate:2010-12-30
+owner_dni:X6477213D
+owner_fullname:Alejandro Asensio
+residence:Calle de la Piruleta S/N
+
+## Delete A Dog
+
+DELETE http://localhost:8000/api/dogs/51
