@@ -17,8 +17,8 @@ import { MatSelectModule } from '@angular/material';
 import { MatDividerModule, MatListModule } from '@angular/material';
 import { MatInputModule, MatOptionModule, MatIconModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxBarcode6Module } from 'ngx-barcode6';
 import { MatExpansionModule } from '@angular/material';
-import { NgxBarcodeModule } from 'ngx-barcode';
 import { HomeComponent } from './components/home/home.component';
 import { SamplesComponent } from './components/samples/samples.component';
 import { StrsComponent } from './components/strs/strs.component';
@@ -62,7 +62,7 @@ import { InfractionComponent } from './components/infraction/infraction.componen
     MatSelectModule,
     MatInputModule, MatOptionModule, MatIconModule,
     MatDividerModule, MatListModule,
-    NgxBarcodeModule,
+    NgxBarcode6Module,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
-@import '../node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css';
-@import '../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css';
-@import '../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css';
-@import '../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css';
+/* @import '../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-regular.css'; */
+/* @import '../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css'; */
+/* @import '../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css'; */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 
 body {
