@@ -73,7 +73,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let str
+            <!-- <tr *ngFor="let str
                   of strsFiltered
                   | paginate: {itemsPerPage: itemsPerPage,
                   currentPage : currentPage}; let i = index;" (click)="onSelect(str)">
@@ -89,14 +89,14 @@
               <td>{{ str.max_repeats }}</td>
               <td>{{ str.annealing_temp }}</td>
 
-            </tr>
+            </tr> -->
           </tbody>
         </table>
 
 
 
-        <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
-        </pagination-controls>
+        <!-- <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+        </pagination-controls> -->
       </form>
     </div>
   </form>

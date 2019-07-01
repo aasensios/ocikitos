@@ -46,8 +46,8 @@
     </div>
 
     <div *ngIf="infractionsFiltered.length > 0">
-      <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
-      </pagination-controls>
+      <!-- <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+      </pagination-controls> -->
       <form #infractionsManagementForm="ngForm" novalidate>
         <table *ngIf=infractions class="table table-hover">
           <thead class="thead-dark">
@@ -63,7 +63,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let infraction of infractionsFiltered
+            <!-- <tr *ngFor="let infraction of infractionsFiltered
                   | paginate: {itemsPerPage: itemsPerPage, currentPage : currentPage}; let i = index;">
               <th scope="row">{{ infraction.id }}</th>
               <td>{{ infraction.status }}</td>
@@ -77,11 +77,11 @@
               <td>
                 <button class="btn btn-sm btn-primary" (click)="onSelect(infraction)">Validate</button>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
-        <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
-        </pagination-controls>
+        <!-- <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+        </pagination-controls> -->
       </form>
     </div>
   </form>

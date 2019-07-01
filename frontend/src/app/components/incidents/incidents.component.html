@@ -42,8 +42,8 @@
     </div>
 
     <div *ngIf="incidentsFiltered.length > 0">
-      <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
-      </pagination-controls>
+      <!-- <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+      </pagination-controls> -->
       <form #incidentsManagementForm="ngForm" novalidate>
         <table *ngIf=incidents class="table table-hover">
           <thead class="thead-dark">
@@ -59,13 +59,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let incident of incidentsFiltered
+            <!-- <tr *ngFor="let incident of incidentsFiltered
                   | paginate: {itemsPerPage: itemsPerPage, currentPage : currentPage}; let i = index;">
               <th scope="row">{{ incident.id }}</th>
               <td>{{ incident.photo }}</td>
-             <!--  <td *ngIf="dog.gender == 'male'">{{ dog.gender }}<br><i class="fas fa-dog" style="color: blue;"></i></td>
-              <td *ngIf="dog.gender == 'female'">{{ dog.gender }}<br><i class="fas fa-dog" style="color: fuchsia;"></i> 
-              </td>-->
               <td>{{ incident.location }}</td>
               <td>{{ incident.sample_barcode }}</td>
               <td>{{ incident.agent_id }}</td>
@@ -74,11 +71,11 @@
               <td>
                 <button class="btn btn-sm btn-primary" (click)="onSelect(incident)">Edit</button>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
-        <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
-        </pagination-controls>
+        <!-- <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+        </pagination-controls> -->
       </form>
     </div>
   </form>

@@ -73,15 +73,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let sample
+            <!-- <tr *ngFor="let sample
                   of samplesFiltered
                   | paginate: {itemsPerPage: itemsPerPage,
                   currentPage : currentPage}; let i = index;" (click)="onSelect(sample)">
               <th scope="row">{{ sample.barcode }}</th>
               <td>{{ sample.origin }}</td>
-              <!-- <td *ngIf="dog.gender == 'male'"><i class="fas fa-dog" style="color: blue;"></i></td>
-              <td *ngIf="dog.gender == 'female'"><i class="fas fa-dog" style="color: fuchsia;"></i></td>
-              -->
               <td>{{ sample.sequence }}</td>
               <td>Pattern data</td>
               <td>{{ sample.dog_id }}</td>
@@ -90,14 +87,14 @@
 
 
               <td><button class="btn btn-sm btn-primary">Edit</button></td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
 
 
 
-        <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
-        </pagination-controls>
+        <!-- <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+        </pagination-controls> -->
       </form>
     </div>
   </form>
