@@ -22,7 +22,7 @@ import { SamplesService } from 'src/app/services/samples.service';
 export class DogComponent implements OnInit {
 
   @Input() dog: Dog;
-  @ViewChild('dogForm') dogForm: HTMLFormElement;
+  @ViewChild('dogForm', { static: true }) dogForm: HTMLFormElement;
   form: FormGroup;
   submitted = false;
 

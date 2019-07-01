@@ -19,7 +19,7 @@ import { SamplesService } from '../../services/samples.service';
 export class SampleComponent implements OnInit {
 
   @Input() sample: Sample;
-  @ViewChild('sampleForm') sampleForm: HTMLFormElement;
+  @ViewChild('sampleForm', { static: true }) sampleForm: HTMLFormElement;
   form: FormGroup;
   submitted = false;
 

@@ -19,7 +19,7 @@ import { SamplesService } from 'src/app/services/samples.service';
 export class IncidentComponent implements OnInit {
 
   @Input() incident: Incident;
-  @ViewChild('incidentForm') incidentForm: HTMLFormElement;
+  @ViewChild('incidentForm', { static: true }) incidentForm: HTMLFormElement;
   form: FormGroup;
   submitted = false;
 

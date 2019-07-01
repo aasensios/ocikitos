@@ -24,7 +24,7 @@ import { DogsService } from 'src/app/services/dogs.service';
 export class InfractionComponent implements OnInit {
 
   @Input() infraction: Infraction;
-  @ViewChild('infractionForm') infractionForm: HTMLFormElement;
+  @ViewChild('infractionForm', { static: false }) infractionForm: HTMLFormElement;
   form: FormGroup;
   submitted = false;
 
