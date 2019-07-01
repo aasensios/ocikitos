@@ -35,7 +35,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Gender</label>
-                <mat-radio-group tabindex="7" formControlName="gender" class="tp-radio-group"  [(ngModel)]="dog.gender">
+                <mat-radio-group tabindex="7" formControlName="gender" class="tp-radio-group" [(ngModel)]="dog.gender">
                   <mat-radio-button class="tp-radio-button" *ngFor="let gender of genders" [value]="gender">
                     {{ gender }}
                   </mat-radio-button>
@@ -88,7 +88,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- <div class="form-group">
             <label>Email*</label>
             <input type="text" tabindex="8" formControlName="owner_email" class="form-control"
@@ -131,7 +131,12 @@
           <div *ngIf="!!f.barcode.errors.required">Barcode sample is required</div>
         </div>
       </div>
-      <ngx-barcode6 *ngIf="sample.barcode" [bc-value]="sample.barcode" [bc-display-value]="true"></ngx-barcode6>
+
+      <!-- <ngx-barcode6 *ngIf="sample.barcode" [bc-value]="sample.barcode" [bc-display-value]="true"></ngx-barcode6> -->
+      <!-- <svg *ngIf="sample.barcode" class="barcode" jsbarcode-format="upc" [jsbarcode-value]="sample.barcode" jsbarcode-textmargin="0"
+        jsbarcode-fontoptions="bold">
+      </svg> -->
+
       <div class="form-group">
         <label>Sample Origin</label>
         <mat-radio-group tabindex="13" formControlName="origin" class="tp-radio-group" [(ngModel)]="sample.origin">
@@ -141,11 +146,13 @@
         </mat-radio-group>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" (click)="addDog()" [disabled]="form.invalid" >Add Dog</button>
+        <button class="btn btn-primary" (click)="addDog()" [disabled]="form.invalid">Add Dog</button>
         <!-- <button class="btn btn-sm btn-warning" (click)="modofyDog(dog)" [disabled]="form.invalid" *nfIf="editing">Modify Dog</button> -->
         <button class="btn btn-warning" (click)="modifyDog()" [disabled]="form.invalid">Modify Dog</button>
-<!--         <button class="btn btn-danger" (click)="deleteDog()">Delete</button>
- --><!--         <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
- -->      </div>
+        <!--         <button class="btn btn-danger" (click)="deleteDog()">Delete</button>
+ -->
+        <!--         <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
+ -->
+      </div>
     </form>
   </div>

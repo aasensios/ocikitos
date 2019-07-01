@@ -48,8 +48,8 @@ export class DogsComponent implements OnInit {
   ];
   dataSource: MatTableDataSource<Dog> = new MatTableDataSource([]);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   // Results from API
   dogs: Dog[];
