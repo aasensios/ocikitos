@@ -16,8 +16,8 @@ import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 // NGX
-import { NgxBarcode6Module } from 'ngx-barcode6';
-import { NgxPaginationModule } from 'ngx-pagination';
+// import { NgxBarcode6Module } from 'ngx-barcode6';
+// import { NgxPaginationModule } from 'ngx-pagination';
 
 // Application Components
 import { HomeComponent } from './components/home/home.component';
@@ -62,12 +62,12 @@ import { DogDirective } from './directives/dog.directive';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule,
+    // NgxBarcode6Module,
+    // NgxPaginationModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    NgxBarcode6Module,
     MaterialModule,
     FlexLayoutModule
   ],
