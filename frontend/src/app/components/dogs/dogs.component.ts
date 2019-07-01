@@ -45,11 +45,12 @@ export class DogsComponent implements OnInit {
     'owner_dni',
     'owner_fullname',
     'created_at',
+    'edit'
   ];
   dataSource: MatTableDataSource<Dog> = new MatTableDataSource([]);
 
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   // Results from API
   dogs: Dog[];
@@ -94,12 +95,12 @@ export class DogsComponent implements OnInit {
       return data.chip.toString().indexOf(searchTerms.chip) !== -1
         && data.name.toLowerCase().indexOf(searchTerms.name) !== -1
         && data.gender.toLowerCase().indexOf(searchTerms.gender) !== -1
-        && data.breed.toLowerCase().indexOf(searchTerms.breed) !== -1
-        && data.color.toLowerCase().indexOf(searchTerms.color) !== -1
+        && data.breed_id.toString().indexOf(searchTerms.breed_id) !== -1
+        && data.color_id.toString().indexOf(searchTerms.color_id) !== -1
         && data.birthdate.toString().indexOf(searchTerms.birthdate) !== -1
-        && data.deathdate.toString().indexOf(searchTerms.deathdate) !== -1
-        && data.owner_dni.toString().indexOf(searchTerms.owner_dni) !== -1
-        && data.owner_fullname.toString().indexOf(searchTerms.owner_fullname) !== -1
+        && (data.deathdate.toString().indexOf(searchTerms.deathdate) !== -1 || null)
+        && data.owner_dni.indexOf(searchTerms.owner_dni) !== -1
+        && data.owner_fullname.indexOf(searchTerms.owner_fullname) !== -1
         && data.created_at.toString().indexOf(searchTerms.created_at) !== -1;
     };
     return filterFunction;
@@ -208,16 +209,9 @@ export class DogsComponent implements OnInit {
           this.dataSource.sort = this.sort;
           // Multi-filtering by each field.
           this.dataSource.filterPredicate = this.tableFilter();
-    console.log(this.dogs);
-
         }
       );
-
-
-
   }
-
-
 
   onSelect(dog: Dog) {
     this.dogSelected = dog;
