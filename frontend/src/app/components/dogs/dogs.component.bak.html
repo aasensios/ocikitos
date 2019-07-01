@@ -1,0 +1,103 @@
+<app-dog [dog]="dogSelected" *ngIf="dogSelected">
+  </app-dog>
+<h4>Filter dogs <i class="fas fa-dog"></i></h4>
+<div class="container">
+  
+  <form #dogsFilterForm="ngForm">
+    <table id="filter" class="table table-bordered">
+      <caption>Filters</caption>
+      <div class="row">
+        <div class="col-md-4">
+          <tr>
+            <td>Chip Number</td>
+            <td>
+              <input type="text" [(ngModel)]="chipFilter" name="chipFilter" (keyup)="filter()">
+            </td>
+          </tr>
+          <tr>
+            <td>Dog Name</td>
+            <td>
+              <input type="text" [(ngModel)]="nameFilter" name="nameFilter" (keyup)="filter()">
+            </td>
+          </tr>
+        </div>
+        <div class="col-md-4">
+          <tr>
+            <td>Owner's DNI</td>
+            <td>
+              <input type="text" [(ngModel)]="ownerDniFilter" name="ownerDniFilter" (keyup)="filter()">
+            </td>
+          </tr>
+          <tr>
+            <td>Owner's Name</td>
+            <td>
+              <input type="text" [(ngModel)]="ownerNameFilter" name="ownerNameFilter" (keyup)="filter()">
+            </td>
+          </tr>
+        </div>
+        <div class="col-md-4">
+          <tr>
+            <td>Items per page</td>
+            <td>
+              <input type="number" [(ngModel)]="itemsPerPage" name="itemsPerPage">
+            </td>
+          </tr>
+          <tr>
+            <td>Number of filtered dogs</td>
+            <td>{{ dogsFiltered.length }}</td>
+          </tr>
+        </div>
+      </div>
+    </table>
+
+    <div *ngIf="dogsFiltered.length == 0">
+      <h3>No dogs found</h3>
+    </div>
+
+    <div *ngIf="dogsFiltered.length > 0">
+      <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+      </pagination-controls>
+      <form #dogsManagementForm="ngForm" novalidate>
+        <table *ngIf=dogs class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Chip</th>
+              <th scope="col">Name</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Breed</th>
+              <th scope="col">Color</th>
+              <th scope="col">Birthdate</th>
+              <th scope="col">Deathdate</th>
+              <th scope="col">Owner DNI</th>
+              <th scope="col">Owner Fullname</th>
+              <th scope="col">Created at</th>
+              <th scope="col">Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dog of dogsFiltered
+                  | paginate: {itemsPerPage: itemsPerPage, currentPage : currentPage}; let i = index;">
+              <th scope="row">{{ dog.chip }}</th>
+              <td>{{ dog.name }}</td>
+              <td *ngIf="dog.gender == 'male'"><i class="fas fa-dog" style="color:cornflowerblue ;"></i></td>
+              <td *ngIf="dog.gender == 'female'"><i class="fas fa-dog" style="color: purple;"></i>
+              </td>
+              <td>{{ dog.breed_id }}</td>
+              <td>{{ dog.color_id }}</td>
+              <td>{{ dog.birthdate }}</td>
+              <td>{{ dog.deathdate }}</td>
+              <td>{{ dog.owner_dni }}</td>
+              <td>{{ dog.owner_fullname }}</td>
+              <td>{{ dog.created_at }}</td>
+              <td>
+                <button class="btn btn-sm btn-primary" (click)="onSelect(dog)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
+        </pagination-controls>
+      </form>
+    </div>
+  </form>
+</div>

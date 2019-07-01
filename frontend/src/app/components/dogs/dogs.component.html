@@ -1,103 +1,115 @@
-<app-dog [dog]="dogSelected" *ngIf="dogSelected">
-  </app-dog>
-<h4>Filter dogs <i class="fas fa-dog"></i></h4>
+<!-- <app-dog [dog]="dogSelected" *ngIf="dogSelected" /> -->
+
 <div class="container">
-  
-  <form #dogsFilterForm="ngForm">
-    <table id="filter" class="table table-bordered">
-      <caption>Filters</caption>
-      <div class="row">
-        <div class="col-md-4">
-          <tr>
-            <td>Chip Number</td>
-            <td>
-              <input type="text" [(ngModel)]="chipFilter" name="chipFilter" (keyup)="filter()">
-            </td>
-          </tr>
-          <tr>
-            <td>Dog Name</td>
-            <td>
-              <input type="text" [(ngModel)]="nameFilter" name="nameFilter" (keyup)="filter()">
-            </td>
-          </tr>
-        </div>
-        <div class="col-md-4">
-          <tr>
-            <td>Owner's DNI</td>
-            <td>
-              <input type="text" [(ngModel)]="ownerDniFilter" name="ownerDniFilter" (keyup)="filter()">
-            </td>
-          </tr>
-          <tr>
-            <td>Owner's Name</td>
-            <td>
-              <input type="text" [(ngModel)]="ownerNameFilter" name="ownerNameFilter" (keyup)="filter()">
-            </td>
-          </tr>
-        </div>
-        <div class="col-md-4">
-          <tr>
-            <td>Items per page</td>
-            <td>
-              <input type="number" [(ngModel)]="itemsPerPage" name="itemsPerPage">
-            </td>
-          </tr>
-          <tr>
-            <td>Number of filtered dogs</td>
-            <td>{{ dogsFiltered.length }}</td>
-          </tr>
-        </div>
-      </div>
-    </table>
+  <h4>Filter dogs <i class="fas fa-dog"></i></h4>
 
-    <div *ngIf="dogsFiltered.length == 0">
-      <h3>No dogs found</h3>
+  <!-- FILTERS FOR EACH FIELD -->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filters
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="dog">
+      <mat-form-field class="col">
+        <input matInput [formControl]="chipFilter" placeholder="Chip #">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [formControl]="nameFilter" placeholder="Dog Name">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [formControl]="genderFilter" placeholder="Gender">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [formControl]="breedFilter" placeholder="Breed">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [formControl]="colorFilter" placeholder="Color">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [formControl]="birthdateFilter" placeholder="Birthdate">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [formControl]="deathdateFilter" placeholder="Deathdate">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [formControl]="ownerDniFilter" placeholder="DNI">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [formControl]="ownerFullnameFilter" placeholder="Owner's Fullname">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [formControl]="createdAtFilter" placeholder="Created at">
+      </mat-form-field>
     </div>
+  </mat-expansion-panel>
 
-    <div *ngIf="dogsFiltered.length > 0">
-      <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
-      </pagination-controls>
-      <form #dogsManagementForm="ngForm" novalidate>
-        <table *ngIf=dogs class="table table-hover">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Chip</th>
-              <th scope="col">Name</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Breed</th>
-              <th scope="col">Color</th>
-              <th scope="col">Birthdate</th>
-              <th scope="col">Deathdate</th>
-              <th scope="col">Owner DNI</th>
-              <th scope="col">Owner Fullname</th>
-              <th scope="col">Created at</th>
-              <th scope="col">Manage</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let dog of dogsFiltered
-                  | paginate: {itemsPerPage: itemsPerPage, currentPage : currentPage}; let i = index;">
-              <th scope="row">{{ dog.chip }}</th>
-              <td>{{ dog.name }}</td>
-              <td *ngIf="dog.gender == 'male'"><i class="fas fa-dog" style="color:cornflowerblue ;"></i></td>
-              <td *ngIf="dog.gender == 'female'"><i class="fas fa-dog" style="color: purple;"></i>
-              </td>
-              <td>{{ dog.breed_id }}</td>
-              <td>{{ dog.color_id }}</td>
-              <td>{{ dog.birthdate }}</td>
-              <td>{{ dog.deathdate }}</td>
-              <td>{{ dog.owner_dni }}</td>
-              <td>{{ dog.owner_fullname }}</td>
-              <td>{{ dog.created_at }}</td>
-              <td>
-                <button class="btn btn-sm btn-primary" (click)="onSelect(dog)">Edit</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks="true" autoHide="true">
-        </pagination-controls>
-      </form>
-    </div>
-  </form>
+  <!-- TABLE -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="chip">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Chip # </th>
+      <td mat-cell *matCellDef="let dog"> {{dog.chip}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Dog Name </th>
+      <td mat-cell *matCellDef="let dog"> {{dog.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+      <td mat-cell *matCellDef="let dog"> {{dog.gender}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="breed_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Breed </th>
+      <td mat-cell *matCellDef="let dog"> {{dog.breed_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="color_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
+      <td mat-cell *matCellDef="let dog" [style.color]="dog.color_id"> {{dog.color_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="birthdate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Birthdate </th>
+      <td mat-cell *matCellDef="let dog"> {{dog.birthdate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deathdate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Deathdate </th>
+      <td mat-cell *matCellDef="let dog"> {{dog.deathdate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="owner_dni">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DNI </th>
+      <td mat-cell *matCellDef="let dog"> {{dog.owner_dni}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="owner_fullname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Owner Fullname </th>
+      <td mat-cell *matCellDef="let dog"> {{dog.owner_fullname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created at </th>
+      <td mat-cell *matCellDef="let dog"> {{dog.created_at}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
+        <td mat-cell *matCellDef="let dog">
+          <button mat-raised-button (click)="onSelect(dog)">Edit</button>
+        </td>
+      </ng-container> -->
+
+    <tr mat-header-dog *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-dog *matRowDef="let dog; columns: displayedColumns;"></tr>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+  </table>
+
+
+
 </div>

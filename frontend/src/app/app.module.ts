@@ -1,25 +1,31 @@
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
+// https://angular.io/guide/http
+import { HttpClientModule } from '@angular/common/http';
+
+// https://material.angular.io/guide/getting-started
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+
+// https://github.com/angular/flex-layout
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+// NGX
+import { NgxBarcode6Module } from 'ngx-barcode6';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+// Application Components
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { DogComponent } from './components/dog/dog.component';
 import { DogsComponent } from './components/dogs/dogs.component';
 import { ErrorComponent } from './components/error/error.component';
-import { DogDirective } from './directives/dog.directive';
-import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { MatRadioModule } from '@angular/material';
-import { MatSelectModule } from '@angular/material';
-import { MatDividerModule, MatListModule } from '@angular/material';
-import { MatInputModule, MatOptionModule, MatIconModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxBarcode6Module } from 'ngx-barcode6';
-import { MatExpansionModule } from '@angular/material';
-import { HomeComponent } from './components/home/home.component';
 import { SamplesComponent } from './components/samples/samples.component';
 import { StrsComponent } from './components/strs/strs.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
@@ -28,6 +34,10 @@ import { InfoComponent } from './components/info/info.component';
 import { SampleComponent } from './components/sample/sample.component';
 import { IncidentComponent } from './components/incident/incident.component';
 import { InfractionComponent } from './components/infraction/infraction.component';
+
+// Directives
+import { DogDirective } from './directives/dog.directive';
+
 
 @NgModule({
   declarations: [
@@ -57,12 +67,9 @@ import { InfractionComponent } from './components/infraction/infraction.componen
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatExpansionModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatInputModule, MatOptionModule, MatIconModule,
-    MatDividerModule, MatListModule,
     NgxBarcode6Module,
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
