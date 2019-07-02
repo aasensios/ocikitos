@@ -1,33 +1,19 @@
 export class Dog {
 
-    id: number;
-    chip: string;
-    name: string;
-    gender: string;
-    breed_id: number;
-    color_id: number;
-    birthdate: Date;
-    deathdate: Date;
-    owner_dni: string;
-    owner_fullname: string;
-    residence: string;
-    created_at: any;
-    updated_at: any;
-
     constructor(
-        id?: number,
-        chip?: string,
-        name?: string,
-        gender?: string,
-        breed_id?: number,
-        color_id?: number,
-        birthdate?: Date,
-        deathdate?: Date,
-        owner_dni?: string,
-        owner_fullname?: string,
-        residence?: string,
-        created_at?: any,
-        updated_at?: any,
+        public id?: number,
+        public chip?: string,
+        public name?: string,
+        public gender?: string,
+        public breed_id?: number,
+        public color_id?: number,
+        public birthdate?: Date,
+        public deathdate?: Date,
+        public owner_dni?: string,
+        public owner_fullname?: string,
+        public residence?: string,
+        public created_at?: any,
+        public updated_at?: any,
     ) { }
 
 }

@@ -15,6 +15,9 @@ import { MaterialModule } from './material.module';
 // https://github.com/angular/flex-layout
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+// https://www.npmjs.com/package/simplemattable
+import { SimplemattableModule } from 'simplemattable';
+
 // NGX
 // import { NgxBarcode6Module } from 'ngx-barcode6';
 // import { NgxPaginationModule } from 'ngx-pagination';
@@ -69,7 +72,8 @@ import { DogDirective } from './directives/dog.directive';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SimplemattableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
