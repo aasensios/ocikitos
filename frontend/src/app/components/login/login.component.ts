@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { User } from '../../models/user.model';
-import { AuthService } from '../../services/auth.service';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 // Custom validator to validate that password and confirm password fields match.
-// import { MustMatch } from '../../services/must-match.validator';
+// import { MustMatch } from 'src/app/services/must-match.validator';
 // import { first } from 'rxjs/operators';
 // import { map } from 'rxjs/operators';
 

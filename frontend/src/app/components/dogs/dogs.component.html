@@ -1,14 +1,7 @@
-<!-- <app-dog [dog]="dogSelected" *ngIf="dogSelected" /> -->
+<app-dog [dog]="dogSelected" *ngIf="dogSelected"></app-dog>
 
 <div class="container-fluid">
   <h4>Filter dogs <i class="fas fa-dog"></i></h4>
-
-  <!-- TABLE -->
-  <div>
-    <smc-simplemattable [data]="dogs" [columns]="columnsFilter" [paginator]="true" [sorting]="true"
-      class="mat-elevation-z8"></smc-simplemattable>
-  </div>
-
-
-
+  <smc-simplemattable [data]="dogs" [columns]="columnsFilter" [paginator]="true" [sorting]="true"
+    class="mat-elevation-z8"></smc-simplemattable>
 </div>

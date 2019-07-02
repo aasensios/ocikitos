@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Sample } from '../../models/sample.model';
-import { SamplesService } from '../../services/samples.service';
+import { Sample } from 'src/app/models/sample.model';
+import { SamplesService } from 'src/app/services/samples.service';
 
 
 @Component({

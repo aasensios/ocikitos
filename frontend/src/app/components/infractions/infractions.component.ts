@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Infraction } from '../../models/infraction.model';
-import { InfractionsService } from '../../services/infractions.service';
+import { Infraction } from 'src/app/models/infraction.model';
+import { InfractionsService } from 'src/app/services/infractions.service';
 
 
 @Component({

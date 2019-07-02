@@ -2,12 +2,12 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // import custom validator to validate that password and confirm password fields match
-import { MustMatch } from '../../services/must-match.validator';
-import { Sample } from '../../models/sample.model';
-import { Color } from '../../models/color.model';
-import { Breed } from '../../models/breed.model';
+import { MustMatch } from 'src/app/services/must-match.validator';
+import { Sample } from 'src/app/models/sample.model';
+import { Color } from 'src/app/models/color.model';
+import { Breed } from 'src/app/models/breed.model';
 
-import { SamplesService } from '../../services/samples.service';
+import { SamplesService } from 'src/app/services/samples.service';
 
 @Component({
   selector: 'app-sample',

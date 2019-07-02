@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Dog } from '../models/dog.model';
+import { Dog } from 'src/app/models/Dog';
 import { Observable } from 'rxjs';
 import { API } from './api.constants';
 

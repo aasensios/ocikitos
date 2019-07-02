@@ -3,24 +3,25 @@ import { DogsService } from 'src/app/services/dogs.service';
 import { FormControl } from '@angular/forms';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { TableColumn, ButtonType, Width, Height } from 'simplemattable';
-import { Dog } from 'src/app/models/dog.model';
+// import { Dog } from 'src/app/models/Dog';
 
-// export interface Dog {
-//   id: number;
-//   chip: string;
-//   name: string;
-//   gender: string;
-//   breed_id: number;
-//   color_id: number;
-//   birthdate: Date;
-//   deathdate: Date;
-//   owner_dni: string;
-//   owner_fullname: string;
-//   residence: string;
-//   created_at: any;
-//   updated_at: any;
-//   vet_user_id: number;
-// }
+export interface Dog {
+  id: number;
+  chip: string;
+  name: string;
+  gender: string;
+  breed_id: number;
+  color_id: number;
+  birthdate: Date;
+  deathdate: Date;
+  owner_dni: string;
+  owner_fullname: string;
+  residence: string;
+  created_at: any;
+  updated_at: any;
+  edit: string;
+  // vet_user_id: number;
+}
 
 // export interface Response {
 //   success: boolean;
@@ -56,18 +57,15 @@ export class DogsComponent implements OnInit {
     new TableColumn<Dog, 'owner_fullname'>('Owner Fullname', 'owner_fullname').withColFilter(),
     new TableColumn<Dog, 'residence'>('Residence', 'residence').withColFilter().isHiddenSm(true),
     new TableColumn<Dog, 'edit'>('Edit', 'edit')
-      .withIcon((id) => id < 255511332976721 ? 'delete' : 'edit')
+      .withIcon(() => 'edit')
       .withButton(ButtonType.RAISED)
       .withButtonColor('primary')
       // .withWidth(Width.px(125))
       // .withHeightFn(() => Height.px(10))
       .withOnClick(id => {
-        this.dogSelected = new Dog();
-        this.dogSelected.id = id;
         // this.dogSelected.id = id;
         this.editing = true;
         console.log(this.dogSelected);
-
       }),
   ];
 
@@ -75,7 +73,7 @@ export class DogsComponent implements OnInit {
 
   ngOnInit() {
     // Initialize the selected dog.
-    this.dogSelected = new Dog();
+    // this.dogSelected = new Dog();
     // Get the dogs from the API.
     this.getDogs();
   }
@@ -99,9 +97,9 @@ export class DogsComponent implements OnInit {
 
         // Complete
         () => {
-          // this.dogs.forEach(dog => {
-          //   dog.edit = 'Edit';
-          // });
+          this.dogs.forEach(dog => {
+            dog['edit'] = 'Edit';
+          });
           console.log(this.dogs);
         }
       );

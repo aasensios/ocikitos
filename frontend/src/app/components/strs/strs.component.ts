@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Str } from '../../models/str.model';
-import { StrsService } from '../../services/strs.service';
+import { Str } from 'src/app/models/str.model';
+import { StrsService } from 'src/app/services/strs.service';
 
 
 @Component({
