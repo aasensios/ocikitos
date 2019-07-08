@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DogsService } from 'src/app/services/dogs.service';
-import { FormControl } from '@angular/forms';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { TableColumn, ButtonType, Width, Height } from 'simplemattable';
+import { MatSnackBar } from '@angular/material';
 // import { Dog } from 'src/app/models/Dog';
 
 export interface Dog {
@@ -42,6 +41,7 @@ export class DogsComponent implements OnInit {
   error: string;
   success: boolean;
   message: string;
+  SNACKBAR_DURATION_IN_MILISECONDS = 5000;
 
   // Edit mode
   dogSelected: Dog;
@@ -69,7 +69,10 @@ export class DogsComponent implements OnInit {
       }),
   ];
 
-  constructor(private dogsService: DogsService) { }
+  constructor(
+    private dogsService: DogsService,
+    private snackBar: MatSnackBar,
+  ) { }
 
   ngOnInit() {
     // Initialize the selected dog.
@@ -82,8 +85,6 @@ export class DogsComponent implements OnInit {
    * Consume the API through the service.
    */
   getDogs() {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
     this.dogsService.getDogs()
       .subscribe(
         response => {
@@ -91,18 +92,21 @@ export class DogsComponent implements OnInit {
           this.dogs = response['data'];
           this.message = response['message'];
         },
-
-        // Error handling
         error => this.error = error,
-
         // Complete
         () => {
           this.dogs.forEach(dog => {
             dog['edit'] = 'Edit';
           });
-          console.log(this.dogs);
+          this.openSnackBar(this.message, 'OK');
         }
       );
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: this.SNACKBAR_DURATION_IN_MILISECONDS,
+    });
   }
 
 }

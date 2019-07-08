@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Str } from '../models/str.model';
+import { Str } from '../models/Str';
 import { Observable } from 'rxjs';
 import { API } from './api.constants';
 
