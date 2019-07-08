@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 // import custom validator to validate that password and confirm password fields match
 // import { MustMatch } from 'src/app/services/must-match.validator';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
 
 

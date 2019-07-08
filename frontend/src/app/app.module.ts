@@ -40,6 +40,7 @@ import { InfractionComponent } from './components/infraction/infraction.componen
 
 // Directives
 import { DogDirective } from './directives/dog.directive';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { DogDirective } from './directives/dog.directive';
     SampleComponent,
     IncidentComponent,
     InfractionComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

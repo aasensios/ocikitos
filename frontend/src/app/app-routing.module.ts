@@ -16,20 +16,20 @@ import { IncidentComponent } from './components/incident/incident.component';
 import { InfractionComponent } from './components/infraction/infraction.component';
 
 const routes: Routes = [
-  {path: 'home',  component: HomeComponent} ,
-  {path: 'info',  component: InfoComponent} ,
-  {path: 'login',  component: LoginComponent} ,
-  {path: 'register',  component: RegisterComponent} ,
-  {path: 'dog',  component: DogComponent},
-  {path: 'dogs',  component: DogsComponent} ,
-  {path: 'sample',  component: SampleComponent},
-  {path: 'samples',  component: SamplesComponent},
-  {path: 'strs',  component: StrsComponent},
-  {path: 'incident',  component: IncidentComponent},
-  {path: 'incidents',  component: IncidentsComponent},
-  {path: 'infraction',  component: InfractionComponent},
-  {path: 'infractions',  component: InfractionsComponent},
-  {path: '',  component: InfoComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'info', component: InfoComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'dog', component: DogComponent },
+  { path: 'dogs', component: DogsComponent },
+  { path: 'sample', component: SampleComponent },
+  { path: 'samples', component: SamplesComponent },
+  { path: 'strs', component: StrsComponent },
+  { path: 'incident', component: IncidentComponent },
+  { path: 'incidents', component: IncidentsComponent },
+  { path: 'infraction', component: InfractionComponent },
+  { path: 'infractions', component: InfractionsComponent },
+  // { path: '', component: InfoComponent },
 ];
 
 @NgModule({

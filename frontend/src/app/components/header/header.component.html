@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" fxLayout="column">
+  <mat-toolbar-row>
+    <a routerLink="/" class="h-100">
+      <img src="assets/images/pug.png" alt="Pug icon" routerLink="/" style="height: 80%">
+    </a>
+    <button mat-button routerLink="/info">About</button>
+    <button mat-button routerLink="/dog">Dog</button>
+    <button mat-button routerLink="/dogs">Dogs</button>
+    <button mat-button routerLink="/samples">Samples</button>
+    <button mat-button routerLink="/incident">Incident</button>
+    <button mat-button routerLink="/incidents">Incidents</button>
+    <button mat-button routerLink="/infractions">Infractions</button>
+    <button mat-button routerLink="/strs">STR's</button>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/register">Register</button>
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-button (click)="logout()" color="warn">Logout</button>
+  </mat-toolbar-row>
+</mat-toolbar>

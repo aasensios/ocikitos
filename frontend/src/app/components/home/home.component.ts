@@ -7,15 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit() {
-  }
-
-  logout() {
-    localStorage.removeItem('access_token');
-    alert(`You logged out successfully. See you soon, ${localStorage.username}!`);  
-    
   }
 
 }

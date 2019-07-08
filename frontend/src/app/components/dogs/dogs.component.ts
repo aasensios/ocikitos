@@ -47,7 +47,7 @@ export class DogsComponent implements OnInit {
   dogSelected: Dog;
   editing = false;
 
-  columnsFilter = [
+  columns = [
     new TableColumn<Dog, 'chip'>('Chip', 'chip').withColFilter().isHiddenSm(true),
     new TableColumn<Dog, 'name'>('Name', 'name').withColFilter(),
     new TableColumn<Dog, 'gender'>('Gender', 'gender').withColFilter(),
@@ -56,7 +56,7 @@ export class DogsComponent implements OnInit {
     new TableColumn<Dog, 'owner_dni'>('DNI', 'owner_dni').withColFilter(),
     new TableColumn<Dog, 'owner_fullname'>('Owner Fullname', 'owner_fullname').withColFilter(),
     new TableColumn<Dog, 'residence'>('Residence', 'residence').withColFilter().isHiddenSm(true),
-    new TableColumn<Dog, 'edit'>('Edit', 'edit')
+    new TableColumn<Dog, 'edit'>('', 'edit')
       .withIcon(() => 'edit')
       .withButton(ButtonType.RAISED)
       .withButtonColor('primary')

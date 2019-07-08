@@ -1,49 +1,31 @@
-<!-- FORMULARIO PREVIO CON VALIDACIONES // main app container -->
-<!-- <div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h4 class="display-8">Login user</h4>
-        <form [formGroup]="loginForm">
-          <div class="form-group">
-            <label>Email</label>
-            <input type="text" formControlName="user" class="form-control" [(ngModel)]="user.email"
-              [ngClass]="{ 'is-invalid': submitted && f.user.errors }" />
-            <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
-              <div *ngIf="f.user.errors.required">Email is required</div>
-              <div *ngIf="f.user.errors.email">Email must be a valid email address</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" formControlName="password" class="form-control" [(ngModel)]="user.password"
-              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-              <div *ngIf="f.password.errors.required">Password is required</div>
-              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary" (click)="login()">Login</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- FUNCIONA OK -->
-<div id="user-form" class="text-center" data-gr-c-s-loaded="true">
-  <form class="form-login">
-    <img class="mb-4" src="assets/images/logo.png" alt="logo" width="72" height="72">
-    <label for="inputEmail" class="sr-only">Email</label>
-    <input type="text" name="email" [(ngModel)]="user.email" id="inputEmail" class="form-control mb-2" placeholder="Email" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" [(ngModel)]="user.password" id="inputPassword" class="form-control mb-2" placeholder="Password" required>
-    <!-- <c:if test="${messages.error != null}">
-        <div class="alert alert-danger" role="alert">${messages.error}</div>
-    </c:if> -->
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Log in</button>
-    <p class="mt-5 mb-3 text-muted">Ocikitos © 2019</p>
-  </form>
+<div fxLayout="row" fxLayoutAlign="center center" class="p-3">
+  <mat-card fxFlex="40%" fxFlex.sm="80%" fxFlex.xs="90%">
+    <mat-card-content>
+      <form [formGroup]="loginForm" fxLayout="column">
+        <mat-form-field appearance="outline" fxFill>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="guest@ocikitos.com">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="f.email.errors && f.email.errors.required">
+            Email is <strong>required</strong>.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFill>
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" placeholder="123456"
+            [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="f.password.errors && f.password.errors.required">
+            Password is <strong>required</strong>.
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" (click)="onSubmit()" fxFill>LOGIN</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
