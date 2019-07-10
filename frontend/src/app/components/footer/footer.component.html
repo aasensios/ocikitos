@@ -1,76 +1,74 @@
-<footer fxLayout="column">
-  <section class="jumbotron mb-0 p-3" fxLayout="row" fxLayoutAlign="center baseline" fxLayoutGap="3em">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <span mat-card-avatar>
-          <i class="material-icons">business</i>
-        </span>
-        <mat-card-title>Our Company</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list role="list">
-          <mat-list-item role="listitem">About us</mat-list-item>
-          <mat-list-item role="listitem">Mission & Vision</mat-list-item>
-          <mat-list-item role="listitem">Work with us</mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <span mat-card-avatar>
-          <mat-icon>room_service</mat-icon>
-        </span>
-        <mat-card-title>Services</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list role="list">
-          <mat-list-item role="listitem">Clean Streets</mat-list-item>
-          <mat-list-item role="listitem">Crime Dog DNA</mat-list-item>
-          <mat-list-item role="listitem">Dog Idenfication by DNA</mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <span mat-card-avatar>
-          <mat-icon>event</mat-icon>
-        </span>
-        <mat-card-title>Events</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list role="list">
-          <mat-list-item role="listitem">Newsletter</mat-list-item>
-          <mat-list-item role="listitem">Town Halls</mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <span mat-card-avatar>
-          <mat-icon>help</mat-icon>
-        </span>
-        <mat-card-title>Can we help you?</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list role="list">
-          <mat-list-item role="listitem">Contact</mat-list-item>
-          <mat-list-item role="listitem">FAQ's</mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-  </section>
-
-  <mat-toolbar color="primary">
-    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center"
+<footer>
+  <mat-toolbar color="primary" class="p-3">
+    <mat-toolbar-row class="container" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="2em"
+      style="height: 30vh">
+      <mat-card fxFlex="25%">
+        <mat-card-header>
+          <span mat-card-avatar>
+            <i class="material-icons">business</i>
+          </span>
+          <mat-card-title>Our Company</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem">About us</mat-list-item>
+            <mat-list-item role="listitem">Mission & Vision</mat-list-item>
+            <mat-list-item role="listitem">Work with us</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card fxFlex="25%">
+        <mat-card-header>
+          <span mat-card-avatar>
+            <mat-icon>room_service</mat-icon>
+          </span>
+          <mat-card-title>Services</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Clean Streets</mat-list-item>
+            <mat-list-item role="listitem">Crime Dog DNA</mat-list-item>
+            <mat-list-item role="listitem">Dog Idenfication by DNA</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card fxFlex="25%">
+        <mat-card-header>
+          <span mat-card-avatar>
+            <mat-icon>event</mat-icon>
+          </span>
+          <mat-card-title>Events</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Newsletter</mat-list-item>
+            <mat-list-item role="listitem">Town Halls</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card fxFlex="25%">
+        <mat-card-header>
+          <span mat-card-avatar>
+            <mat-icon>help</mat-icon>
+          </span>
+          <mat-card-title>Can we help you?</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Contact</mat-list-item>
+            <mat-list-item role="listitem">FAQ's</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-toolbar-row>
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-around center"
       style="font-size: smaller; font-weight: lighter">
       <p>
-        Made with <mat-icon color="accent" fxFlexAlign="end">favorite</mat-icon>.
+        Made with <mat-icon color="accent">favorite</mat-icon>.
       </p>
       <p>
         Powered by <i class="fab fa-angular"></i> Angular,
-
         <i class="fab fa-laravel"></i> Laravel
-
         and our <i class="fas fa-dna"></i> DNA.
       </p>
       <p>
@@ -78,5 +76,4 @@
       </p>
     </mat-toolbar-row>
   </mat-toolbar>
-
 </footer>

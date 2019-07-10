@@ -1,6 +1,10 @@
-<app-dog [dog]="dogSelected" *ngIf="dogSelected"></app-dog>
+<app-dog [dog]="selectedDog" *ngIf="editing"></app-dog>
 
-<div class="container-fluid">
-  <!-- <h4>Filter dogs <i class="fas fa-dog"></i></h4> -->
-  <smc-simplemattable [data]="dogs" [columns]="columns" [paginator]="true" [sorting]="true"></smc-simplemattable>
-</div>
+<mat-card class="m-4">
+  <mat-card-header>
+    <mat-card-title>List of all censed dogs</mat-card-title>
+    <mat-card-subtitle>You can paginate, sort, and filter the list of all censed dogs.</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+
+<smc-simplemattable [data]="dogs" [columns]="columns" [paginator]="true" [sorting]="true"></smc-simplemattable>

@@ -33,6 +33,16 @@ export class DogsService {
     return this.http.post<Dog>(url, body, options);
   }
 
+  getOneDog(id: number): Observable<Dog> {
+    const url = `${API.API_URL}/dogs/${id}`;
+
+    const accessToken = localStorage.getItem('access_token');
+
+    const options = API.getAuthOptions(accessToken);
+
+    return this.http.get<Dog>(url, options);
+  }
+
   update(dog: Dog): Observable<Dog> {
     const url = `${API.API_URL}/dogs/${dog.id}`;
 

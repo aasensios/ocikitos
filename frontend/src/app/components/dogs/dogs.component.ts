@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DogsService } from 'src/app/services/dogs.service';
-import { TableColumn, ButtonType, Width, Height } from 'simplemattable';
+import { TableColumn, ButtonType, Width, Height, Align } from 'simplemattable';
 import { MatSnackBar } from '@angular/material';
 // import { Dog } from 'src/app/models/Dog';
 
@@ -44,11 +44,16 @@ export class DogsComponent implements OnInit {
   SNACKBAR_DURATION_IN_MILISECONDS = 5000;
 
   // Edit mode
-  dogSelected: Dog;
+  selectedDog: Dog;
   editing = false;
 
   columns = [
-    new TableColumn<Dog, 'chip'>('Chip', 'chip').withColFilter().isHiddenSm(true),
+    new TableColumn<Dog, 'chip'>('Chip', 'chip').withColFilter()
+    // .withOnClick(chip => {
+    // this.editing = true;
+    // this.getOneDog(chip);
+    // })
+    ,
     new TableColumn<Dog, 'name'>('Name', 'name').withColFilter(),
     new TableColumn<Dog, 'gender'>('Gender', 'gender').withColFilter(),
     new TableColumn<Dog, 'breed_id'>('Breed', 'breed_id').withColFilter(),
@@ -56,16 +61,13 @@ export class DogsComponent implements OnInit {
     new TableColumn<Dog, 'owner_dni'>('DNI', 'owner_dni').withColFilter(),
     new TableColumn<Dog, 'owner_fullname'>('Owner Fullname', 'owner_fullname').withColFilter(),
     new TableColumn<Dog, 'residence'>('Residence', 'residence').withColFilter().isHiddenSm(true),
-    new TableColumn<Dog, 'edit'>('', 'edit')
+    new TableColumn<Dog, 'id'>('Edit', 'id').withWidth(Width.pct(1)).withAlign(Align.RIGHT)
       .withIcon(() => 'edit')
-      .withButton(ButtonType.RAISED)
-      .withButtonColor('primary')
-      // .withWidth(Width.px(125))
-      // .withHeightFn(() => Height.px(10))
+      .withButton(ButtonType.ICON)
+      .withButtonColor('accent')
       .withOnClick(id => {
-        // this.dogSelected.id = id;
         this.editing = true;
-        console.log(this.dogSelected);
+        this.getOneDog(id);
       }),
   ];
 
@@ -75,14 +77,11 @@ export class DogsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Initialize the selected dog.
-    // this.dogSelected = new Dog();
-    // Get the dogs from the API.
     this.getDogs();
   }
 
   /**
-   * Consume the API through the service.
+   * Get all dogs from server.
    */
   getDogs() {
     this.dogsService.getDogs()
@@ -98,6 +97,28 @@ export class DogsComponent implements OnInit {
           this.dogs.forEach(dog => {
             dog['edit'] = 'Edit';
           });
+          this.openSnackBar(this.message, 'OK');
+        }
+      );
+  }
+
+  /**
+   * Get one specific dog from server.
+   */
+  getOneDog(id: number) {
+    this.dogsService.getOneDog(id)
+      .subscribe(
+        response => {
+          this.success = response['success'];
+          this.selectedDog = response['data'];
+          this.message = response['message'];
+        },
+        error => this.error = error,
+        // Complete
+        () => {
+          // this.dogs.forEach(dog => {
+          //   dog['edit'] = 'Edit';
+          // });
           this.openSnackBar(this.message, 'OK');
         }
       );
