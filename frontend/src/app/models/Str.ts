@@ -1,4 +1,4 @@
-export class Str {
+export interface Str {
     id: number;
     locus: string;
     chromosome: number;

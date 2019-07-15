@@ -2,31 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DogsService } from 'src/app/services/dogs.service';
 import { TableColumn, ButtonType, Width, Height, Align } from 'simplemattable';
 import { MatSnackBar } from '@angular/material';
-// import { Dog } from 'src/app/models/Dog';
+import { Dog } from 'src/app/models/Dog';
+import { OcikitosResponse } from 'src/app/models/Response';
 
-export interface Dog {
-  id: number;
-  chip: string;
-  name: string;
-  gender: string;
-  breed_id: number;
-  color_id: number;
-  birthdate: Date;
-  deathdate: Date;
-  owner_dni: string;
-  owner_fullname: string;
-  residence: string;
-  created_at: any;
-  updated_at: any;
-  edit: string;
-  // vet_user_id: number;
-}
-
-// export interface Response {
-//   success: boolean;
-//   dogs: Dog[];
-//   message: string;
-// }
 
 @Component({
   selector: 'app-dogs',
@@ -37,10 +15,8 @@ export interface Dog {
 export class DogsComponent implements OnInit {
 
   // Results from API
+  response: OcikitosResponse;
   dogs: Dog[];
-  error: string;
-  success: boolean;
-  message: string;
   SNACKBAR_DURATION_IN_MILISECONDS = 5000;
 
   // Edit mode
@@ -48,12 +24,7 @@ export class DogsComponent implements OnInit {
   editing = false;
 
   columns = [
-    new TableColumn<Dog, 'chip'>('Chip', 'chip').withColFilter()
-    // .withOnClick(chip => {
-    // this.editing = true;
-    // this.getOneDog(chip);
-    // })
-    ,
+    new TableColumn<Dog, 'chip'>('Chip', 'chip').withColFilter(),
     new TableColumn<Dog, 'name'>('Name', 'name').withColFilter(),
     new TableColumn<Dog, 'gender'>('Gender', 'gender').withColFilter(),
     new TableColumn<Dog, 'breed_id'>('Breed', 'breed_id').withColFilter(),
@@ -65,11 +36,15 @@ export class DogsComponent implements OnInit {
       .withIcon(() => 'edit')
       .withButton(ButtonType.ICON)
       .withButtonColor('accent')
-      .withOnClick(id => {
-        this.editing = true;
-        this.getOneDog(id);
-      }),
+      .withOnClick(
+        (id, dog) => {
+          this.selectedDog = dog;
+          this.editing = true;
+        }
+      )
   ];
+
+  // -------------------------------------------------------------------------
 
   constructor(
     private dogsService: DogsService,
@@ -80,6 +55,8 @@ export class DogsComponent implements OnInit {
     this.getDogs();
   }
 
+  // -------------------------------------------------------------------------
+
   /**
    * Get all dogs from server.
    */
@@ -87,17 +64,14 @@ export class DogsComponent implements OnInit {
     this.dogsService.getDogs()
       .subscribe(
         response => {
-          this.success = response['success'];
-          this.dogs = response['data'];
-          this.message = response['message'];
+          this.response = response;
+          this.dogs = response.data;
         },
-        error => this.error = error,
-        // Complete
+        error => console.log(error),
         () => {
-          this.dogs.forEach(dog => {
-            dog['edit'] = 'Edit';
+          this.snackBar.open(this.response.message, 'OK', {
+            duration: this.SNACKBAR_DURATION_IN_MILISECONDS,
           });
-          this.openSnackBar(this.message, 'OK');
         }
       );
   }
@@ -109,25 +83,15 @@ export class DogsComponent implements OnInit {
     this.dogsService.getOneDog(id)
       .subscribe(
         response => {
-          this.success = response['success'];
-          this.selectedDog = response['data'];
-          this.message = response['message'];
+          this.response = response;
         },
-        error => this.error = error,
-        // Complete
+        error => console.log(error),
         () => {
-          // this.dogs.forEach(dog => {
-          //   dog['edit'] = 'Edit';
-          // });
-          this.openSnackBar(this.message, 'OK');
+          this.snackBar.open(this.response.message, 'OK', {
+            duration: this.SNACKBAR_DURATION_IN_MILISECONDS,
+          });
         }
       );
-  }
-
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: this.SNACKBAR_DURATION_IN_MILISECONDS,
-    });
   }
 
 }

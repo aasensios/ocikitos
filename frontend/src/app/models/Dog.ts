@@ -1,4 +1,4 @@
-export class Dog {
+export interface Dog {
     id: number;
     chip: string;
     name: string;
@@ -12,4 +12,5 @@ export class Dog {
     residence: string;
     created_at: any;
     updated_at: any;
+    // vet_user_id: number;
 }

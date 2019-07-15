@@ -11,7 +11,7 @@ export class DogsService {
     private http: HttpClient
   ) { }
 
-  getDogs(): Observable<Dog[]> {
+  getDogs(): Observable<any> {
     const url = `${API.API_URL}/dogs`;
 
     const accessToken = localStorage.getItem('access_token');
@@ -33,7 +33,7 @@ export class DogsService {
     return this.http.post<Dog>(url, body, options);
   }
 
-  getOneDog(id: number): Observable<Dog> {
+  getOneDog(id: number): Observable<any> {
     const url = `${API.API_URL}/dogs/${id}`;
 
     const accessToken = localStorage.getItem('access_token');
@@ -55,14 +55,14 @@ export class DogsService {
     return this.http.put<Dog>(url, body, options);
   }
 
-  delete(dog: Dog): Observable<Dog[]> {
+  delete(dog: Dog): Observable<Dog> {
     const url = `${API.API_URL}/dogs/${dog.id}`;
 
     const accessToken = localStorage.getItem('access_token');
 
     const options = API.getAuthOptions(accessToken);
 
-    return this.http.delete<Dog[]>(url, options);
+    return this.http.delete<Dog>(url, options);
   }
 
 }

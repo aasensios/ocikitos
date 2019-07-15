@@ -31,7 +31,7 @@ export class InfractionComponent implements OnInit {
   infractions: Infraction[] = [];
   incident: Incident = new Incident();
   sample: Sample = new Sample();
-  dog: Dog = new Dog();
+  // dog: Dog = new Dog();
 
 
   error: string;

@@ -68,7 +68,7 @@ export class DogComponent implements OnInit {
       );
 
     if (this.dog == null) {
-      this.dog = new Dog();
+      // this.dog = new Dog();
     }
 
     this.form = this.formBuilder.group({
