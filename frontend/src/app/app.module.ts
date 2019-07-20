@@ -33,7 +33,7 @@ import { SamplesComponent } from './components/samples/samples.component';
 import { StrsComponent } from './components/strs/strs.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
 import { InfractionsComponent } from './components/infractions/infractions.component';
-import { InfoComponent } from './components/info/info.component';
+import { AboutComponent } from './components/about/about.component';
 import { SampleComponent } from './components/sample/sample.component';
 import { IncidentComponent } from './components/incident/incident.component';
 import { InfractionComponent } from './components/infraction/infraction.component';
@@ -58,7 +58,7 @@ import { FooterComponent } from './components/footer/footer.component';
     StrsComponent,
     IncidentsComponent,
     InfractionsComponent,
-    InfoComponent,
+    AboutComponent,
     SampleComponent,
     IncidentComponent,
     InfractionComponent,
