@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core'
+import { DomSanitizer } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-about',
@@ -7,13 +7,12 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-
   authors = [
     {
       fullname: 'Alejandro Asensio',
       jobtitle: 'Junior Fullstack Web Developer and Bioinformatic',
-      description: `I'm a passionate ​geek​, focused on learning new skills and delighted by their potential of improving
-      our human daily life.`,
+      description: `I'm a passionate ​geek​, focused on learning new skills
+        and delighted by their potential of improving our human daily life.`,
       avatar: 'assets/images/cards/alejandro-squared.jpg',
       social: [
         {
@@ -30,7 +29,7 @@ export class AboutComponent implements OnInit {
           name: 'LinkedIn',
           link: 'https://www.linkedin.com/in/alejandroasensiosanchez/',
           fontawesome: 'linkedin'
-        },
+        }
       ]
     },
     {
@@ -53,18 +52,16 @@ export class AboutComponent implements OnInit {
           name: 'LinkedIn',
           link: 'https://www.linkedin.com/in/oscar-burgos-12912250/',
           fontawesome: 'linkedin'
-        },
+        }
       ]
     }
-  ];
+  ]
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer) {}
 
   sanitizeUrl(url: string) {
-    return this.sanitizer.bypassSecurityTrustUrl(url);
+    return this.sanitizer.bypassSecurityTrustUrl(url)
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

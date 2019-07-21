@@ -1,28 +1,25 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { User } from '../models/User';
-import { Observable } from 'rxjs';
-import { API } from './api.constants';
+import { Injectable } from '@angular/core'
+import { HttpClient, HttpParams } from '@angular/common/http'
+import { User } from '../models/user'
+import { Observable } from 'rxjs'
+import { API } from './api.constants'
 
 @Injectable()
 export class AuthService {
-
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   registerUser(user: User): Observable<any> {
-    const url = `${API.API_URL}/register`;
+    const url = `${API.API_URL}/register`
 
-    const body = user;
+    const body = user
 
-    const options = API.getBasicOptions();
+    const options = API.getBasicOptions()
 
-    return this.http.post(url, body, options);
+    return this.http.post(url, body, options)
   }
 
   getToken(user: User): Observable<any> {
-    const url = `${API.BASE_URL}/oauth/token`;
+    const url = `${API.BASE_URL}/oauth/token`
 
     const body = {
       username: user.email,
@@ -30,53 +27,52 @@ export class AuthService {
       grant_type: API.GRANT_TYPE,
       client_id: API.CLIENT_ID,
       client_secret: API.CLIENT_SECRET
-    };
+    }
 
-    const options = API.getBasicOptions();
+    const options = API.getBasicOptions()
 
-    return this.http.post(url, body, options);
+    return this.http.post(url, body, options)
   }
 
   getUser(): Observable<User> {
-    const url = `${API.API_URL}/user`;
+    const url = `${API.API_URL}/user`
 
-    const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('access_token')
 
-    const options = API.getAuthOptions(accessToken);
+    const options = API.getAuthOptions(accessToken)
 
-    return this.http.get<User>(url, options);
+    return this.http.get<User>(url, options)
   }
 
   revokeToken(user: User): Observable<any> {
-    const url = `${API.BASE_URL}/logout`;
+    const url = `${API.BASE_URL}/logout`
 
-    const body = user;
+    const body = user
 
     // const options = API.getBasicOptions();
 
-    return this.http.post<User>(url, body);
+    return this.http.post<User>(url, body)
   }
 
   modifyUser(user: User): Observable<User> {
-    const url = `${API.API_URL}/users/${user.id}`;
+    const url = `${API.API_URL}/users/${user.id}`
 
-    const body = user;
+    const body = user
 
-    const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('access_token')
 
-    const options = API.getAuthOptions(accessToken);
+    const options = API.getAuthOptions(accessToken)
 
-    return this.http.post<User>(url, body, options);
+    return this.http.post<User>(url, body, options)
   }
 
   deleteUser(user: User): Observable<User> {
-    const url = `${API.API_URL}/users/${user.id}`;
+    const url = `${API.API_URL}/users/${user.id}`
 
-    const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('access_token')
 
-    const options = API.getAuthOptions(accessToken);
+    const options = API.getAuthOptions(accessToken)
 
-    return this.http.delete<User>(url, options);
+    return this.http.delete<User>(url, options)
   }
-
 }
