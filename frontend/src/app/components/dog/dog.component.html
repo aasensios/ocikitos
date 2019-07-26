@@ -1,158 +1,70 @@
-<!-- main app container -->
-<div class="jumbotron">
-  <div class="container-fluid">
-    <form #dogForm="ngForm" [formGroup]="form">
-      <div class="row">
-        <div class="col-md-4">
+<article class="container">
+  <h3>Dog Form</h3>
 
-          <div class="form-group">
-            <label>Chip</label>
-            <input type="text" tabindex="1" formControlName="chip" class="form-control" [(ngModel)]="dog.chip"
-              [ngClass]="{ 'is-invalid': f.chip.touched && f.chip.errors }" placeholder="Enter chip number">
-            <div *ngIf="!!f.chip.touched && !!f.chip.errors" class="invalid-feedback">
-              <div *ngIf="!!f.chip.errors.required">Chip is required</div>
-              <div *ngIf="!!f.chip.errors.maxlength">enter 15 carateres max.</div>
-              <div *ngIf="!!f.chip.errors.minlength">enter 15 carateres min.</div>
-            </div>
-          </div>
+  <!-- chip: string
+  name: string
+  gender: string
+  breed_id: number
+  color_id: number
+  birthdate: Date
+  deathdate: Date
+  owner_dni: string
+  owner_fullname: string
+  residence: string -->
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Chip</mat-label>
+      <input matInput formControlName="chip" placeholder="123456789012345">
+      <mat-error *ngIf="f.chip.errors">
+        <span *ngIf="f.chip.errors.required">
+          Chip is <strong>required</strong>.
+        </span>
+        <span *ngIf="f.chip.errors.minlength || f.chip.errors.maxlength">
+          Chip must be <strong>{{ CHIP_LENGTH }} digits</strong> long.
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Tobby">
+      <mat-error *ngIf="f.name.errors && f.name.errors.required">
+        Name is <strong>required</strong>.
+      </mat-error>
+    </mat-form-field>
+    <div>
+      <mat-label>Gender</mat-label>
+      <mat-button-toggle-group matInput formControlName="gender">
+        <mat-button-toggle *ngFor="let gender of genders" [value]="gender">
+          <mat-icon [ngClass]="gender.id">{{ gender.icon }}</mat-icon> {{ gender.name }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Breed</mat-label>
+      <input matInput type="text" placeholder="Breed" formControlName="breed" [matAutocomplete]="breed">
+      <mat-autocomplete #breed="matAutocomplete" autoActiveFirstOption [displayWith]="displayFn">
+        <mat-option *ngFor="let breed of filteredBreeds | async" [value]="breed">
+          {{ breed.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div>
+      <mat-label>Color</mat-label>
+      <mat-button-toggle-group matInput multiple formControlName="color">
+        <mat-button-toggle *ngFor="let color of colors" [ngClass]="color.name" [value]="color">
+          {{ color.name }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="birthdate" placeholder="Birthdate">
+      <mat-datepicker-toggle matSuffix [for]="birthdate"></mat-datepicker-toggle>
+      <mat-datepicker #birthdate></mat-datepicker>
+    </mat-form-field>
 
-          <div class="form-group">
-            <label>Breed</label>
-            <select tabindex="3" class="form-control" formControlName="breed" [(ngModel)]="dog.breed_id">
-              <option [value]="breed.id" *ngFor="let breed of breeds">{{ breed.name }}</option>
-            </select>
-          </div>
+    <button mat-raised-button color="accent" (click)="addDog()" [hidden]="editing">Add Dog</button>
+    <button mat-raised-button color="primary" (click)="modifyDog()" [hidden]="!editing">Modify Dog</button>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Color</label>
-                <select tabindex="6" class="form-control" formControlName="color" [(ngModel)]="dog.color_id">
-                  <option [value]="color.id" *ngFor="let color of colors">{{ color.name }}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Gender</label>
-                <mat-radio-group tabindex="7" formControlName="gender" class="tp-radio-group" [(ngModel)]="dog.gender">
-                  <mat-radio-button class="tp-radio-button" *ngFor="let gender of genders" [value]="gender">
-                    {{ gender }}
-                  </mat-radio-button>
-                </mat-radio-group>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Owner's DNI</label>
-            <input type="text" tabindex="9" formControlName="owner_dni" class="form-control"
-              [ngClass]="{ 'is-invalid': f.owner_dni.touched && f.owner_dni.errors }" placeholder="Enter owner id"
-              [(ngModel)]="dog.owner_dni">
-            <div *ngIf="!!f.owner_dni.touched && !!f.owner_dni.errors" class="invalid-feedback">
-              <div *ngIf="!!f.owner_dni.errors.required">Owner DNI is required</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Owner's Fullname</label>
-            <input type="text" tabindex="10" formControlName="owner_fullname" class="form-control"
-              [ngClass]="{ 'is-invalid': f.owner_fullname.touched && f.owner_fullname.errors }"
-              placeholder="Enter owner name" [(ngModel)]="dog.owner_fullname">
-            <div *ngIf="!!f.owner_fullname.touched && !!f.owner_fullname.errors" class="invalid-feedback">
-              <div *ngIf="!!f.owner_fullname.errors.required">Owner fullname is required</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" tabindex="2" formControlName="name" class="form-control"
-              [ngClass]="{ 'is-invalid': f.name.touched && f.name.errors }" placeholder="Enter name dog"
-              [(ngModel)]="dog.name">
-            <div *ngIf="!!f.name.touched && !!f.name.errors" class="invalid-feedback">
-              <div *ngIf="!!f.name.errors.required">Name dog is required</div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Birthdate</label>
-                <input type="date" tabindex="4" formControlName="birthdate" class="form-control"
-                  [(ngModel)]="dog.birthdate">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Deathdate</label>
-                <input type="date" tabindex="5" formControlName="deathdate" class="form-control"
-                  [(ngModel)]="dog.deathdate">
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="form-group">
-            <label>Email*</label>
-            <input type="text" tabindex="8" formControlName="owner_email" class="form-control"
-              [ngClass]="{ 'is-invalid': f.owner_email.touched && f.owner_email.errors }"
-              placeholder="Enter owner email">
-            <div *ngIf="!!f.owner_email.touched && !!f.owner_email.errors" class="invalid-feedback">
-              <div *ngIf="!!f.owner_email.errors.required">Owner email is required</div>
-              <div *ngIf="!!f.owner_email.errors.email">Owner email must be a valid email address</div>
-            </div>
-          </div> -->
-          <div class="form-group">
-            <label>Residence</label>
-            <textarea tabindex="11" class="form-control" id="exampleFormControlTextarea1" placeholder="Enter residence"
-              rows="4" [(ngModel)]="dog.residence">{{ dog.residence }}</textarea>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <label>Photo</label>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{dog.name}}
-              </mat-panel-title>
-              <mat-panel-description>
-                {{dog.chip}}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <img src="assets/images/dogs/1.jpeg" alt="">
-          </mat-expansion-panel>
-        </div>
-      </div>
-      <hr>
-      <h3>Sample dog</h3>
-      <div class="form-group">
-        <label>Kit Barcode</label>
-        <input type="text" tabindex="12" formControlName="barcode" class="form-control"
-          [ngClass]="{ 'is-invalid': f.barcode.touched && f.barcode.errors }" placeholder="Enter sample barcode"
-          [(ngModel)]="sample.barcode">
-        <div *ngIf="!!f.barcode.touched && !!f.barcode.errors" class="invalid-feedback">
-          <div *ngIf="!!f.barcode.errors.required">Barcode sample is required</div>
-        </div>
-      </div>
-
-      <!-- <ngx-barcode6 *ngIf="sample.barcode" [bc-value]="sample.barcode" [bc-display-value]="true"></ngx-barcode6> -->
-      <!-- <svg *ngIf="sample.barcode" class="barcode" jsbarcode-format="upc" [jsbarcode-value]="sample.barcode" jsbarcode-textmargin="0"
-        jsbarcode-fontoptions="bold">
-      </svg> -->
-
-      <div class="form-group">
-        <label>Sample Origin</label>
-        <mat-radio-group tabindex="13" formControlName="origin" class="tp-radio-group" [(ngModel)]="sample.origin">
-          <mat-radio-button class="tp-radio-button" *ngFor="let origin of origins" [value]="origin">
-            {{ origin }}
-          </mat-radio-button>
-        </mat-radio-group>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" (click)="addDog()" [disabled]="form.invalid">Add Dog</button>
-        <!-- <button class="btn btn-sm btn-warning" (click)="modofyDog(dog)" [disabled]="form.invalid" *nfIf="editing">Modify Dog</button> -->
-        <button class="btn btn-warning" (click)="modifyDog()" [disabled]="form.invalid">Modify Dog</button>
-        <!--         <button class="btn btn-danger" (click)="deleteDog()">Delete</button>
- -->
-        <!--         <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
- -->
-      </div>
-    </form>
-  </div>
+    <button (click)="toggleEditing()">TOGGLE</button>
+  </form>
+</article>
