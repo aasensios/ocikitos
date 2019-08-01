@@ -1,12 +1,13 @@
-<div class="container p-4">
-  <section>
-    <h1 class="display-5">Ocikitos: DNA Dog Identificacion</h1>
-    <p class="lead">
+<div class="container">
+
+  <section class="jumbotron">
+    <h1>Ocikitos: DNA Dog Identificacion</h1>
+    <p>
       This project aims to use bioinformatics tools to identify a certain dog by its Short Tandem Repeats
       (STR) pattern, located among the different chromosomes of its DNA. That identification may have several uses, and
       one of them is helping towns and cities to maintain the streets clean from dogs' droppings.
     </p>
-    <hr>
+    <mat-divider></mat-divider>
     <p>
       To accomplish that mission, we are building a web application with Laravel 5.8 for the backend RESTful API,
       Angular 7 for the frontend, Python for the scripts and MySQL as relational database for persistance.
@@ -16,7 +17,7 @@
   <section class="mb-3">
     <h2>The Authors</h2>
     <span fxLayout="row" fxLayout.xs="column" fxLayoutGap="2em">
-      <mat-card *ngFor="let author of authors" fxFlex="{{100/authors.length}}%" fxFlex.xs="100%">
+      <mat-card *ngFor="let author of authors" fxFlex="{{ 100 / authors.length }}" fxFlex.xs="100">
         <mat-card-header>
           <!-- <div mat-card-avatar class="avatar-material"></div> -->
           <mat-card-title>{{ author.fullname }}</mat-card-title>
@@ -27,9 +28,11 @@
           <p>{{ author.description }}</p>
         </mat-card-content>
         <mat-card-actions fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2em">
-          <button mat-button color="accent" *ngFor="let social of author.social" matTooltip="{{ social.name }}">
-            <a href="{{ social.link }}">
+          <button mat-button mat-icon-button *ngFor="let social of author.social" matTooltip="{{ social.name }}"
+            class="h2">
+            <a href="{{ social.link }}" class="text-{{ social.color }}">
               <i class="fab fa-{{ social.fontawesome }} h2"></i>
+              <!-- <fa-icon [icon]="social.fontawesome"></fa-icon> -->
             </a>
           </button>
         </mat-card-actions>
@@ -40,7 +43,7 @@
   <section class="mb-3">
     <h2>Our Project</h2>
     <span fxLayout="row" fxLayout.xs="column" fxLayoutGap="2em">
-      <mat-card fxFlex="{{100/authors.length}}%" fxFlex.xs="100%">
+      <mat-card fxFlex="{{ 100 / authors.length }}" fxFlex.xs="100">
         <mat-card-header fxLayoutAlign="center center" class="text-center">
           <mat-card-title>Ocikitos: DNA Dog Identificacion</mat-card-title>
           <mat-card-subtitle>Web Development Project</mat-card-subtitle>
@@ -51,7 +54,7 @@
           </a>
         </mat-card-actions>
       </mat-card>
-      <mat-card fxFlex="{{100/authors.length}}%" fxFlex.xs="100%">
+      <mat-card fxFlex="{{ 100 / authors.length }}" fxFlex.xs="100">
         <mat-card-header fxLayoutAlign="center center" class="text-center">
           <mat-card-title>Desenvolupament d'Aplicacions Web - Perfil Professional
             <strong>Bioinformàtica</strong> (DAWBIO)</mat-card-title>

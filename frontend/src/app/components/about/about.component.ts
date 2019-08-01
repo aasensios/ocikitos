@@ -16,52 +16,64 @@ export class AboutComponent implements OnInit {
       avatar: 'assets/images/cards/alejandro-squared.jpg',
       social: [
         {
-          name: 'Email',
+          name: 'Gmail',
           link: 'alejandro.asensio.10@gmail.com',
-          fontawesome: 'google'
+          fontawesome: 'google',
+          color: 'danger'
         },
         {
           name: 'GitHub',
           link: 'https://github.com/aasensios',
-          fontawesome: 'github'
+          fontawesome: 'github',
+          color: 'dark'
         },
         {
           name: 'LinkedIn',
           link: 'https://www.linkedin.com/in/alejandroasensiosanchez/',
-          fontawesome: 'linkedin'
+          fontawesome: 'linkedin',
+          color: 'primary'
         }
       ]
     },
     {
       fullname: 'Óscar Burgos',
       jobtitle: 'Junior Fullstack Web Developer and Bioinformatic',
-      description: `AQUI VA TU DESCRIPCION`,
+      description: 'Founder of Geek & Chick startup and Netflix addict.',
       avatar: 'assets/images/cards/oscar_200x200.jpg',
       social: [
         {
-          name: 'Email',
+          name: 'Gmail',
           link: 'mihifidem@gmail.com',
-          fontawesome: 'google'
+          fontawesome: 'google',
+          color: 'danger'
         },
         {
           name: 'GitHub',
           link: 'https://github.com/mihifidem',
-          fontawesome: 'github'
+          fontawesome: 'github',
+          color: 'dark'
         },
         {
           name: 'LinkedIn',
           link: 'https://www.linkedin.com/in/oscar-burgos-12912250/',
-          fontawesome: 'linkedin'
+          fontawesome: 'linkedin',
+          color: 'primary'
+        },
+        {
+          name: 'Geek & Chic',
+          link: 'http://www.geekandchic.es/',
+          fontawesome: 'microchip', // gem, ring
+          color: 'warning'
         }
       ]
     }
   ]
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) { }
 
   sanitizeUrl(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url)
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

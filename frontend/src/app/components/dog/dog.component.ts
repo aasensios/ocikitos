@@ -17,6 +17,7 @@ import { Observable } from 'rxjs'
   providers: [DogsService, SamplesService]
 })
 export class DogComponent implements OnInit {
+
   @Input() dog: Dog
   // @ViewChild("dogForm", { static: true }) dogForm: HTMLFormElement;
   form: FormGroup
@@ -25,10 +26,8 @@ export class DogComponent implements OnInit {
   colors: Color[]
   breeds: Breed[]
   filteredBreeds: Observable<Breed[]>
-  error: string
-  success: boolean
-  message: string
   editing = false
+  deceased = false
   sample: Sample
   origins: string[] = ['droppings', 'blood', 'saliva']
   genders: any[] = [
@@ -79,7 +78,7 @@ export class DogComponent implements OnInit {
   ngOnInit() {
     this.dogsService.getBreeds().subscribe(
       response => (this.breeds = response.data),
-      errors => console.log(errors),
+      errors => alert(errors),
       () => {
         // Filter the breeds autocomplete
         this.filteredBreeds = this.form.controls.breed.valueChanges.pipe(
@@ -90,9 +89,7 @@ export class DogComponent implements OnInit {
       }
     )
 
-    this.dogsService.getColors().subscribe(
-      response => this.colors = response.data
-    )
+    this.dogsService.getColors().subscribe(response => this.colors = response.data)
 
     if (this.dog == null) {
       // this.dog = new Dog();
@@ -103,7 +100,7 @@ export class DogComponent implements OnInit {
       name: ['', Validators.required],
       gender: ['', null],
       breed: ['', null],
-      color: ['', null],
+      color: [, null],
       birthdate: ['', null],
       deathdate: ['', null],
       owner_dni: ['', Validators.required],
@@ -120,8 +117,6 @@ export class DogComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true
-
     // Stop here if form is invalid
     if (this.form.invalid) {
       return
@@ -129,79 +124,47 @@ export class DogComponent implements OnInit {
   }
 
   addDog() {
-    console.log(this.form.value)
-
-    this.dogsService.create(this.dog).subscribe(
-      // Success
-      response => {
-        this.response = response
-        this.dog = response.data
-      },
-
-      // Error handling
-      error => (this.error = error),
-
-      // Complete
-      () => {
-        this.sample.dog_id = this.dog.id
-        console.log(this.sample)
-
-        this.samplesService.create(this.sample).subscribe(
-          // Success
-          response => {
-            this.success = response.success
-            this.sample = response.data
-            this.message = response.message
-          },
-
-          // Error handling
-          error => (this.error = error),
-
-          // Complete
-          () => {
-            this.snackBar.open(this.response.message, 'OK', {
-              duration: this.SNACKBAR_DURATION_IN_MILISECONDS
-            })
-          }
-        )
-      }
-    )
+    // Add new dog
+    this.dogsService.create(this.form.value)
+      .subscribe(
+        response => {
+          this.response = response
+          this.dog = response.data
+        },
+        error => alert(error),
+        // Attach new sample to the new dog
+        () => {
+          alert(this.response.message)
+          // this.sample.dog_id = this.dog.id
+          // this.samplesService.create(this.sample)
+          //   .subscribe(
+          //     response => this.response = response,
+          //     error => alert(error),
+          //     () => {
+          //       this.snackBar.open(this.response.message, 'OK', {
+          //         duration: this.SNACKBAR_DURATION_IN_MILISECONDS
+          //       })
+          //     }
+          //   )
+        }
+      )
   }
 
   modifyDog() {
-    this.dogsService.update(this.dog).subscribe(
-      // Success
-      response => {
-        this.success = response.success
-        this.dog = response.data
-        this.message = response.message
-      },
-
-      // Error handling
-      error => (this.error = error),
-
-      // Complete
-      () => {
-        alert(this.message)
-      }
-    )
+    this.dogsService.update(this.form.value)
+      .subscribe(
+        response => this.response = response,
+        error => alert(error),
+        () => alert(this.response.message)
+      )
   }
 
   deleteDog() {
     this.dogsService.delete(this.dog).subscribe(
-      response => {
-        this.success = response.success
-        this.dogs = response.data
-        this.message = response.message
-      },
-
-      // Error handling
-      error => (this.error = error),
-
-      // Complete
-      () => {
-        alert(this.message)
-      }
+      response => this.response = response,
+      error => alert(error),
+      () => alert(this.response.message)
     )
   }
+
 }

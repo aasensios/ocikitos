@@ -12,15 +12,12 @@ import { DogsService } from 'src/app/services/dogs.service'
   providers: [DogsService]
 })
 export class DogsComponent implements OnInit {
-  // Results from API
+
   response: OcikitosResponse
   dogs: Dog[]
   SNACKBAR_DURATION_IN_MILISECONDS = 5000
-
-  // Edit mode
   selectedDog: Dog
   editing = false
-
   columns = [
     new TableColumn<Dog, 'chip'>('Chip', 'chip').withColFilter(),
     new TableColumn<Dog, 'name'>('Name', 'name').withColFilter(),
@@ -39,12 +36,14 @@ export class DogsComponent implements OnInit {
       .withOnClick((id, dog) => {
         this.selectedDog = dog
         this.editing = true
+        console.log(this.selectedDog);
+
       })
   ]
 
   // -------------------------------------------------------------------------
 
-  constructor(private dogsService: DogsService, private snackBar: MatSnackBar) {}
+  constructor(private dogsService: DogsService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getDogs()
