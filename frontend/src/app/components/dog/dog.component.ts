@@ -91,23 +91,41 @@ export class DogComponent implements OnInit {
 
     this.dogsService.getColors().subscribe(response => this.colors = response.data)
 
-    if (this.dog == null) {
-      // this.dog = new Dog();
+    if (this.dog === undefined) {
+      // this.dog = {
+      //   id: 999999999999999,
+      //   chip: string
+      //   name: string
+      //   gender: string
+      //   breed_id: number
+      //   color_id: number
+      //   birthdate: Date
+      //   deathdate: Date
+      //   owner_dni: string
+      //   owner_fullname: string
+      //   residence: string
+      //   created_at: any
+      //   updated_at: any
+      //   // vet_user_id: numb
+      // }
     }
 
     this.form = this.formBuilder.group({
-      chip: ['', [Validators.required, Validators.minLength(this.CHIP_LENGTH), Validators.maxLength(this.CHIP_LENGTH)]],
-      name: ['', Validators.required],
-      gender: ['', null],
-      breed: ['', null],
-      color: [, null],
-      birthdate: ['', null],
-      deathdate: ['', null],
-      owner_dni: ['', Validators.required],
-      owner_fullname: ['', Validators.required],
-      residence: ['', null],
-      barcode: ['', Validators.required],
-      origin: ['', null]
+      chip: [
+        this.dog.chip,
+        [Validators.required, Validators.minLength(this.CHIP_LENGTH), Validators.maxLength(this.CHIP_LENGTH)]
+      ],
+      name: [this.dog.name, Validators.required],
+      gender: [this.dog.gender],
+      breed: [this.dog.breed_id],
+      color: [this.dog.color_id],
+      birthdate: [this.dog.birthdate],
+      deathdate: [this.dog.deathdate],
+      owner_dni: [this.dog.owner_dni, Validators.required],
+      owner_fullname: [this.dog.owner_fullname, Validators.required],
+      residence: [this.dog.residence],
+      // barcode: [this.sample.barcode, Validators.required],
+      // origin: [this.sample.origin]
     })
   }
 

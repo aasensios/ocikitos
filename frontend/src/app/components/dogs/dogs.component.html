@@ -1,10 +1,9 @@
-<app-dog *ngIf="editing" [dog]="selectedDog"></app-dog>
+<app-dog *ngIf="selectedDog" [dog]="selectedDog"></app-dog>
 
-<mat-card class="m-4">
-  <mat-card-header>
-    <mat-card-title>List of all censed dogs</mat-card-title>
-    <mat-card-subtitle>You can paginate, sort, and filter the list of all censed dogs.</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
+<section class="jumbotron">
+  <h3>List of all censed dogs</h3>
+  <p>You can sort the list by clicking on the table header, filter the dogs by one or more fields, and change the number
+    of dogs per page.</p>
+</section>
 
 <smc-simplemattable [data]="dogs" [columns]="columns" [paginator]="true" [sorting]="true"></smc-simplemattable>

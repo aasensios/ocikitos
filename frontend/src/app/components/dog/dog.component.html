@@ -5,7 +5,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Chip</mat-label>
-      <input matInput formControlName="chip" placeholder="123456789012345">
+      <input matInput [formControlName]="'chip'" placeholder="123456789012345">
       <mat-error>
         <span *ngIf="f['chip'].errors?.required">
           Chip is <strong>required</strong>.
@@ -18,7 +18,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input matInput formControlName="name" placeholder="Tobby">
+      <input matInput [formControlName]="'name'" placeholder="Tobby">
       <mat-error *ngIf="f['name'].errors?.required">
         Name is <strong>required</strong>.
       </mat-error>
@@ -26,7 +26,7 @@
 
     <div>
       <mat-label>Gender</mat-label>
-      <mat-button-toggle-group #group="matButtonToggleGroup" matInput formControlName="gender">
+      <mat-button-toggle-group #group="matButtonToggleGroup" matInput [formControlName]="'gender'">
         <mat-button-toggle *ngFor="let gender of genders" [value]="gender.id">
           <mat-icon [ngClass]="gender.id">{{ gender.icon }}</mat-icon> {{ gender.name }}
         </mat-button-toggle>
@@ -35,7 +35,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Breed</mat-label>
-      <input matInput type="text" placeholder="Breed" formControlName="breed" [matAutocomplete]="breed">
+      <input matInput type="text" placeholder="Breed" [formControlName]="'breed'" [matAutocomplete]="breed">
       <mat-autocomplete #breed="matAutocomplete" autoActiveFirstOption [displayWith]="displayFn">
         <mat-option *ngFor="let breed of filteredBreeds | async" [value]="breed">
           {{ breed.name }}
@@ -45,7 +45,7 @@
 
     <div>
       <mat-label>Color</mat-label>
-      <mat-button-toggle-group matInput multiple formControlName="color">
+      <mat-button-toggle-group matInput multiple [formControlName]="'color'">
         <mat-button-toggle *ngFor="let color of colors" [ngClass]="color.name" [value]="color.id">
           {{ color.name }}
         </mat-button-toggle>
@@ -53,20 +53,20 @@
     </div>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="birthdate" formControlName="birthdate" placeholder="Birthdate">
+      <input matInput [matDatepicker]="birthdate" [formControlName]="'birthdate'" placeholder="Birthdate">
       <mat-datepicker-toggle matSuffix [for]="birthdate"></mat-datepicker-toggle>
       <mat-datepicker #birthdate></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field [hidden]="!deceased">
-      <input matInput [matDatepicker]="deathdate" formControlName="deathdate" placeholder="Deathdate">
+      <input matInput [matDatepicker]="deathdate" [formControlName]="'deathdate'" placeholder="Deathdate">
       <mat-datepicker-toggle matSuffix [for]="deathdate"></mat-datepicker-toggle>
       <mat-datepicker #deathdate></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>DNI of pet's owner</mat-label>
-      <input matInput formControlName="owner_dni" placeholder="123456789A">
+      <input matInput [formControlName]="'owner_dni'" placeholder="123456789A">
       <mat-error>
         <span *ngIf="f['owner_dni'].errors?.required">DNI is <strong>required</strong>.</span>
         <!-- <span *ngIf="f['owner_dni'].errors?.required">DNI must have <strong>8 digits and 1 valid letter</strong>.</span> -->
@@ -75,7 +75,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Fullname of the pet's owner</mat-label>
-      <input matInput formControlName="owner_fullname" placeholder="Tintin">
+      <input matInput [formControlName]="'owner_fullname'" placeholder="Tintin">
       <mat-error *ngIf="f['owner_fullname'].errors?.required">
         Fullname is <strong>required</strong>.
       </mat-error>
@@ -83,7 +83,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Residence</mat-label>
-      <textarea matInput rows="5" placeholder="Fake St., 123" formControlName="residence" required>
+      <textarea matInput rows="5" placeholder="Fake St., 123" [formControlName]="'residence'" required>
         </textarea>
       <mat-error>
         <span *ngIf="f['residence'].errors?.required">
@@ -92,11 +92,9 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button color="accent" (click)="addDog()" [hidden]="editing" fxFlex.gt-xs="50%">Register this new
-      dog</button>
-    <button mat-raised-button color="primary" (click)="modifyDog()" [hidden]="!editing" fxFlex.gt-xs="50%">Save changes
-      on this dog</button>
-
-    <button (click)="toggleEditing()">TOGGLE</button>
+    <button mat-raised-button color="accent" (click)="addDog()" [hidden]="dog">
+      Register this new dog</button>
+    <button mat-raised-button color="primary" (click)="modifyDog()" [hidden]="!dog">
+      Save changes on this dog</button>
   </form>
 </article>

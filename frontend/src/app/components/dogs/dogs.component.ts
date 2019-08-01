@@ -33,11 +33,9 @@ export class DogsComponent implements OnInit {
       .withIcon(() => 'edit')
       .withButton(ButtonType.ICON)
       .withButtonColor('accent')
-      .withOnClick((id, dog) => {
-        this.selectedDog = dog
+      .withOnClick((id, selectedDog) => {
+        this.selectedDog = selectedDog
         this.editing = true
-        console.log(this.selectedDog);
-
       })
   ]
 

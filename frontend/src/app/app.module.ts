@@ -28,7 +28,7 @@ import { LoginComponent } from './components/login/login.component'
 import { RegisterComponent } from './components/register/register.component'
 import { DogComponent } from './components/dog/dog.component'
 import { DogsComponent } from './components/dogs/dogs.component'
-import { ErrorComponent } from './components/error/error.component'
+import { NotFoundComponent } from './components/not-found/not-found.component'
 import { SamplesComponent } from './components/samples/samples.component'
 import { StrsComponent } from './components/strs/strs.component'
 import { IncidentsComponent } from './components/incidents/incidents.component'
@@ -49,7 +49,7 @@ import { FooterComponent } from './components/footer/footer.component'
     AppComponent,
     DogComponent,
     DogsComponent,
-    ErrorComponent,
+    NotFoundComponent,
     DogDirective,
     LoginComponent,
     RegisterComponent,
