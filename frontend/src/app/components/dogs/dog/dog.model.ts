@@ -22,5 +22,5 @@ export interface Dog {
   residence: string
   created_at: any
   updated_at: any
-  // vet_user_id: numb
+  // vet_user_id: number
 }

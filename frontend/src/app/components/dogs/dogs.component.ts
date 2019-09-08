@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { TableColumn, ButtonType, Width, Height, Align } from 'simplemattable'
 import { MatSnackBar } from '@angular/material'
-import { Dog } from 'src/app/models/dog'
+import { Dog } from 'src/app/components/dogs/dog/dog.model'
 import { OcikitosResponse } from 'src/app/models/response'
 import { DogsService } from 'src/app/services/dogs.service'
 
@@ -27,6 +27,7 @@ export class DogsComponent implements OnInit {
     new TableColumn<Dog, 'owner_dni'>('DNI', 'owner_dni').withColFilter(),
     new TableColumn<Dog, 'owner_fullname'>('Owner Fullname', 'owner_fullname').withColFilter(),
     new TableColumn<Dog, 'residence'>('Residence', 'residence').withColFilter().isHiddenSm(true),
+    new TableColumn<Dog, 'updated_at'>('Last update', 'updated_at').withColFilter().isHiddenSm(true),
     new TableColumn<Dog, 'id'>('Edit', 'id')
       .withWidth(Width.pct(1))
       .withAlign(Align.RIGHT)

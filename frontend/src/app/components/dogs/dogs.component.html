@@ -1,9 +1,12 @@
-<app-dog *ngIf="selectedDog" [dog]="selectedDog"></app-dog>
-
-<section class="jumbotron">
-  <h3>List of all censed dogs</h3>
-  <p>You can sort the list by clicking on the table header, filter the dogs by one or more fields, and change the number
-    of dogs per page.</p>
-</section>
-
-<smc-simplemattable [data]="dogs" [columns]="columns" [paginator]="true" [sorting]="true"></smc-simplemattable>
+<div fxLayout="column" fxLayoutGap="2em">
+  <app-dog *ngIf="selectedDog" [dog]="selectedDog"></app-dog>
+  <section class="jumbotron" style="z-index: -1">
+    <h3>List of all censed dogs</h3>
+    <p>
+      You can sort the list by clicking on the table header, filter the dogs by one or more fields, and change the
+      number of dogs per page.
+    </p>
+  </section>
+  <button mat-raised-button color="accent" routerLink="/dog">New dog</button>
+  <smc-simplemattable [data]="dogs" [columns]="columns" [paginator]="true" [sorting]="true"></smc-simplemattable>
+</div>

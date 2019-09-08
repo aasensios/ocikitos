@@ -1,4 +1,4 @@
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http'
 
 /**
  * API class that contains CONSTANTS and methods to access properly to the
@@ -10,21 +10,21 @@ export class API {
     /**
      * Local URLs for development
      */
-    // public static BASE_URL = 'http://localhost:8000';
-    // public static API_URL = 'http://localhost:8000/api';
+    // public static BASE_URL = 'http://localhost:8000'
+    // public static API_URL = 'http://localhost:8000/api'
 
     /**
      * Server URLs for production
      */
-    public static BASE_URL = 'http://apps.proven.cat/~dawbi1901/api';
-    public static API_URL = 'http://apps.proven.cat/~dawbi1901/api/api';
+    public static BASE_URL = 'http://apps.proven.cat/~dawbi1901/api'
+    public static API_URL = 'http://apps.proven.cat/~dawbi1901/api/api'
 
     /**
      * Laravel Passport values to include in the Body of every HTTP Request
      */
-    public static GRANT_TYPE = 'password';
-    public static CLIENT_ID = 2;
-    public static CLIENT_SECRET = '7eZUXRnKeq6R1lHxu6QwtySoIdR6qveMJE0IJLrV';
+    public static GRANT_TYPE = 'password'
+    public static CLIENT_ID = 2
+    public static CLIENT_SECRET = '7eZUXRnKeq6R1lHxu6QwtySoIdR6qveMJE0IJLrV'
 
     /**
      * Options that accepts JSON requests and responses
@@ -34,7 +34,7 @@ export class API {
             headers: new HttpHeaders({
                 Accept: 'application/json'
             })
-        };
+        }
     }
 
     /**
@@ -47,7 +47,7 @@ export class API {
                 Accept: 'application/json',
                 Authorization: `Bearer ${accessToken}`
             })
-        };
+        }
     }
 
 }

@@ -4,10 +4,16 @@
  *
  * https://material.angular.io/guide/getting-started#alternative-2-angular-devkit-6-
  */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* https://stackoverflow.com/questions/71074/how-to-remove-firefoxs-dotted-outline-on-buttons-as-well-as-links */
 :focus {
-    outline: none !important;
+  outline: none !important;
 }

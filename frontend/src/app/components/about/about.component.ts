@@ -11,26 +11,25 @@ export class AboutComponent implements OnInit {
     {
       fullname: 'Alejandro Asensio',
       jobtitle: 'Junior Fullstack Web Developer and Bioinformatic',
-      description: `I'm a passionate ​geek​, focused on learning new skills
-        and delighted by their potential of improving our human daily life.`,
+      description: 'Clean code lover; Japanese culture fan, so big <i>otaku</i> here.',
       avatar: 'assets/images/cards/alejandro-squared.jpg',
       social: [
         {
           name: 'Gmail',
           link: 'alejandro.asensio.10@gmail.com',
-          fontawesome: 'google',
+          fontawesome: 'fab fa-google',
           color: 'danger'
         },
         {
           name: 'GitHub',
           link: 'https://github.com/aasensios',
-          fontawesome: 'github',
+          fontawesome: 'fab fa-github',
           color: 'dark'
         },
         {
           name: 'LinkedIn',
           link: 'https://www.linkedin.com/in/alejandroasensiosanchez/',
-          fontawesome: 'linkedin',
+          fontawesome: 'fab fa-linkedin',
           color: 'primary'
         }
       ]
@@ -38,31 +37,31 @@ export class AboutComponent implements OnInit {
     {
       fullname: 'Óscar Burgos',
       jobtitle: 'Junior Fullstack Web Developer and Bioinformatic',
-      description: 'Founder of Geek & Chick startup and Netflix addict.',
+      description: 'Founder of <a href="http://www.geekandchic.es/">Geek & Chick</a> startup and Netflix addict.',
       avatar: 'assets/images/cards/oscar_200x200.jpg',
       social: [
         {
           name: 'Gmail',
           link: 'mihifidem@gmail.com',
-          fontawesome: 'google',
+          fontawesome: 'fab fa-google',
           color: 'danger'
         },
         {
           name: 'GitHub',
           link: 'https://github.com/mihifidem',
-          fontawesome: 'github',
+          fontawesome: 'fab fa-github',
           color: 'dark'
         },
         {
           name: 'LinkedIn',
           link: 'https://www.linkedin.com/in/oscar-burgos-12912250/',
-          fontawesome: 'linkedin',
+          fontawesome: 'fab fa-linkedin',
           color: 'primary'
         },
         {
           name: 'Geek & Chic',
           link: 'http://www.geekandchic.es/',
-          fontawesome: 'microchip', // gem, ring
+          fontawesome: 'fas fa-microchip', // gem, ring
           color: 'warning'
         }
       ]

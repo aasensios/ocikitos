@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { map, startWith } from 'rxjs/operators'
 
-import { Dog, Color, Breed } from 'src/app/models/dog'
+import { Dog, Color, Breed } from 'src/app/components/dogs/dog/dog.model'
 import { DogsService } from 'src/app/services/dogs.service'
 import { Sample } from 'src/app/models/sample'
 import { SamplesService } from 'src/app/services/samples.service'
@@ -92,22 +92,22 @@ export class DogComponent implements OnInit {
     this.dogsService.getColors().subscribe(response => this.colors = response.data)
 
     if (this.dog === undefined) {
-      // this.dog = {
-      //   id: 999999999999999,
-      //   chip: string
-      //   name: string
-      //   gender: string
-      //   breed_id: number
-      //   color_id: number
-      //   birthdate: Date
-      //   deathdate: Date
-      //   owner_dni: string
-      //   owner_fullname: string
-      //   residence: string
-      //   created_at: any
-      //   updated_at: any
-      //   // vet_user_id: numb
-      // }
+      this.dog = {
+        id: undefined,
+        chip: undefined,
+        name: undefined,
+        gender: undefined,
+        breed_id: undefined,
+        color_id: undefined,
+        birthdate: undefined,
+        deathdate: undefined,
+        owner_dni: undefined,
+        owner_fullname: undefined,
+        residence: undefined,
+        created_at: undefined,
+        updated_at: undefined,
+        // vet_user_id: undefined
+      }
     }
 
     this.form = this.formBuilder.group({
@@ -121,7 +121,13 @@ export class DogComponent implements OnInit {
       color: [this.dog.color_id],
       birthdate: [this.dog.birthdate],
       deathdate: [this.dog.deathdate],
-      owner_dni: [this.dog.owner_dni, Validators.required],
+      owner_dni: [
+        this.dog.owner_dni,
+        [
+          Validators.required,
+          // Validators.pattern('\d{8}[a-zA-Z]')
+        ]
+      ],
       owner_fullname: [this.dog.owner_fullname, Validators.required],
       residence: [this.dog.residence],
       // barcode: [this.sample.barcode, Validators.required],

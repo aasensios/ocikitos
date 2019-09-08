@@ -7,7 +7,7 @@ import { Sample } from 'src/app/models/sample'
 import { SamplesService } from 'src/app/services/samples.service'
 import { IncidentsService } from 'src/app/services/incidents.service'
 import { Incident } from 'src/app/models/incident'
-import { Dog } from 'src/app/models/dog'
+import { Dog } from 'src/app/components/dogs/dog/dog.model'
 import { DogsService } from 'src/app/services/dogs.service'
 import { OcikitosResponse } from 'src/app/models/response'
 
@@ -36,7 +36,7 @@ export class InfractionComponent implements OnInit {
     private samplesService: SamplesService,
     private incidentsService: IncidentsService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     console.log(this.infraction)
