@@ -15,6 +15,7 @@ import { IncidentComponent } from './components/incident/incident.component'
 import { InfractionComponent } from './components/infraction/infraction.component'
 
 const routes: Routes = [
+  { path: '', component: AboutComponent },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
@@ -28,7 +29,6 @@ const routes: Routes = [
   { path: 'incidents', component: IncidentsComponent },
   { path: 'infraction', component: InfractionComponent },
   { path: 'infractions', component: InfractionsComponent },
-  // { path: '', component: InfoComponent },
 ]
 
 @NgModule({
