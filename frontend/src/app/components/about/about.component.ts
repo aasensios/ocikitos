@@ -58,12 +58,12 @@ export class AboutComponent implements OnInit {
           fontawesome: 'fab fa-linkedin',
           color: 'primary'
         },
-        {
-          name: 'Geek & Chic',
-          link: 'http://www.geekandchic.es/',
-          fontawesome: 'fas fa-microchip', // gem, ring
-          color: 'warning'
-        }
+        // {
+        //   name: 'Geek & Chic',
+        //   link: 'http://www.geekandchic.es/',
+        //   fontawesome: 'fas fa-microchip', // gem, ring
+        //   color: 'warning'
+        // }
       ]
     }
   ]

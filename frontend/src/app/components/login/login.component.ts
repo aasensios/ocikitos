@@ -17,13 +17,13 @@ export class LoginComponent implements OnInit {
   public user: User
   SNACKBAR_DURATION_IN_MILISECONDS = 5000
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private snackBar: MatSnackBar) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     // this.user = new User();
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['guest@ocikitos.com', Validators.required],
+      password: ['123456', Validators.required]
     })
   }
 

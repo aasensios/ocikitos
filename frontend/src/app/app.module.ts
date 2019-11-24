@@ -41,7 +41,15 @@ import { InfractionComponent } from './components/infraction/infraction.componen
 // Directives
 import { DogDirective } from './directives/dog.directive'
 import { HeaderComponent } from './components/header/header.component'
-import { FooterComponent } from './components/footer/footer.component'
+import { FooterComponent } from './components/footer/footer.component';
+import { AddressFormDummyComponent } from './components/address-form-dummy/address-form-dummy.component';
+import { MatInputModule, MatButtonModule, MatSelectModule, MatRadioModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatMenuModule, MatTreeModule } from '@angular/material';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TreeComponent } from './components/tree/tree.component';
+import { DragDropComponent } from './components/drag-drop/drag-drop.component';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 
 @NgModule({
@@ -64,6 +72,11 @@ import { FooterComponent } from './components/footer/footer.component'
     InfractionComponent,
     HeaderComponent,
     FooterComponent,
+    AddressFormDummyComponent,
+    NavigationComponent,
+    DashboardComponent,
+    TreeComponent,
+    DragDropComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +90,21 @@ import { FooterComponent } from './components/footer/footer.component'
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    SimplemattableModule
+    SimplemattableModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatTreeModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
